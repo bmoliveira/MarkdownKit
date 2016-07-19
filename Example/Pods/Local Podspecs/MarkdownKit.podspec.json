@@ -1,0 +1,22 @@
+{
+  "name": "MarkdownKit",
+  "version": "0.1.0",
+  "summary": "A short description of MarkdownKit.",
+  "description": "TODO: Add long description of the pod here.",
+  "homepage": "https://github.com/<GITHUB_USERNAME>/MarkdownKit",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "Ivan Bruel": "ivan.bruel@gmail.com"
+  },
+  "source": {
+    "git": "https://github.com/<GITHUB_USERNAME>/MarkdownKit.git",
+    "tag": "0.1.0"
+  },
+  "platforms": {
+    "ios": "8.0"
+  },
+  "source_files": "MarkdownKit/Classes/**/*"
+}
