@@ -38,6 +38,8 @@ pod "MarkdownKit"
 > Quote
 
 * List
+- List
++ List
 
 `code` or ```code```
 [Links](http://github.com/ivanbruel/MarkdownKit/)
