@@ -1,4 +1,4 @@
-![Logo](https://github.com/ivanbruel/MarkdownKit/blog/master/Resources/MarkdownKitLogo.png)
+![Logo](https://raw.githubusercontent.com/ivanbruel/MarkdownKit/master/Resources/MarkdownKitLogo.png)
 
 MarkdownKit
 =========
@@ -9,7 +9,7 @@ MarkdownKit
 
 MarkdownKit is a customizable and extensible Markdown parser for iOS. It supports many of the standard Markdown elements through the use of Regular Expressions. It also allows customization of font and color attributes for all the Markdown elements.
 
-![Example](https://github.com/ivanbruel/MarkdownKit/blog/master/Resources/MarkdownKitExample.png)
+![Example](https://raw.githubusercontent.com/ivanbruel/MarkdownKit/master/Resources/MarkdownKitExample.png)
 
 ## Installation
 
