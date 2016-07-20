@@ -33,6 +33,7 @@ public class MarkdownParser {
   private var unescaping = MarkdownUnescaping()
   
   // MARK: Configuration
+  /// Enables or disables detection of URLs even without Markdown format
   public var automaticLinkDetectionEnabled: Bool = true
 
   // MARK: Initializer
