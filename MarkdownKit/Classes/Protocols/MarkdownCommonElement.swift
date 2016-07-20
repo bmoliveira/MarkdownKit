@@ -8,6 +8,8 @@
 
 import UIKit
 
+/// MarkdownCommentElement represent the default Markdown elements which only manipulate content 
+/// visually, (e.g. Bold or Italic)
 public protocol MarkdownCommonElement: MarkdownElement, MarkdownStyle {
   
   func addAttributes(attributedString: NSMutableAttributedString, range: NSRange)

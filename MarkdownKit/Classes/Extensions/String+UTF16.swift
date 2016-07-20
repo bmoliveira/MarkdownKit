@@ -10,6 +10,7 @@ import Foundation
 
 extension String {
   
+  /// Converts each character to its UTF16 form in hexadecimal value (e.g. "H" -> "0048")
   func escapeUTF16() -> String {
     return Array(utf16).map {
       String(format: "%04x", $0)
@@ -18,6 +19,7 @@ extension String {
     }
   }
   
+  /// Converts each 4 digit characters to its String form  (e.g. "0048" -> "H")
   func unescapeUTF16() -> String? {
     var utf16Array = [UInt16]()
     0.stride(to: characters.count, by: 4).forEach {

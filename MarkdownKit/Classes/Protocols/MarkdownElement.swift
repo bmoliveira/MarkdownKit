@@ -8,7 +8,8 @@
 
 import Foundation
 
-public protocol MarkdownElement {
+/// The base protocol for all Markdown Elements, it handles parsing through regex.
+public protocol MarkdownElement: class {
   
   var regex: String { get }
   

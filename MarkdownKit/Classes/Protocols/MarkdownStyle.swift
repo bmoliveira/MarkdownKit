@@ -8,6 +8,7 @@
 
 import UIKit
 
+/// Styling protocol for all MarkdownElements
 public protocol MarkdownStyle {
   
   var font: UIFont? { get }
