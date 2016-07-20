@@ -25,7 +25,7 @@ pod "MarkdownKit"
 ## Supported Elements
 
 ```
-*italics* or _italics_
+*italic* or _italics_
 **bold** or __bold__
 
 # Header 1
@@ -35,7 +35,11 @@ pod "MarkdownKit"
 ##### Header 5
 ###### Header 6
 
-`code`
+> Quote
+
+* List
+
+`code` or ```code```
 [Links](http://github.com/ivanbruel/MarkdownKit/)
 ```
 
@@ -53,6 +57,7 @@ label.attributedText = markdownParser.parse(markdown)
 
 ```swift
 let markdownParser = MarkdownParser()
+markdownParser.automaticLinkDetectionEnabled = false
 markdownParser.bold.color = UIColor.redColor()
 markdownParser.italic.font = UIFont.italicSystemFontOfSize(300)
 markdownParser.header.fontIncrease = 4
