@@ -9,6 +9,8 @@ MarkdownKit
 
 MarkdownKit is a customizable and extensible Markdown parser for iOS. It supports many of the standard Markdown elements through the use of Regular Expressions. It also allows customization of font and color attributes for all the Markdown elements.
 
+## Screenshot
+
 ![Example](https://raw.githubusercontent.com/ivanbruel/MarkdownKit/master/Resources/MarkdownKitExample.png)
 
 ## Installation
@@ -37,8 +39,6 @@ pod "MarkdownKit"
 [Links](http://github.com/ivanbruel/MarkdownKit/)
 ```
 
-
-
 ## Usage
 
 In order to use MarkdownKit to transform Markdown into NSAttributedString, all you have to do is create an instance of `MarkdownParser` and call the `parse(_)` function.
@@ -50,6 +50,13 @@ label.attributedText = markdownParser.parse(markdown)
 ```
 
 ## Customization
+
+```swift
+let markdownParser = MarkdownParser()
+markdownParser.bold.color = UIColor.redColor()
+markdownParser.italic.font = UIFont.italicSystemFontOfSize(300)
+markdownParser.header.fontIncrease = 4
+```
 
 ## Extensibility
 
