@@ -10,8 +10,8 @@ import UIKit
 
 public class MarkdownCode: MarkdownCommonElement {
     
-    private static let regex = "(`+)(\\s*.*?[^`]\\s*)(\\1)(?!`)"
-    
+    private static let regex = "(\\s+|^)(`+)(\\s*.*?[^`]\\s*)(\\1)(?!`)"
+
     public var font: UIFont?
     public var color: UIColor?
     

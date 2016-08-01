@@ -10,7 +10,7 @@ import UIKit
 
 public class MarkdownItalic: MarkdownCommonElement {
   
-  private static let regex = "(\\*|_)(.+?)(\\1)"
+  private static let regex = "(\\s+|^)(\\*|_)(.+?)(\\2)"
   
   public var font: UIFont?
   public var color: UIColor?
