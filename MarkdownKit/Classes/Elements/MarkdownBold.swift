@@ -19,7 +19,7 @@ public class MarkdownBold: MarkdownCommonElement {
     return MarkdownBold.regex
   }
   
-  public init(font: UIFont? = UIFont.boldSystemFontOfSize(UIFont.smallSystemFontSize()),
+  public init(font: UIFont? = UIFont.boldSystemFont(ofSize: UIFont.smallSystemFontSize),
        color: UIColor? = nil) {
     self.font = font
     self.color = color

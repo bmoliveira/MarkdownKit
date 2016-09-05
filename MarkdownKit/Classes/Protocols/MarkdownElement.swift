@@ -25,13 +25,13 @@ public extension MarkdownElement {
       do {
         let regex = try regularExpression()
         while let regexMatch =
-          regex.firstMatchInString(attributedString.string,
-                                               options: .WithoutAnchoringBounds,
+          regex.firstMatch(in: attributedString.string,
+                                               options: .withoutAnchoringBounds,
                                                range: NSRange(location: location,
                                                 length: attributedString.length - location))
         {
           let oldLength = attributedString.length
-          match(regexMatch, attributedString: attributedString)
+          match(match: regexMatch, attributedString: attributedString)
           let newLength = attributedString.length
           location = regexMatch.range.location + regexMatch.range.length + newLength - oldLength
         }

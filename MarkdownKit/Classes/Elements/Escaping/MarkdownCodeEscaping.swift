@@ -17,19 +17,19 @@ public class MarkdownCodeEscaping: MarkdownElement {
   }
 
   public func regularExpression() throws -> NSRegularExpression {
-    return try NSRegularExpression(pattern: regex, options: .DotMatchesLineSeparators)
+    return try NSRegularExpression(pattern: regex, options: .dotMatchesLineSeparators)
   }
 
   public func match(match: NSTextCheckingResult, attributedString: NSMutableAttributedString) {
-    let range = match.rangeAtIndex(2)
+    let range = match.rangeAt(2)
     // escaping all characters
-    let matchString = attributedString.attributedSubstringFromRange(range).string
+    let matchString = attributedString.attributedSubstring(from: range).string
     let escapedString = Array<UInt16>(matchString.utf16)
       .map { (value: UInt16) -> String in String(format: "%04x", value) }
       .reduce("") { (string: String, character: String) -> String in
         return "\(string)\(character)"
     }
-    attributedString.replaceCharactersInRange(range, withString: escapedString)
+    attributedString.replaceCharacters(in: range, with: escapedString)
   }
 
 }

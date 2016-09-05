@@ -11,13 +11,13 @@ import Foundation
 public class MarkdownAutomaticLink: MarkdownLink {
   
  public override func regularExpression() throws -> NSRegularExpression {
-    return try NSDataDetector(types: NSTextCheckingType.Link.rawValue)
+    return try NSDataDetector(types: NSTextCheckingResult.CheckingType.link.rawValue)
   }
   
   public override func match(match: NSTextCheckingResult,
                              attributedString: NSMutableAttributedString) {
-    let linkURLString = attributedString.attributedSubstringFromRange(match.range).string
-    formatText(attributedString, range: match.range, link: linkURLString)
-    addAttributes(attributedString, range: match.range, link: linkURLString)
+    let linkURLString = attributedString.attributedSubstring(from: match.range).string
+    formatText(attributedString: attributedString, range: match.range, link: linkURLString)
+    addAttributes(attributedString: attributedString, range: match.range, link: linkURLString)
   }
 }

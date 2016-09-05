@@ -27,10 +27,10 @@ public extension MarkdownCommonElement {
   
   func match(match: NSTextCheckingResult, attributedString: NSMutableAttributedString) {
     // deleting trailing markdown
-    attributedString.deleteCharactersInRange(match.rangeAtIndex(4))
+    attributedString.deleteCharacters(in: match.rangeAt(4))
     // formatting string (may alter the length)
-    addAttributes(attributedString, range: match.rangeAtIndex(3))
+    addAttributes(attributedString: attributedString, range: match.rangeAt(3))
     // deleting leading markdown
-    attributedString.deleteCharactersInRange(match.rangeAtIndex(2))
+    attributedString.deleteCharacters(in: match.rangeAt(2))
   }
 }
