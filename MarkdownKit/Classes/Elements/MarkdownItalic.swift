@@ -19,9 +19,8 @@ public class MarkdownItalic: MarkdownCommonElement {
     return MarkdownItalic.regex
   }
   
-  public init(font: UIFont? = UIFont.italicSystemFontOfSize(UIFont.smallSystemFontSize()),
-       color: UIColor? = nil) {
-    self.font = font
+  public init(font: UIFont? = nil, color: UIColor? = nil) {
+    self.font = font?.italic()
     self.color = color
   }
   

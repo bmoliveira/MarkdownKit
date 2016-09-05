@@ -22,9 +22,8 @@ public class MarkdownHeader: MarkdownLevelElement {
     return String(format: MarkdownHeader.regex, level)
   }
 
-  public init(maxLevel: Int = 0,
-              font: UIFont? = UIFont.boldSystemFontOfSize(UIFont.smallSystemFontSize()),
-              fontIncrease: Int = 2, color: UIColor? = nil) {
+  public init(font: UIFont? = UIFont.boldSystemFontOfSize(UIFont.smallSystemFontSize()),
+              maxLevel: Int = 0, fontIncrease: Int = 2, color: UIColor? = nil) {
     self.maxLevel = maxLevel
     self.font = font
     self.color = color

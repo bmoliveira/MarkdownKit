@@ -18,14 +18,14 @@ public class MarkdownParser {
   public var customElements: [MarkdownElement]
 
   // MARK: Basic Elements
-  public var header = MarkdownHeader()
-  public var list = MarkdownList()
-  public var quote = MarkdownQuote()
-  public var link = MarkdownLink()
-  public var automaticLink = MarkdownAutomaticLink()
-  public var bold = MarkdownBold()
-  public var italic = MarkdownItalic()
-  public var code = MarkdownCode()
+  public let header: MarkdownHeader
+  public let list: MarkdownList
+  public let quote: MarkdownQuote
+  public let link: MarkdownLink
+  public let automaticLink: MarkdownAutomaticLink
+  public let bold: MarkdownBold
+  public let italic: MarkdownItalic
+  public let code: MarkdownCode
 
   // MARK: Escaping Elements
   private var codeEscaping = MarkdownCodeEscaping()
@@ -35,9 +35,23 @@ public class MarkdownParser {
   // MARK: Configuration
   /// Enables or disables detection of URLs even without Markdown format
   public var automaticLinkDetectionEnabled: Bool = true
+  public let font: UIFont
 
   // MARK: Initializer
-  public init(automaticLinkDetectionEnabled: Bool = true, customElements: [MarkdownElement] = []) {
+  public init(font: UIFont = UIFont.systemFontOfSize(UIFont.smallSystemFontSize()),
+              automaticLinkDetectionEnabled: Bool = true,
+              customElements: [MarkdownElement] = []) {
+    self.font = font
+
+    header = MarkdownHeader(font: font)
+    list = MarkdownList(font: font)
+    quote = MarkdownQuote(font: font)
+    link = MarkdownLink(font: font)
+    automaticLink = MarkdownAutomaticLink(font: font)
+    bold = MarkdownBold(font: font)
+    italic = MarkdownItalic(font: font)
+    code = MarkdownCode(font: font)
+
     self.automaticLinkDetectionEnabled = automaticLinkDetectionEnabled
     self.escapingElements = [codeEscaping, escaping]
     self.defaultElements = [header, list, quote, link, automaticLink, bold, italic]
@@ -66,6 +80,8 @@ public class MarkdownParser {
 
   public func parse(markdown: NSAttributedString) -> NSAttributedString {
     let attributedString = NSMutableAttributedString(attributedString: markdown)
+    attributedString.addAttribute(NSFontAttributeName, value: font,
+                                  range: NSRange(location: 0, length: attributedString.length))
     var elements: [MarkdownElement] = escapingElements
     elements.appendContentsOf(defaultElements)
     elements.appendContentsOf(customElements)

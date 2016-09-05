@@ -23,8 +23,8 @@ public class MarkdownList: MarkdownLevelElement {
     return String(format: MarkdownList.regex, level)
   }
 
-  public init(maxLevel: Int = 0, indicator: String = "•", separator: String = "  ", font: UIFont? = nil,
-       color: UIColor? = nil) {
+  public init(font: UIFont? = nil, maxLevel: Int = 0, indicator: String = "•", separator: String = "  ",
+              color: UIColor? = nil) {
     self.maxLevel = maxLevel
     self.indicator = indicator
     self.separator = separator
@@ -33,10 +33,10 @@ public class MarkdownList: MarkdownLevelElement {
   }
 
   public func formatText(attributedString: NSMutableAttributedString, range: NSRange, level: Int) {
-      var string = (0..<level).reduce("") { (string, _) -> String in
-        return "\(string)\(separator)"
-      }
-      string = "\(string)\(indicator) "
-      attributedString.replaceCharactersInRange(range, withString: string)
+    var string = (0..<level).reduce("") { (string, _) -> String in
+      return "\(string)\(separator)"
+    }
+    string = "\(string)\(indicator) "
+    attributedString.replaceCharactersInRange(range, withString: string)
   }
 }

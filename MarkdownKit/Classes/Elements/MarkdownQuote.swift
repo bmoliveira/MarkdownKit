@@ -23,8 +23,8 @@ public class MarkdownQuote: MarkdownLevelElement {
     return String(format: MarkdownQuote.regex, level)
   }
 
-  public init(maxLevel: Int = 0, indicator: String = ">", separator: String = "  ", font: UIFont? = nil,
-              color: UIColor? = nil) {
+  public init(font: UIFont? = nil, maxLevel: Int = 0, indicator: String = ">",
+              separator: String = "  ", color: UIColor? = nil) {
     self.maxLevel = maxLevel
     self.indicator = indicator
     self.separator = separator

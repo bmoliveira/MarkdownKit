@@ -19,8 +19,7 @@ public class MarkdownCode: MarkdownCommonElement {
     return MarkdownCode.regex
   }
 
-  public init(font: UIFont? = UIFont(name: "Courier New",size: UIFont.smallSystemFontSize()),
-              color: UIColor? = nil) {
+  public init(font: UIFont? = nil, color: UIColor? = nil) {
     self.font = font
     self.color = color
   }
