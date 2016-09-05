@@ -17,16 +17,16 @@ public class MarkdownEscaping: MarkdownElement {
   }
 
   public func regularExpression() throws -> NSRegularExpression {
-    return try NSRegularExpression(pattern: regex, options: .DotMatchesLineSeparators)
+    return try NSRegularExpression(pattern: regex, options: .dotMatchesLineSeparators)
   }
 
   public func match(match: NSTextCheckingResult, attributedString: NSMutableAttributedString) {
     let range = NSRange(location: match.range.location + 1, length: 1)
     // escape one character
-    let matchString = attributedString.attributedSubstringFromRange(range).string
+    let matchString = attributedString.attributedSubstring(from: range).string
     if let escapedString = Array<UInt16>(matchString.utf16).first
       .flatMap({ (value: UInt16) -> String in String(format: "%04x", value) }) {
-      attributedString.replaceCharactersInRange(range, withString: escapedString)
+      attributedString.replaceCharacters(in: range, with: escapedString)
     }
   }
 

@@ -24,11 +24,11 @@ public extension MarkdownLevelElement {
   
   
   func regularExpression() throws -> NSRegularExpression {
-    return try NSRegularExpression(pattern: regex, options: .AnchorsMatchLines)
+    return try NSRegularExpression(pattern: regex, options: .anchorsMatchLines)
   }
   
   func addAttributes(attributedString: NSMutableAttributedString, range: NSRange, level: Int) {
-    attributedString.addAttributes(attributesForLevel(level - 1), range: range)
+    attributedString.addAttributes(attributesForLevel(level: level - 1), range: range)
   }
   
   func attributesForLevel(level: Int) -> [String: AnyObject] {
@@ -36,10 +36,10 @@ public extension MarkdownLevelElement {
   }
   
   func match(match: NSTextCheckingResult, attributedString: NSMutableAttributedString) {
-    let level = match.rangeAtIndex(1).length
-    addAttributes(attributedString, range: match.rangeAtIndex(2), level: level)
-    let range = NSRange(location: match.rangeAtIndex(1).location,
-                        length: match.rangeAtIndex(2).location - match.rangeAtIndex(1).location)
-    formatText(attributedString, range: range, level: level)
+    let level = match.rangeAt(1).length
+    addAttributes(attributedString: attributedString, range: match.rangeAt(2), level: level)
+    let range = NSRange(location: match.rangeAt(1).location,
+                        length: match.rangeAt(2).location - match.rangeAt(1).location)
+    formatText(attributedString: attributedString, range: range, level: level)
   }
 }

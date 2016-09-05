@@ -37,6 +37,7 @@ public class MarkdownList: MarkdownLevelElement {
         return "\(string)\(separator)"
       }
       string = "\(string)\(indicator) "
-      attributedString.replaceCharactersInRange(range, withString: string)
+    
+      attributedString.replaceCharacters(in: range, with: string)
   }
 }

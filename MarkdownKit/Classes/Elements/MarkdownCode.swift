@@ -19,16 +19,16 @@ public class MarkdownCode: MarkdownCommonElement {
     return MarkdownCode.regex
   }
 
-  public init(font: UIFont? = UIFont(name: "Courier New",size: UIFont.smallSystemFontSize()),
+  public init(font: UIFont? = UIFont(name: "Courier New",size: UIFont.smallSystemFontSize),
               color: UIColor? = nil) {
     self.font = font
     self.color = color
   }
 
   public func addAttributes(attributedString: NSMutableAttributedString, range: NSRange) {
-    let matchString: String = attributedString.attributedSubstringFromRange(range).string
+    let matchString: String = attributedString.attributedSubstring(from: range).string
     guard let unescapedString = matchString.unescapeUTF16() else { return }
-    attributedString.replaceCharactersInRange(range, withString: unescapedString)
+    attributedString.replaceCharacters(in: range, with: unescapedString)
     attributedString.addAttributes(attributes, range: NSRange(location: range.location, length: unescapedString.characters.count))
   }
 }
