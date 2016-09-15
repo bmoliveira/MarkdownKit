@@ -8,21 +8,21 @@
 
 import UIKit
 
-public class MarkdownHeader: MarkdownLevelElement {
+open class MarkdownHeader: MarkdownLevelElement {
 
-  private static let regex = "^(#{1,%@})\\s*(.+)$"
+  fileprivate static let regex = "^(#{1,%@})\\s*(.+)$"
 
-  public var maxLevel: Int
-  public var font: UIFont?
-  public var color: UIColor?
-  public var fontIncrease: Int
+  open var maxLevel: Int
+  open var font: UIFont?
+  open var color: UIColor?
+  open var fontIncrease: Int
 
-  public var regex: String {
+  open var regex: String {
     let level: String = maxLevel > 0 ? "\(maxLevel)" : ""
     return String(format: MarkdownHeader.regex, level)
   }
 
-  public init(font: UIFont? = UIFont.boldSystemFontOfSize(UIFont.smallSystemFontSize()),
+  public init(font: UIFont? = UIFont.boldSystemFont(ofSize: UIFont.smallSystemFontSize),
               maxLevel: Int = 0, fontIncrease: Int = 2, color: UIColor? = nil) {
     self.maxLevel = maxLevel
     self.font = font
@@ -30,15 +30,15 @@ public class MarkdownHeader: MarkdownLevelElement {
     self.fontIncrease = fontIncrease
   }
 
-  public func formatText(attributedString: NSMutableAttributedString, range: NSRange, level: Int) {
-      attributedString.deleteCharactersInRange(range)
+  open func formatText(_ attributedString: NSMutableAttributedString, range: NSRange, level: Int) {
+      attributedString.deleteCharacters(in: range)
   }
 
-  public func attributesForLevel(level: Int) -> [String: AnyObject] {
+  open func attributesForLevel(_ level: Int) -> [String: AnyObject] {
     var attributes = self.attributes
     if let font = font {
       let headerFontSize: CGFloat = font.pointSize + (CGFloat(level) * CGFloat(fontIncrease))
-      attributes[NSFontAttributeName] = font.fontWithSize(headerFontSize)
+      attributes[NSFontAttributeName] = font.withSize(headerFontSize)
     }
     return attributes
   }

@@ -15,31 +15,31 @@ public protocol MarkdownLevelElement: MarkdownElement, MarkdownStyle {
   /// The maximum level of elements we should parse (e.g. limit the headers to 6 #s)
   var maxLevel: Int { get }
   
-  func formatText(attributedString: NSMutableAttributedString, range: NSRange, level: Int)
-  func addAttributes(attributedString: NSMutableAttributedString, range: NSRange, level: Int)
-  func attributesForLevel(level: Int) -> [String: AnyObject]
+  func formatText(_ attributedString: NSMutableAttributedString, range: NSRange, level: Int)
+  func addAttributes(_ attributedString: NSMutableAttributedString, range: NSRange, level: Int)
+  func attributesForLevel(_ level: Int) -> [String: AnyObject]
 }
 
 public extension MarkdownLevelElement {
   
   
   func regularExpression() throws -> NSRegularExpression {
-    return try NSRegularExpression(pattern: regex, options: .AnchorsMatchLines)
+    return try NSRegularExpression(pattern: regex, options: .anchorsMatchLines)
   }
   
-  func addAttributes(attributedString: NSMutableAttributedString, range: NSRange, level: Int) {
+  func addAttributes(_ attributedString: NSMutableAttributedString, range: NSRange, level: Int) {
     attributedString.addAttributes(attributesForLevel(level - 1), range: range)
   }
   
-  func attributesForLevel(level: Int) -> [String: AnyObject] {
+  func attributesForLevel(_ level: Int) -> [String: AnyObject] {
     return self.attributes
   }
   
-  func match(match: NSTextCheckingResult, attributedString: NSMutableAttributedString) {
-    let level = match.rangeAtIndex(1).length
-    addAttributes(attributedString, range: match.rangeAtIndex(2), level: level)
-    let range = NSRange(location: match.rangeAtIndex(1).location,
-                        length: match.rangeAtIndex(2).location - match.rangeAtIndex(1).location)
+  func match(_ match: NSTextCheckingResult, attributedString: NSMutableAttributedString) {
+    let level = match.rangeAt(1).length
+    addAttributes(attributedString, range: match.rangeAt(2), level: level)
+    let range = NSRange(location: match.rangeAt(1).location,
+                        length: match.rangeAt(2).location - match.rangeAt(1).location)
     formatText(attributedString, range: range, level: level)
   }
 }

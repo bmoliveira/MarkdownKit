@@ -1,22 +1,16 @@
 PODS:
-  - MarkdownKit (1.0.3)
-  - Nimble (3.2.0)
-  - Quick (0.9.3)
+  - MarkdownKit (1.1.0)
 
 DEPENDENCIES:
   - MarkdownKit (from `../`)
-  - Nimble (~> 3.0)
-  - Quick (~> 0.8)
 
 EXTERNAL SOURCES:
   MarkdownKit:
     :path: "../"
 
 SPEC CHECKSUMS:
-  MarkdownKit: 82e36166884b3afae588528f38abab321d18cfcc
-  Nimble: 703854335d181df169bbca9c97117b5cf8c47c1d
-  Quick: 13a2a2b19a5d8e3ed4fd0c36ee46597fd77ebf71
+  MarkdownKit: 60d759cd14169144e4b159cb34312f8a5dd77570
 
-PODFILE CHECKSUM: 37332923ac62269b229836ec80bf572c6603114d
+PODFILE CHECKSUM: ccadfd166c0ec570bf4db2bbf94766db628792f3
 
-COCOAPODS: 1.0.1
+COCOAPODS: 1.1.0.rc.2

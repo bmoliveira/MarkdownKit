@@ -14,19 +14,19 @@ public protocol MarkdownElement: class {
   var regex: String { get }
   
   func regularExpression() throws -> NSRegularExpression
-  func parse(attributedString: NSMutableAttributedString)
-  func match(match: NSTextCheckingResult, attributedString: NSMutableAttributedString)
+  func parse(_ attributedString: NSMutableAttributedString)
+  func match(_ match: NSTextCheckingResult, attributedString: NSMutableAttributedString)
 }
 
 public extension MarkdownElement {
   
-  func parse(attributedString: NSMutableAttributedString) {
+  func parse(_ attributedString: NSMutableAttributedString) {
       var location = 0
       do {
         let regex = try regularExpression()
         while let regexMatch =
-          regex.firstMatchInString(attributedString.string,
-                                               options: .WithoutAnchoringBounds,
+          regex.firstMatch(in: attributedString.string,
+                                               options: .withoutAnchoringBounds,
                                                range: NSRange(location: location,
                                                 length: attributedString.length - location))
         {

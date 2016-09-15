@@ -12,7 +12,7 @@ import UIKit
 /// visually, (e.g. Bold or Italic)
 public protocol MarkdownCommonElement: MarkdownElement, MarkdownStyle {
   
-  func addAttributes(attributedString: NSMutableAttributedString, range: NSRange)
+  func addAttributes(_ attributedString: NSMutableAttributedString, range: NSRange)
 }
 
 public extension MarkdownCommonElement {
@@ -21,16 +21,16 @@ public extension MarkdownCommonElement {
     return try NSRegularExpression(pattern: regex, options: [])
   }
   
-  func addAttributes(attributedString: NSMutableAttributedString, range: NSRange) {
+  func addAttributes(_ attributedString: NSMutableAttributedString, range: NSRange) {
     attributedString.addAttributes(attributes, range: range)
   }
   
-  func match(match: NSTextCheckingResult, attributedString: NSMutableAttributedString) {
+  func match(_ match: NSTextCheckingResult, attributedString: NSMutableAttributedString) {
     // deleting trailing markdown
-    attributedString.deleteCharactersInRange(match.rangeAtIndex(4))
+    attributedString.deleteCharacters(in: match.rangeAt(4))
     // formatting string (may alter the length)
-    addAttributes(attributedString, range: match.rangeAtIndex(3))
+    addAttributes(attributedString, range: match.rangeAt(3))
     // deleting leading markdown
-    attributedString.deleteCharactersInRange(match.rangeAtIndex(2))
+    attributedString.deleteCharacters(in: match.rangeAt(2))
   }
 }

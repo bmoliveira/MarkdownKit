@@ -8,17 +8,17 @@
 
 import UIKit
 
-public class MarkdownQuote: MarkdownLevelElement {
+open class MarkdownQuote: MarkdownLevelElement {
 
-  private static let regex = "^(\\>{1,%@})\\s*(.+)$"
+  fileprivate static let regex = "^(\\>{1,%@})\\s*(.+)$"
 
-  public var maxLevel: Int
-  public var font: UIFont?
-  public var color: UIColor?
-  public var separator: String
-  public var indicator: String
+  open var maxLevel: Int
+  open var font: UIFont?
+  open var color: UIColor?
+  open var separator: String
+  open var indicator: String
 
-  public var regex: String {
+  open var regex: String {
     let level: String = maxLevel > 0 ? "\(maxLevel)" : ""
     return String(format: MarkdownQuote.regex, level)
   }
@@ -33,11 +33,11 @@ public class MarkdownQuote: MarkdownLevelElement {
   }
 
 
-  public func formatText(attributedString: NSMutableAttributedString, range: NSRange, level: Int) {
+  open func formatText(_ attributedString: NSMutableAttributedString, range: NSRange, level: Int) {
     var string = (0..<level).reduce("") { (string: String, _: Int) -> String in
       return "\(string)\(separator)"
     }
     string = "\(string)\(indicator) "
-    attributedString.replaceCharactersInRange(range, withString: string)
+    attributedString.replaceCharacters(in: range, with: string)
   }
 }

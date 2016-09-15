@@ -11,12 +11,12 @@ import MarkdownKit
 
 class ViewController: UIViewController {
   
-  @IBOutlet private weak var textView: UITextView! {
+  @IBOutlet fileprivate weak var textView: UITextView! {
     didSet {
       textView.delegate = self
     }
   }
-  private let markdownParser = MarkdownParser()
+  fileprivate let markdownParser = MarkdownParser()
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -34,9 +34,9 @@ class ViewController: UIViewController {
 
 extension ViewController: UITextViewDelegate {
   
-  func textView(textView: UITextView, shouldInteractWithURL URL: NSURL,
-                inRange characterRange: NSRange) -> Bool {
-    UIApplication.sharedApplication().openURL(URL)
+  func textView(_ textView: UITextView, shouldInteractWith URL: URL,
+                in characterRange: NSRange) -> Bool {
+    UIApplication.shared.openURL(URL)
     return true
   }
   

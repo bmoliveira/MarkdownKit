@@ -8,25 +8,25 @@
 
 import UIKit
 
-public class MarkdownEscaping: MarkdownElement {
+open class MarkdownEscaping: MarkdownElement {
 
-  private static let regex = "\\\\."
+  fileprivate static let regex = "\\\\."
 
-  public var regex: String {
+  open var regex: String {
     return MarkdownEscaping.regex
   }
 
-  public func regularExpression() throws -> NSRegularExpression {
-    return try NSRegularExpression(pattern: regex, options: .DotMatchesLineSeparators)
+  open func regularExpression() throws -> NSRegularExpression {
+    return try NSRegularExpression(pattern: regex, options: .dotMatchesLineSeparators)
   }
 
-  public func match(match: NSTextCheckingResult, attributedString: NSMutableAttributedString) {
+  open func match(_ match: NSTextCheckingResult, attributedString: NSMutableAttributedString) {
     let range = NSRange(location: match.range.location + 1, length: 1)
     // escape one character
-    let matchString = attributedString.attributedSubstringFromRange(range).string
+    let matchString = attributedString.attributedSubstring(from: range).string
     if let escapedString = Array<UInt16>(matchString.utf16).first
       .flatMap({ (value: UInt16) -> String in String(format: "%04x", value) }) {
-      attributedString.replaceCharactersInRange(range, withString: escapedString)
+      attributedString.replaceCharacters(in: range, with: escapedString)
     }
   }
 

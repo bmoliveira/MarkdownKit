@@ -8,14 +8,14 @@
 
 import UIKit
 
-public class MarkdownCode: MarkdownCommonElement {
+open class MarkdownCode: MarkdownCommonElement {
 
-  private static let regex = "(\\s+|^)(`+)(\\s*.*?[^`]\\s*)(\\1)(?!`)"
+  fileprivate static let regex = "(\\s+|^)(`+)(\\s*.*?[^`]\\s*)(\\1)(?!`)"
 
-  public var font: UIFont?
-  public var color: UIColor?
+  open var font: UIFont?
+  open var color: UIColor?
 
-  public var regex: String {
+  open var regex: String {
     return MarkdownCode.regex
   }
 
@@ -24,10 +24,10 @@ public class MarkdownCode: MarkdownCommonElement {
     self.color = color
   }
 
-  public func addAttributes(attributedString: NSMutableAttributedString, range: NSRange) {
-    let matchString: String = attributedString.attributedSubstringFromRange(range).string
+  open func addAttributes(_ attributedString: NSMutableAttributedString, range: NSRange) {
+    let matchString: String = attributedString.attributedSubstring(from: range).string
     guard let unescapedString = matchString.unescapeUTF16() else { return }
-    attributedString.replaceCharactersInRange(range, withString: unescapedString)
+    attributedString.replaceCharacters(in: range, with: unescapedString)
     attributedString.addAttributes(attributes, range: NSRange(location: range.location, length: unescapedString.characters.count))
   }
 }

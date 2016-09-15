@@ -8,14 +8,14 @@
 
 import UIKit
 
-public class MarkdownItalic: MarkdownCommonElement {
+open class MarkdownItalic: MarkdownCommonElement {
   
-  private static let regex = "(\\s+|^)(\\*|_)(.+?)(\\2)"
+  fileprivate static let regex = "(\\s+|^)(\\*|_)(.+?)(\\2)"
   
-  public var font: UIFont?
-  public var color: UIColor?
+  open var font: UIFont?
+  open var color: UIColor?
   
-  public var regex: String {
+  open var regex: String {
     return MarkdownItalic.regex
   }
   

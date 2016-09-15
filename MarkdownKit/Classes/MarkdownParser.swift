@@ -8,37 +8,37 @@
 
 import UIKit
 
-public class MarkdownParser {
+open class MarkdownParser {
 
   // MARK: Element Arrays
-  private var escapingElements: [MarkdownElement]
-  private var defaultElements: [MarkdownElement]
-  private var unescapingElements: [MarkdownElement]
+  fileprivate var escapingElements: [MarkdownElement]
+  fileprivate var defaultElements: [MarkdownElement]
+  fileprivate var unescapingElements: [MarkdownElement]
 
-  public var customElements: [MarkdownElement]
+  open var customElements: [MarkdownElement]
 
   // MARK: Basic Elements
-  public let header: MarkdownHeader
-  public let list: MarkdownList
-  public let quote: MarkdownQuote
-  public let link: MarkdownLink
-  public let automaticLink: MarkdownAutomaticLink
-  public let bold: MarkdownBold
-  public let italic: MarkdownItalic
-  public let code: MarkdownCode
+  open let header: MarkdownHeader
+  open let list: MarkdownList
+  open let quote: MarkdownQuote
+  open let link: MarkdownLink
+  open let automaticLink: MarkdownAutomaticLink
+  open let bold: MarkdownBold
+  open let italic: MarkdownItalic
+  open let code: MarkdownCode
 
   // MARK: Escaping Elements
-  private var codeEscaping = MarkdownCodeEscaping()
-  private var escaping = MarkdownEscaping()
-  private var unescaping = MarkdownUnescaping()
+  fileprivate var codeEscaping = MarkdownCodeEscaping()
+  fileprivate var escaping = MarkdownEscaping()
+  fileprivate var unescaping = MarkdownUnescaping()
 
   // MARK: Configuration
   /// Enables or disables detection of URLs even without Markdown format
-  public var automaticLinkDetectionEnabled: Bool = true
-  public let font: UIFont
+  open var automaticLinkDetectionEnabled: Bool = true
+  open let font: UIFont
 
   // MARK: Initializer
-  public init(font: UIFont = UIFont.systemFontOfSize(UIFont.smallSystemFontSize()),
+  public init(font: UIFont = UIFont.systemFont(ofSize: UIFont.smallSystemFontSize),
               automaticLinkDetectionEnabled: Bool = true,
               customElements: [MarkdownElement] = []) {
     self.font = font
@@ -60,34 +60,34 @@ public class MarkdownParser {
   }
 
   // MARK: Element Extensibility
-  public func addCustomElement(element: MarkdownElement) {
+  open func addCustomElement(_ element: MarkdownElement) {
     customElements.append(element)
   }
 
-  public func removeCustomElement(element: MarkdownElement) {
-    guard let index = customElements.indexOf({ someElement -> Bool in
+  open func removeCustomElement(_ element: MarkdownElement) {
+    guard let index = customElements.index(where: { someElement -> Bool in
       return element === someElement
     }) else {
       return
     }
-    customElements.removeAtIndex(index)
+    customElements.remove(at: index)
   }
 
   // MARK: Parsing
-  public func parse(markdown: String) -> NSAttributedString {
+  open func parse(_ markdown: String) -> NSAttributedString {
     return parse(NSAttributedString(string: markdown))
   }
 
-  public func parse(markdown: NSAttributedString) -> NSAttributedString {
+  open func parse(_ markdown: NSAttributedString) -> NSAttributedString {
     let attributedString = NSMutableAttributedString(attributedString: markdown)
     attributedString.addAttribute(NSFontAttributeName, value: font,
                                   range: NSRange(location: 0, length: attributedString.length))
     var elements: [MarkdownElement] = escapingElements
-    elements.appendContentsOf(defaultElements)
-    elements.appendContentsOf(customElements)
-    elements.appendContentsOf(unescapingElements)
+    elements.append(contentsOf: defaultElements)
+    elements.append(contentsOf: customElements)
+    elements.append(contentsOf: unescapingElements)
     elements.forEach { element in
-      if automaticLinkDetectionEnabled || element.dynamicType != MarkdownAutomaticLink.self {
+      if automaticLinkDetectionEnabled || type(of: element) != MarkdownAutomaticLink.self {
         element.parse(attributedString)
       }
     }
