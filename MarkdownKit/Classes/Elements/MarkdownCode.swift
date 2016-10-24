@@ -8,27 +8,32 @@
 
 import UIKit
 
-public class MarkdownCode: MarkdownCommonElement {
-
-  private static let regex = "(\\s+|^)(`+)(\\s*.*?[^`]\\s*)(\\1)(?!`)"
-
-  public var font: UIFont?
-  public var color: UIColor?
-
-  public var regex: String {
+open class MarkdownCode: MarkdownCommonElement {
+  
+  fileprivate static let regex = "(\\s+|^)(\\`+)(.+?)(\\2)"
+  
+  open var font: UIFont?
+  open var color: UIColor?
+  
+  open var regex: String {
     return MarkdownCode.regex
   }
-
-  public init(font: UIFont? = UIFont(name: "Courier New",size: UIFont.smallSystemFontSize),
-              color: UIColor? = nil) {
+  
+  public init(font: UIFont? = nil, color: UIColor? = nil) {
     self.font = font
     self.color = color
   }
-
-  public func addAttributes(attributedString: NSMutableAttributedString, range: NSRange) {
+  
+  open func addAttributes(_ attributedString: NSMutableAttributedString, range: NSRange) {
     let matchString: String = attributedString.attributedSubstring(from: range).string
     guard let unescapedString = matchString.unescapeUTF16() else { return }
     attributedString.replaceCharacters(in: range, with: unescapedString)
-    attributedString.addAttributes(attributes, range: NSRange(location: range.location, length: unescapedString.characters.count))
+    
+    var amendedAttributes = attributes
+    amendedAttributes[NSBackgroundColorAttributeName] = UIColor(red: 0.91, green: 0.91, blue: 0.91, alpha: 1.0)
+    amendedAttributes[NSForegroundColorAttributeName] = UIColor(red: 0.95, green: 0.25, blue: 0.44, alpha: 1.0)
+    amendedAttributes[NSFontAttributeName] = UIFont(name: "Menlo-Regular", size: 16)
+    
+    attributedString.addAttributes(amendedAttributes, range: NSRange(location: range.location, length: unescapedString.characters.count))
   }
 }
