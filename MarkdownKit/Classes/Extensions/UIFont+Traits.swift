@@ -16,10 +16,18 @@ extension UIFont {
   }
 
   func bold() -> UIFont {
-    return withTraits(.traitBold)
+    if let boldFont = MarkdownCustomFont.traits.bold {
+      return boldFont
+    } else {
+      return withTraits(.traitBold)
+    }
   }
 
   func italic() -> UIFont {
-    return withTraits(.traitItalic)
+    if let italicFont = MarkdownCustomFont.traits.italic {
+      return italicFont
+    } else {
+      return withTraits(.traitItalic)
+    }
   }
 }

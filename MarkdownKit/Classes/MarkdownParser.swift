@@ -41,6 +41,7 @@ open class MarkdownParser {
   public init(font: UIFont = UIFont.systemFont(ofSize: UIFont.smallSystemFontSize),
               automaticLinkDetectionEnabled: Bool = true,
               customElements: [MarkdownElement] = []) {
+    
     self.font = font
 
     header = MarkdownHeader(font: font)
@@ -59,6 +60,13 @@ open class MarkdownParser {
     self.customElements = customElements
   }
 
+  // MARK: Custom Font
+  open func addCustomFontTraits(_ boldTrait: UIFont,
+                                _ italicTrait: UIFont) {
+    MarkdownCustomFont.traits.bold = boldTrait
+    MarkdownCustomFont.traits.italic = italicTrait
+  }
+    
   // MARK: Element Extensibility
   open func addCustomElement(_ element: MarkdownElement) {
     customElements.append(element)
