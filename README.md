@@ -4,6 +4,7 @@ MarkdownKit
 =========
 
 [![Version](https://img.shields.io/cocoapods/v/MarkdownKit.svg?style=flat)](http://cocoapods.org/pods/MarkdownKit)
+[![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 [![License](https://img.shields.io/cocoapods/l/MarkdownKit.svg?style=flat)](http://cocoapods.org/pods/MarkdownKit)
 [![Platform](https://img.shields.io/cocoapods/p/MarkdownKit.svg?style=flat)](http://cocoapods.org/pods/MarkdownKit)
 
@@ -15,11 +16,47 @@ MarkdownKit is a customizable and extensible Markdown parser for iOS. It support
 
 ## Installation
 
-MarkdownKit is available through [CocoaPods](http://cocoapods.org). To install
-it, simply add the following line to your Podfile:
+### Installation via CocoaPods
+
+MarkdownKit is available through [CocoaPods](http://cocoapods.org). CocoaPods is a dependency manager that automates and simplifies the process of using 3rd-party libraries like MarkdownKit in your projects. You can install CocoaPods with the following command:
+
+```ruby
+gem install cocoapods
+```
+
+To integrate MarkdownKit into your Xcode project using CocoaPods, simply add the following line to your Podfile:
 
 ```ruby
 pod "MarkdownKit"
+```
+
+Afterwards, run the following command:
+
+```ruby
+pod install
+```
+
+### Installation via Carthage
+
+MarkdownKit is available through [Carthage](https://github.com/Carthage/Carthage). Carthage is a decentralized dependency manager that builds your dependencies and provides you with binary frameworks.
+
+You can install Carthage via [Homebrew](http://brew.sh) with the following command:
+
+```ruby
+brew update
+brew install carthage
+```
+
+To integrate MarkdownKit into your Xcode project using Carthage, simply add the following line to your Cartfile:
+
+```ruby
+github "ivanbruel/MarkdownKit"
+```
+
+Afterwards, run the following command:
+
+```ruby
+carthage update
 ```
 
 ## Supported Elements
