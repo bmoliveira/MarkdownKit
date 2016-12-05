@@ -21,6 +21,7 @@
 		4AB9A32C733C02EAC3DF963921B85FF6 /* Pods-MarkdownKit_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C179D98275D6B72775BA3D06CAD0F61 /* Pods-MarkdownKit_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4BA72E9513DF8540AC666BC963E5E789 /* MarkdownLinkElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65520C4799529A9A899B5CB86F96C16E /* MarkdownLinkElement.swift */; };
 		4CD0F9E82832ECF88EBC612FDE812848 /* MarkdownParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08396BEB5CE8733EF93C630FEF494D2 /* MarkdownParser.swift */; };
+		5F32DEE01DCC664700D2B8E2 /* MarkdownCustomFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F32DEDF1DCC664700D2B8E2 /* MarkdownCustomFont.swift */; };
 		640295165C642D68C841301358CFE995 /* MarkdownCodeEscaping.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB68ECF1745720211469510E0B6BEED7 /* MarkdownCodeEscaping.swift */; };
 		6A95EA9E259311E409E4832650319C34 /* MarkdownKit-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 543CA0D84BEAFA923CAD0FF2B597A3AF /* MarkdownKit-dummy.m */; };
 		7A5F8E5F83A4ECC163EC689327E195B9 /* Pods-MarkdownKit_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = C71C393F0B8E6B708E0B0BD2692EC5D2 /* Pods-MarkdownKit_Example-dummy.m */; };
@@ -70,6 +71,7 @@
 		51291E17F60CA68814ABEA8DE8A8E8DB /* MarkdownCommonElement.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MarkdownCommonElement.swift; sourceTree = "<group>"; };
 		543CA0D84BEAFA923CAD0FF2B597A3AF /* MarkdownKit-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "MarkdownKit-dummy.m"; sourceTree = "<group>"; };
 		56F737E148609AC4A590BEF33F264E69 /* MarkdownKit.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = MarkdownKit.modulemap; sourceTree = "<group>"; };
+		5F32DEDF1DCC664700D2B8E2 /* MarkdownCustomFont.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarkdownCustomFont.swift; sourceTree = "<group>"; };
 		61D335C057448C0203BD3AD6EF0FB924 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		65520C4799529A9A899B5CB86F96C16E /* MarkdownLinkElement.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MarkdownLinkElement.swift; sourceTree = "<group>"; };
 		7C179D98275D6B72775BA3D06CAD0F61 /* Pods-MarkdownKit_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-MarkdownKit_Example-umbrella.h"; sourceTree = "<group>"; };
@@ -167,6 +169,7 @@
 			isa = PBXGroup;
 			children = (
 				B08396BEB5CE8733EF93C630FEF494D2 /* MarkdownParser.swift */,
+				5F32DEDF1DCC664700D2B8E2 /* MarkdownCustomFont.swift */,
 				639726F4A4021DC0252448F3FFFE9A0B /* Elements */,
 				A72F1DABB47DFA481A8340387BCF9E34 /* Extensions */,
 				3E8BA49C97B209226C3D10FB39F3E3D9 /* Protocols */,
@@ -436,6 +439,7 @@
 				40EB06F1F38F9654C1AFB2C024DE274E /* MarkdownEscaping.swift in Sources */,
 				2769E8D80EC655CD383ACD40E9DAA368 /* MarkdownHeader.swift in Sources */,
 				2A3B940D16B48676872C2D47DF2DE49F /* MarkdownItalic.swift in Sources */,
+				5F32DEE01DCC664700D2B8E2 /* MarkdownCustomFont.swift in Sources */,
 				6A95EA9E259311E409E4832650319C34 /* MarkdownKit-dummy.m in Sources */,
 				7C30A9A036BACE071C2232970FC16A0D /* MarkdownLevelElement.swift in Sources */,
 				F77D4444D2AA23AC1775A1812F01CAFB /* MarkdownLink.swift in Sources */,

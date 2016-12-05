@@ -41,6 +41,7 @@ open class MarkdownParser {
   public init(font: UIFont = UIFont.systemFont(ofSize: UIFont.smallSystemFontSize),
               automaticLinkDetectionEnabled: Bool = true,
               customElements: [MarkdownElement] = []) {
+    
     self.font = font
 
     header = MarkdownHeader(font: font)
@@ -58,7 +59,36 @@ open class MarkdownParser {
     self.unescapingElements = [code, unescaping]
     self.customElements = customElements
   }
-
+    
+  // MARK: Initializer
+  // Allows for custom fonts
+  public init(font: UIFont = UIFont.systemFont(ofSize: UIFont.smallSystemFontSize),
+              boldFont: UIFont?,
+              italicFont: UIFont?,
+              automaticLinkDetectionEnabled: Bool = true,
+              customElements: [MarkdownElement] = []) {
+        
+    MarkdownCustomFont.traits.bold = boldFont
+    MarkdownCustomFont.traits.italic = italicFont
+    
+    self.font = font
+        
+    header = MarkdownHeader(font: font)
+    list = MarkdownList(font: font)
+    quote = MarkdownQuote(font: font)
+    link = MarkdownLink(font: font)
+    automaticLink = MarkdownAutomaticLink(font: font)
+    bold = MarkdownBold(font: font)
+    italic = MarkdownItalic(font: font)
+    code = MarkdownCode(font: font)
+        
+    self.automaticLinkDetectionEnabled = automaticLinkDetectionEnabled
+    self.escapingElements = [codeEscaping, escaping]
+    self.defaultElements = [header, list, quote, link, automaticLink, bold, italic]
+    self.unescapingElements = [code, unescaping]
+    self.customElements = customElements
+  }
+    
   // MARK: Element Extensibility
   open func addCustomElement(_ element: MarkdownElement) {
     customElements.append(element)
