@@ -96,7 +96,7 @@ label.attributedText = markdownParser.parse(markdown)
 
 ```swift
 let markdownParser = MarkdownParser(font: UIFont.systemFontOfSize(18))
-markdownParser.automaticLinkDetectionEnabled = false
+markdownParser.enabledElements = .disabledAutomaticLink
 markdownParser.bold.color = UIColor.redColor()
 markdownParser.italic.font = UIFont.italicSystemFontOfSize(300)
 markdownParser.header.fontIncrease = 4
