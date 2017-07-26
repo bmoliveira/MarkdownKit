@@ -10,7 +10,7 @@ import UIKit
 
 open class MarkdownCodeEscaping: MarkdownElement {
 
-  fileprivate static let regex = "(?<!\\\\)(?:\\\\\\\\)*+(`+)(.*?[^`].*?)(\\1)(?!`)"
+  fileprivate static let regex = "(\\s+|^)(?<!\\\\)(?:\\\\\\\\)*+(\\`+)(.+?)(\\2)"
 
   open var regex: String {
     return MarkdownCodeEscaping.regex
@@ -21,7 +21,7 @@ open class MarkdownCodeEscaping: MarkdownElement {
   }
 
   open func match(_ match: NSTextCheckingResult, attributedString: NSMutableAttributedString) {
-    let range = match.rangeAt(2)
+    let range = match.rangeAt(3)
     // escaping all characters
     let matchString = attributedString.attributedSubstring(from: range).string
     let escapedString = Array<UInt16>(matchString.utf16)
