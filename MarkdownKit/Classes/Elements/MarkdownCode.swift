@@ -9,6 +9,8 @@
 import UIKit
 
 open class MarkdownCode: MarkdownCommonElement {
+    public var attr: [String : Any]
+    
 
   fileprivate static let regex = "(\\s+|^)(`+)(\\s*.*?[^`]\\s*)(\\1)(?!`)"
 
@@ -19,10 +21,9 @@ open class MarkdownCode: MarkdownCommonElement {
     return MarkdownCode.regex
   }
 
-  public init(font: UIFont? = nil, color: UIColor? = nil) {
-    self.font = font
-    self.color = color
-  }
+    public init(dict: [String: Any]) {
+        attr = dict
+    }
 
   open func addAttributes(_ attributedString: NSMutableAttributedString, range: NSRange) {
     let matchString: String = attributedString.attributedSubstring(from: range).string

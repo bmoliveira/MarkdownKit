@@ -13,4 +13,5 @@ public protocol MarkdownLinkElement: MarkdownElement, MarkdownStyle {
   
   func formatText(_ attributedString: NSMutableAttributedString, range: NSRange, link: String)
   func addAttributes(_ attributedString: NSMutableAttributedString, range: NSRange, link: String)
+    
 }

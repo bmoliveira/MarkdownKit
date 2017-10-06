@@ -9,37 +9,30 @@
 import UIKit
 
 open class MarkdownHeader: MarkdownLevelElement {
-
-  fileprivate static let regex = "^(#{1,%@})\\s*(.+)$"
-
-  open var maxLevel: Int
-  open var font: UIFont?
-  open var color: UIColor?
-  open var fontIncrease: Int
-
-  open var regex: String {
-    let level: String = maxLevel > 0 ? "\(maxLevel)" : ""
-    return String(format: MarkdownHeader.regex, level)
-  }
-
-  public init(font: UIFont? = UIFont.boldSystemFont(ofSize: UIFont.smallSystemFontSize),
-              maxLevel: Int = 0, fontIncrease: Int = 2, color: UIColor? = nil) {
-    self.maxLevel = maxLevel
-    self.font = font
-    self.color = color
-    self.fontIncrease = fontIncrease
-  }
-
-  open func formatText(_ attributedString: NSMutableAttributedString, range: NSRange, level: Int) {
-      attributedString.deleteCharacters(in: range)
-  }
-
-  open func attributesForLevel(_ level: Int) -> [String: AnyObject] {
-    var attributes = self.attributes
-    if let font = font {
-      let headerFontSize: CGFloat = font.pointSize + (CGFloat(level) * CGFloat(fontIncrease))
-      attributes[NSFontAttributeName] = font.withSize(headerFontSize)
+    public var attr: [String : Any]
+    fileprivate static let regex = "^(#{1,%@})\\s*(.+)$"
+    
+    open var maxLevel: Int
+    open var fontIncrease: Int
+    
+    open var regex: String {
+        let level: String = maxLevel > 0 ? "\(maxLevel)" : ""
+        return String(format: MarkdownHeader.regex, level)
     }
-    return attributes
-  }
+    
+    public init(dict:[String:Any], maxLevel: Int = 0, fontIncrease: Int = 0) {
+        self.attr = dict
+        self.maxLevel = maxLevel
+        self.fontIncrease = fontIncrease
+    }
+    
+    open func formatText(_ attributedString: NSMutableAttributedString, range: NSRange, level: Int) {
+        attributedString.deleteCharacters(in: range)
+    }
+    
+    /*open func attributesForLevel(_ level: Int) -> [String: AnyObject] {
+        var attributes = self.attributes
+        attributes = self.attr as [String : AnyObject]
+        return attributes
+    }*/
 }

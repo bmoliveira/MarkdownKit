@@ -9,11 +9,9 @@
 import UIKit
 
 open class MarkdownLink: MarkdownLinkElement {
-  
+
+  public var attr: [String : Any]
   fileprivate static let regex = "\\[[^\\[]*?\\]\\([^\\)]*\\)"
-  
-  open var font: UIFont?
-  open var color: UIColor?
   
   open var regex: String {
     return MarkdownLink.regex
@@ -23,11 +21,9 @@ open class MarkdownLink: MarkdownLinkElement {
     return try NSRegularExpression(pattern: regex, options: .dotMatchesLineSeparators)
   }
   
-  public init(font: UIFont? = nil, color: UIColor? = UIColor.blue) {
-    self.font = font
-    self.color = color
-  }
-  
+    public init(dict: [String: Any]) {
+        attr = dict
+    }
   
   open func formatText(_ attributedString: NSMutableAttributedString, range: NSRange,
                          link: String) {
@@ -37,6 +33,8 @@ open class MarkdownLink: MarkdownLinkElement {
     }
     guard let url = URL(string: link) ?? URL(string: encodedLink) else { return }
     attributedString.addAttribute(NSLinkAttributeName, value: url, range: range)
+    attributedString.addAttribute(NSUnderlineStyleAttributeName, value: NSUnderlineStyle.styleNone.rawValue, range: range)
+    attributedString.addAttribute(NSUnderlineColorAttributeName, value: UIColor.clear, range:range)
   }
   
   open func match(_ match: NSTextCheckingResult, attributedString: NSMutableAttributedString) {
@@ -61,11 +59,10 @@ open class MarkdownLink: MarkdownLinkElement {
                               length: linkStartInResult - match.range.location - 2)
     formatText(attributedString, range: formatRange, link: linkURLString)
     addAttributes(attributedString, range: formatRange, link: linkURLString)
+    attributedString.removeAttribute(NSUnderlineStyleAttributeName, range: NSMakeRange(0, attributedString.length))
   }
   
   open func addAttributes(_ attributedString: NSMutableAttributedString, range: NSRange,
-                            link: String) {
-    attributedString.addAttributes(attributes, range: range)
-  }
+                            link: String) {attributedString.addAttributes(attr, range: range)}
 }
 
