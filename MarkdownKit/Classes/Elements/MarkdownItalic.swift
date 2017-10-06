@@ -9,19 +9,20 @@
 import UIKit
 
 open class MarkdownItalic: MarkdownCommonElement {
-  
-  fileprivate static let regex = "(\\s+|^)(\\*|_)(.+?)(\\2)"
-  
-  open var font: UIFont?
-  open var color: UIColor?
-  
-  open var regex: String {
-    return MarkdownItalic.regex
-  }
-  
-  public init(font: UIFont? = nil, color: UIColor? = nil) {
-    self.font = font?.italic()
-    self.color = color
-  }
-  
+    public var attr: [String : Any]
+    
+    fileprivate static let regex = "(\\s+|^)(\\*|_)(.+?)(\\2)"
+    
+    open var regex: String {
+        return MarkdownItalic.regex
+    }
+    
+    public init(dict: [String: Any]) {
+        attr = dict
+    }
+    
+    /*open func addAttributes(_ attributedString: NSMutableAttributedString, range: NSRange) {
+        let matchString: String = attributedString.attributedSubstring(from: range).string
+        attributedString.addAttributes(attr, range: NSRange(location: range.location, length: matchString.characters.count))
+    }*/
 }

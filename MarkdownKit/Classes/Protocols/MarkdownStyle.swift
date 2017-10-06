@@ -10,9 +10,7 @@ import UIKit
 
 /// Styling protocol for all MarkdownElements
 public protocol MarkdownStyle {
-  
-  var font: UIFont? { get }
-  var color: UIColor? { get }
+var attr: [String:Any] { get }
   var attributes: [String: AnyObject] { get }
 }
 
@@ -20,12 +18,9 @@ public extension MarkdownStyle {
   
   var attributes: [String: AnyObject] {
     var attributes = [String: AnyObject]()
-    if let font = font {
-      attributes[NSFontAttributeName] = font
-    }
-    if let color = color {
-      attributes[NSForegroundColorAttributeName] = color
-    }
+    
+    attributes = self.attr as [String : AnyObject]
+    
     return attributes
   }
   
