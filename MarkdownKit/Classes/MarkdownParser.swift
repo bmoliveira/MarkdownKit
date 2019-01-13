@@ -18,14 +18,14 @@ open class MarkdownParser {
   open var customElements: [MarkdownElement]
 
   // MARK: Basic Elements
-  open let header: MarkdownHeader
-  open let list: MarkdownList
-  open let quote: MarkdownQuote
-  open let link: MarkdownLink
-  open let automaticLink: MarkdownAutomaticLink
-  open let bold: MarkdownBold
-  open let italic: MarkdownItalic
-  open let code: MarkdownCode
+  public let header: MarkdownHeader
+  public let list: MarkdownList
+  public let quote: MarkdownQuote
+  public let link: MarkdownLink
+  public let automaticLink: MarkdownAutomaticLink
+  public let bold: MarkdownBold
+  public let italic: MarkdownItalic
+  public let code: MarkdownCode
 
   // MARK: Escaping Elements
   fileprivate var codeEscaping = MarkdownCodeEscaping()
@@ -35,7 +35,7 @@ open class MarkdownParser {
   // MARK: Configuration
   /// Enables or disables detection of URLs even without Markdown format
   open var automaticLinkDetectionEnabled: Bool = true
-  open let font: UIFont
+  public let font: UIFont
 
   // MARK: Initializer
   public init(font: UIFont = UIFont.systemFont(ofSize: UIFont.smallSystemFontSize),
@@ -80,7 +80,7 @@ open class MarkdownParser {
 
   open func parse(_ markdown: NSAttributedString) -> NSAttributedString {
     let attributedString = NSMutableAttributedString(attributedString: markdown)
-    attributedString.addAttribute(NSFontAttributeName, value: font,
+    attributedString.addAttribute(.font, value: font,
                                   range: NSRange(location: 0, length: attributedString.length))
     var elements: [MarkdownElement] = escapingElements
     elements.append(contentsOf: defaultElements)
