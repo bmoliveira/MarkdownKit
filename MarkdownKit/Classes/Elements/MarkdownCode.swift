@@ -28,6 +28,6 @@ open class MarkdownCode: MarkdownCommonElement {
     let matchString: String = attributedString.attributedSubstring(from: range).string
     guard let unescapedString = matchString.unescapeUTF16() else { return }
     attributedString.replaceCharacters(in: range, with: unescapedString)
-    attributedString.addAttributes(attributes, range: NSRange(location: range.location, length: unescapedString.characters.count))
+    attributedString.addAttributes(attributes, range: NSRange(location: range.location, length: unescapedString.count))
   }
 }

@@ -17,6 +17,7 @@ all the Markdown elements.
   s.social_media_url = 'https://twitter.com/ivanbruel'
 
   s.ios.deployment_target = '8.0'
+  s.swift_version = '4.2'
 
   s.source_files = 'MarkdownKit/Classes/**/*'
   s.frameworks = 'UIKit'
