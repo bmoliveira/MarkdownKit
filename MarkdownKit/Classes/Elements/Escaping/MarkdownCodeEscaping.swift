@@ -21,7 +21,7 @@ open class MarkdownCodeEscaping: MarkdownElement {
   }
 
   open func match(_ match: NSTextCheckingResult, attributedString: NSMutableAttributedString) {
-    let range = match.rangeAt(3)
+    let range = match.range(at: 3)
     // escaping all characters
     let matchString = attributedString.attributedSubstring(from: range).string
     let escapedString = Array<UInt16>(matchString.utf16)
