@@ -16,8 +16,11 @@ class ViewController: UIViewController {
       textView.delegate = self
     }
   }
-  fileprivate let markdownParser = MarkdownParser()
   
+  // Example with custom font
+  // fileprivate let markdownParser = MarkdownParser(font: UIFont(name: "Product Sans", size: UIFont.systemFontSize)!)
+  
+  fileprivate let markdownParser = MarkdownParser()
   override func viewDidLoad() {
     super.viewDidLoad()
     markdownParser.addCustomElement(MarkdownSubreddit())
