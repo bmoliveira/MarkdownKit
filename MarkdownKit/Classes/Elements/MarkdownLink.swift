@@ -68,4 +68,3 @@ open class MarkdownLink: MarkdownLinkElement {
     attributedString.addAttributes(attributes, range: range)
   }
 }
-
