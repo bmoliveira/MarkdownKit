@@ -19,7 +19,7 @@ class MarkdownSubreddit: MarkdownLink {
   
   override func match(_ match: NSTextCheckingResult,
                              attributedString: NSMutableAttributedString) {
-    let subredditName = attributedString.attributedSubstring(from: match.rangeAt(3)).string
+    let subredditName = attributedString.attributedSubstring(from: match.range(at: 3)).string
     let linkURLString = "http://reddit.com/r/\(subredditName)"
     formatText(attributedString, range: match.range, link: linkURLString)
     addAttributes(attributedString, range: match.range, link: linkURLString)

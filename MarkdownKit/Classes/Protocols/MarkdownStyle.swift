@@ -13,18 +13,18 @@ public protocol MarkdownStyle {
   
   var font: UIFont? { get }
   var color: UIColor? { get }
-  var attributes: [String: AnyObject] { get }
+    var attributes: [NSAttributedString.Key: AnyObject] { get }
 }
 
 public extension MarkdownStyle {
   
-  var attributes: [String: AnyObject] {
-    var attributes = [String: AnyObject]()
+    var attributes: [NSAttributedString.Key: AnyObject] {
+        var attributes = [NSAttributedString.Key: AnyObject]()
     if let font = font {
-      attributes[NSFontAttributeName] = font
+        attributes[NSAttributedString.Key.font] = font
     }
     if let color = color {
-      attributes[NSForegroundColorAttributeName] = color
+        attributes[NSAttributedString.Key.foregroundColor] = color
     }
     return attributes
   }

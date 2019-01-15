@@ -15,7 +15,6 @@ open class MarkdownParser {
     public init(rawValue: Int) {
       self.rawValue = rawValue
     }
-
     public static let automaticLink = EnabledElements(rawValue: 1)
     public static let header        = EnabledElements(rawValue: 1 << 1)
     public static let list          = EnabledElements(rawValue: 1 << 2)
@@ -41,29 +40,28 @@ open class MarkdownParser {
       ]
   }
 
-
   // MARK: Element Arrays
   fileprivate var escapingElements: [MarkdownElement]
   fileprivate var defaultElements: [MarkdownElement] = []
   fileprivate var unescapingElements: [MarkdownElement]
-
+  
   open var customElements: [MarkdownElement]
-
+  
   // MARK: Basic Elements
-  open let header: MarkdownHeader
-  open let list: MarkdownList
-  open let quote: MarkdownQuote
-  open let link: MarkdownLink
-  open let automaticLink: MarkdownAutomaticLink
-  open let bold: MarkdownBold
-  open let italic: MarkdownItalic
-  open let code: MarkdownCode
-
+  public let header: MarkdownHeader
+  public let list: MarkdownList
+  public let quote: MarkdownQuote
+  public let link: MarkdownLink
+  public let automaticLink: MarkdownAutomaticLink
+  public let bold: MarkdownBold
+  public let italic: MarkdownItalic
+  public let code: MarkdownCode
+  
   // MARK: Escaping Elements
   fileprivate var codeEscaping = MarkdownCodeEscaping()
   fileprivate var escaping = MarkdownEscaping()
   fileprivate var unescaping = MarkdownUnescaping()
-
+  
   // MARK: Configuration
   /// Enables individual Markdown elements and automatic link detection
   open var enabledElements: EnabledElements {
@@ -71,14 +69,18 @@ open class MarkdownParser {
       updateDefaultElements()
     }
   }
-  open let font: UIFont
 
+  public let font: UIFont
+  public let color: UIColor
+  
   // MARK: Initializer
   public init(font: UIFont = UIFont.systemFont(ofSize: UIFont.smallSystemFontSize),
+              color: UIColor = UIColor.black,
               enabledElements: EnabledElements = .all,
               customElements: [MarkdownElement] = []) {
     self.font = font
-
+    self.color = color
+    
     header = MarkdownHeader(font: font)
     list = MarkdownList(font: font)
     quote = MarkdownQuote(font: font)
@@ -94,12 +96,12 @@ open class MarkdownParser {
     self.enabledElements = enabledElements
     updateDefaultElements()
   }
-
+  
   // MARK: Element Extensibility
   open func addCustomElement(_ element: MarkdownElement) {
     customElements.append(element)
   }
-
+  
   open func removeCustomElement(_ element: MarkdownElement) {
     guard let index = customElements.index(where: { someElement -> Bool in
       return element === someElement
@@ -108,15 +110,17 @@ open class MarkdownParser {
     }
     customElements.remove(at: index)
   }
-
+  
   // MARK: Parsing
   open func parse(_ markdown: String) -> NSAttributedString {
     return parse(NSAttributedString(string: markdown))
   }
-
+  
   open func parse(_ markdown: NSAttributedString) -> NSAttributedString {
     let attributedString = NSMutableAttributedString(attributedString: markdown)
-    attributedString.addAttribute(NSFontAttributeName, value: font,
+    attributedString.addAttribute(.font, value: font,
+                                  range: NSRange(location: 0, length: attributedString.length))
+    attributedString.addAttribute(.foregroundColor, value: color,
                                   range: NSRange(location: 0, length: attributedString.length))
     var elements: [MarkdownElement] = escapingElements
     elements.append(contentsOf: defaultElements)
@@ -144,5 +148,4 @@ open class MarkdownParser {
       .map({ (_, element) in
         element })
   }
-
 }

@@ -1,5 +1,5 @@
 PODS:
-  - MarkdownKit (1.1.0)
+  - MarkdownKit (1.2)
 
 DEPENDENCIES:
   - MarkdownKit (from `../`)
@@ -9,8 +9,8 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  MarkdownKit: 60d759cd14169144e4b159cb34312f8a5dd77570
+  MarkdownKit: 6897007276531e73183d723e7f45b7b5e0720a9b
 
 PODFILE CHECKSUM: ccadfd166c0ec570bf4db2bbf94766db628792f3
 
-COCOAPODS: 1.1.0.rc.2
+COCOAPODS: 1.6.0.beta.2
