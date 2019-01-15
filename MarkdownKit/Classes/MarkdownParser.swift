@@ -9,14 +9,12 @@
 import UIKit
 
 open class MarkdownParser {
-  
   public struct EnabledElements: OptionSet {
     public let rawValue: Int
-    
+
     public init(rawValue: Int) {
       self.rawValue = rawValue
     }
-    
     public static let automaticLink = EnabledElements(rawValue: 1)
     public static let header        = EnabledElements(rawValue: 1 << 1)
     public static let list          = EnabledElements(rawValue: 1 << 2)
@@ -25,7 +23,7 @@ open class MarkdownParser {
     public static let bold          = EnabledElements(rawValue: 1 << 5)
     public static let italic        = EnabledElements(rawValue: 1 << 6)
     public static let code          = EnabledElements(rawValue: 1 << 7)
-    
+
     public static let disabledAutomaticLink: EnabledElements = [
       .header,
       .list,
@@ -35,14 +33,13 @@ open class MarkdownParser {
       .italic,
       .code,
       ]
-    
+
     public static let all: EnabledElements = [
       .disabledAutomaticLink,
       .automaticLink,
       ]
   }
-  
-  
+
   // MARK: Element Arrays
   fileprivate var escapingElements: [MarkdownElement]
   fileprivate var defaultElements: [MarkdownElement] = []
@@ -66,12 +63,13 @@ open class MarkdownParser {
   fileprivate var unescaping = MarkdownUnescaping()
   
   // MARK: Configuration
-  /// Enables or disables detection of URLs even without Markdown format
+  /// Enables individual Markdown elements and automatic link detection
   open var enabledElements: EnabledElements {
     didSet {
       updateDefaultElements()
     }
   }
+
   public let font: UIFont
   public let color: UIColor
   
@@ -91,7 +89,7 @@ open class MarkdownParser {
     bold = MarkdownBold(font: font)
     italic = MarkdownItalic(font: font)
     code = MarkdownCode(font: font)
-    
+
     self.escapingElements = [codeEscaping, escaping]
     self.unescapingElements = [code, unescaping]
     self.customElements = customElements
@@ -133,7 +131,7 @@ open class MarkdownParser {
     }
     return attributedString
   }
-  
+
   fileprivate func updateDefaultElements() {
     let pairs: [(EnabledElements, MarkdownElement)] = [
       (.automaticLink, automaticLink),
