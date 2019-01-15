@@ -10,7 +10,10 @@ import UIKit
 
 open class MarkdownLink: MarkdownLinkElement {
   
-  fileprivate static let regex = "\\[[^\\[]*?\\]\\([^\\)]*\\)"
+  fileprivate static let regex = "\\[[^\\]]+\\]\\(\\S+(?=\\))\\)"
+  
+  // This regex is eager if does not count even trailing Parentheses.
+  fileprivate static let onlyLinkRegex = "\\(\\S+(?=\\))\\)"
   
   open var font: UIFont?
   open var color: UIColor?
@@ -40,25 +43,37 @@ open class MarkdownLink: MarkdownLinkElement {
   }
   
   open func match(_ match: NSTextCheckingResult, attributedString: NSMutableAttributedString) {
-    let nsString = attributedString.string as NSString
-    let linkStartInResult = nsString
-      .range(of: "(", options: .backwards, range: match.range).location
-    let linkRange =
-      NSRange(location: linkStartInResult,
-              length: match.range.length + match.range.location - linkStartInResult - 1)
+    let nsString = (attributedString.string as NSString)
+    let urlString = nsString.substring(with: match.range)
+    
+    guard let onlyLinkRegex = try? NSRegularExpression(pattern: MarkdownLink.onlyLinkRegex, options: .dotMatchesLineSeparators) else {
+      return
+    }
+    
+    guard let linkMatch = onlyLinkRegex.firstMatch(in: urlString,
+                     options: .withoutAnchoringBounds,
+                     range: NSRange(location: 0, length: urlString.count)) else {
+                      return
+    }
+
+    let urlLinkAbsoluteStart = match.range.location
+    
     let linkURLString = nsString
-      .substring(with: NSRange(location: linkRange.location + 1, length: linkRange.length - 1))
+      .substring(with: NSRange(location: urlLinkAbsoluteStart + linkMatch.range.location + 1, length: linkMatch.range.length - 2))
     
     // deleting trailing markdown
     // needs to be called before formattingBlock to support modification of length
-    attributedString.deleteCharacters(in: NSRange(location: linkRange.location - 1,
-      length: linkRange.length + 2))
+    let trailingMarkdownRange = NSRange(location: urlLinkAbsoluteStart + linkMatch.range.location - 1, length: linkMatch.range.length + 1)
+    attributedString.deleteCharacters(in: trailingMarkdownRange)
     
     // deleting leading markdown
     // needs to be called before formattingBlock to provide a stable range
-    attributedString.deleteCharacters(in: NSRange(location: match.range.location, length: 1))
+    let leadingMarkdownRange = NSRange(location: match.range.location, length: 1)
+    attributedString.deleteCharacters(in: leadingMarkdownRange)
+    
     let formatRange = NSRange(location: match.range.location,
-                              length: linkStartInResult - match.range.location - 2)
+                              length: linkMatch.range.location - 2)
+    
     formatText(attributedString, range: formatRange, link: linkURLString)
     addAttributes(attributedString, range: formatRange, link: linkURLString)
   }
