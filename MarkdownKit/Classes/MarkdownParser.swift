@@ -31,7 +31,7 @@ open class MarkdownParser {
       .link,
       .bold,
       .italic,
-      .code,
+      .code
       ]
 
     public static let all: EnabledElements = [
@@ -72,6 +72,16 @@ open class MarkdownParser {
 
   public let font: UIFont
   public let color: UIColor
+  
+  
+  // MARK: Legacy Initializer
+  @available(*, deprecated, renamed: "init", message: "This constructor will be removed soon, please use the new opions constructor")
+  public convenience init(automaticLinkDetectionEnabled: Bool,
+                          font: UIFont = UIFont.systemFont(ofSize: UIFont.smallSystemFontSize),
+                          customElements: [MarkdownElement] = []) {
+    let enabledElements: EnabledElements = automaticLinkDetectionEnabled ? .all : .disabledAutomaticLink
+    self.init(font: font, enabledElements: enabledElements, customElements: customElements)
+  }
   
   // MARK: Initializer
   public init(font: UIFont = UIFont.systemFont(ofSize: UIFont.smallSystemFontSize),
@@ -141,7 +151,7 @@ open class MarkdownParser {
       (.link, link),
       (.bold, bold),
       (.italic, italic),
-      (.code, code),
+      (.code, code)
       ]
     defaultElements = pairs.filter({ (enabled, _) in
       enabledElements.contains(enabled) })
