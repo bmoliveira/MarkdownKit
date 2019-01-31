@@ -53,7 +53,6 @@
 		B64AF64B220349900048439D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B64AF64A220349900048439D /* ViewController.swift */; };
 		B64AF64D220349920048439D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B64AF64C220349920048439D /* Assets.xcassets */; };
 		B64AF650220349920048439D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B64AF64E220349920048439D /* Main.storyboard */; };
-		B64AF66422034C240048439D /* MarkdownFont+Traits.swift in Sources */ = {isa = PBXBuildFile; fileRef = B64AF66322034C240048439D /* MarkdownFont+Traits.swift */; };
 		B64AF66522034C240048439D /* MarkdownFont+Traits.swift in Sources */ = {isa = PBXBuildFile; fileRef = B64AF66322034C240048439D /* MarkdownFont+Traits.swift */; };
 		B64AF667220355120048439D /* MarkdownKitViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B695DA0D21F5E60300FC6FCD /* MarkdownKitViewModel.swift */; };
 		B672001B21EF8A96008649E1 /* MarkdownParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = B672000321EF8A96008649E1 /* MarkdownParser.swift */; };
@@ -851,7 +850,6 @@
 				B672002321EF8A96008649E1 /* MarkdownUnescaping.swift in Sources */,
 				B672001D21EF8A96008649E1 /* UIFont+Traits.swift in Sources */,
 				B672002021EF8A96008649E1 /* MarkdownHeader.swift in Sources */,
-				B64AF66422034C240048439D /* MarkdownFont+Traits.swift in Sources */,
 				B672001B21EF8A96008649E1 /* MarkdownParser.swift in Sources */,
 				B64AF604220317980048439D /* MarkdownCode+UIKit.swift in Sources */,
 				B672002821EF8A96008649E1 /* MarkdownBold.swift in Sources */,
