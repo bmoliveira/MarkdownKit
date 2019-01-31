@@ -6,7 +6,7 @@
 //  Copyright © 2019 Ivan Bruel. All rights reserved.
 //
 
-import Foundation
+import AppKit
 
 public extension MarkdownFont {
   public func italic() -> MarkdownFont {

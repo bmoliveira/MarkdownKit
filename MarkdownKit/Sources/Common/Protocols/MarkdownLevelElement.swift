@@ -5,6 +5,7 @@
 //  Created by Ivan Bruel on 18/07/16.
 //
 //
+import Foundation
 
 /// MarkdownLevelElement serves the purpose of handling Elements which may have more than one 
 /// representation (e.g. Headers or Lists)

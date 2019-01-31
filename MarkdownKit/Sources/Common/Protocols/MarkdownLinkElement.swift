@@ -5,6 +5,7 @@
 //  Created by Ivan Bruel on 18/07/16.
 //
 //
+import Foundation
 
 /// The base to all Link parsing elements.
 public protocol MarkdownLinkElement: MarkdownElement, MarkdownStyle {

@@ -5,7 +5,6 @@
 //  Created by Ivan Bruel on 18/07/16.
 //
 //
-
 import Foundation
 
 /// The base protocol for all Markdown Elements, it handles parsing through regex.

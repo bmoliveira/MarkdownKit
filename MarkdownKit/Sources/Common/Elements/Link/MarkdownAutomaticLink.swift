@@ -5,7 +5,6 @@
 //  Created by Ivan Bruel on 19/07/16.
 //
 //
-
 import Foundation
 
 open class MarkdownAutomaticLink: MarkdownLink {

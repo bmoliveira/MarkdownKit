@@ -5,6 +5,7 @@
 //  Created by Ivan Bruel on 18/07/16.
 //
 //
+import Foundation
 
 /// Styling protocol for all MarkdownElements
 public protocol MarkdownStyle {

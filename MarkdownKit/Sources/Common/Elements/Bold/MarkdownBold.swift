@@ -5,6 +5,7 @@
 //  Created by Ivan Bruel on 18/07/16.
 //
 //
+import Foundation
 
 open class MarkdownBold: MarkdownCommonElement {
   fileprivate static let regex = "(.?|^)(\\*\\*|__)(.+?)(\\2)"

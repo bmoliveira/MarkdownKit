@@ -5,9 +5,10 @@
 //  Created by Ivan Bruel on 18/07/16.
 //
 //
-
 /// MarkdownCommentElement represent the default Markdown elements which only manipulate content 
 /// visually, (e.g. Bold or Italic)
+import Foundation
+
 public protocol MarkdownCommonElement: MarkdownElement, MarkdownStyle {
   
   func addAttributes(_ attributedString: NSMutableAttributedString, range: NSRange)
