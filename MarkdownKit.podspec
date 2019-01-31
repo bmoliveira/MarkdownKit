@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name                  = "MarkdownKit"
-  s.version               = "1.4.1"
+  s.version               = "1.5"
   s.summary               = "MarkdownKit is a customizable and extensible Markdown parser for iOS."
   s.description           = <<-DESC
 MarkdownKit is a customizable and extensible Markdown parser for iOS.
@@ -15,8 +15,14 @@ all the Markdown elements.
   s.source                = {:git => "https://github.com/bmoliveira/MarkdownKit.git", :tag => s.version.to_s}
   s.social_media_url      = "https://twitter.com/ivanbruel"
 
-  s.ios.deployment_target = "9.0"
+  s.source_files          = "MarkdownKit/Sources/Common/**/*"
 
-  s.source_files          = "MarkdownKit/Sources/**/*"
-  s.frameworks            = "UIKit"
+  s.ios.deployment_target = "9.0"
+  s.ios.source_files      = "MarkdownKit/Sources/UIKit/**/*"
+  s.ios.frameworks        = "UIKit"
+
+  s.osx.deployment_target = '10.10'
+  s.osx.source_files      = "MarkdownKit/Sources/AppKit/**/*"
+  s.osx.framework         = 'AppKit'
+
 end
