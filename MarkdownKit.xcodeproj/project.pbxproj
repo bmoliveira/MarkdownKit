@@ -3,12 +3,11 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		354E1AE7F8A6582615E761F5 /* Pods_Example_AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 44808A771005F320A076CA59 /* Pods_Example_AppKit.framework */; };
-		993EF7ABD23DC79A0446BD78 /* Pods_Example_Appkit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DC91E7F367F607D3C1540A8 /* Pods_Example_Appkit.framework */; };
 		9E5A24F1B38B986D07AD63D1 /* Pods_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F52B0A5C8C127FBD3FEEC91A /* Pods_Example.framework */; };
 		B62C1BEB21EF7D8D00308C8C /* String+HTMLDecode.swift in Sources */ = {isa = PBXBuildFile; fileRef = B62C1BE221EF7D8C00308C8C /* String+HTMLDecode.swift */; };
 		B62C1BEC21EF7D8D00308C8C /* MarkdownSubreddit.swift in Sources */ = {isa = PBXBuildFile; fileRef = B62C1BE321EF7D8C00308C8C /* MarkdownSubreddit.swift */; };
@@ -81,7 +80,6 @@
 		38B62CADC4622978652DE843 /* Pods-Example-AppKit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Example-AppKit.debug.xcconfig"; path = "Target Support Files/Pods-Example-AppKit/Pods-Example-AppKit.debug.xcconfig"; sourceTree = "<group>"; };
 		44808A771005F320A076CA59 /* Pods_Example_AppKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Example_AppKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		53C5892615913D5AFC9420DD /* Pods-Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Example.release.xcconfig"; path = "Target Support Files/Pods-Example/Pods-Example.release.xcconfig"; sourceTree = "<group>"; };
-		6DC91E7F367F607D3C1540A8 /* Pods_Example_Appkit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Example_Appkit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A90AF72A45197DB0B276846B /* Pods-Example-Appkit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Example-Appkit.release.xcconfig"; path = "Target Support Files/Pods-Example-Appkit/Pods-Example-Appkit.release.xcconfig"; sourceTree = "<group>"; };
 		B62C1BAD21EF7C8000308C8C /* Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B62C1BE221EF7D8C00308C8C /* String+HTMLDecode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+HTMLDecode.swift"; sourceTree = "<group>"; };
@@ -172,7 +170,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				993EF7ABD23DC79A0446BD78 /* Pods_Example_Appkit.framework in Frameworks */,
 				354E1AE7F8A6582615E761F5 /* Pods_Example_AppKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -184,7 +181,6 @@
 			isa = PBXGroup;
 			children = (
 				F52B0A5C8C127FBD3FEEC91A /* Pods_Example.framework */,
-				6DC91E7F367F607D3C1540A8 /* Pods_Example_Appkit.framework */,
 				44808A771005F320A076CA59 /* Pods_Example_AppKit.framework */,
 			);
 			name = Frameworks;
@@ -740,18 +736,11 @@
 			files = (
 			);
 			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Example-AppKit/Pods-Example-AppKit-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/Alamofire-macOS/Alamofire.framework",
-				"${BUILT_PRODUCTS_DIR}/MarkdownKit-macOS/MarkdownKit.framework",
+				"${PODS_ROOT}/Target Support Files/Pods-Example-AppKit/Pods-Example-AppKit-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-			);
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MarkdownKit.framework",
+				"${PODS_ROOT}/Target Support Files/Pods-Example-AppKit/Pods-Example-AppKit-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -808,18 +797,11 @@
 			files = (
 			);
 			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Example/Pods-Example-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/Alamofire-iOS/Alamofire.framework",
-				"${BUILT_PRODUCTS_DIR}/MarkdownKit-iOS/MarkdownKit.framework",
+				"${PODS_ROOT}/Target Support Files/Pods-Example/Pods-Example-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-			);
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MarkdownKit.framework",
+				"${PODS_ROOT}/Target Support Files/Pods-Example/Pods-Example-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1071,7 +1053,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.md.MarkdownKit;
+				PRODUCT_BUNDLE_IDENTIFIER = com.md.MarkdownKit.example;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.2;
@@ -1091,7 +1073,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.md.MarkdownKit;
+				PRODUCT_BUNDLE_IDENTIFIER = com.md.MarkdownKit.example;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
