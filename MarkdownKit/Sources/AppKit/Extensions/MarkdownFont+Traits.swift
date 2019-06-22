@@ -9,15 +9,15 @@
 import AppKit
 
 public extension MarkdownFont {
-  public func italic() -> MarkdownFont {
+  func italic() -> MarkdownFont {
     return NSFontManager().convert(self, toHaveTrait: NSFontTraitMask.italicFontMask)
   }
   
-  public func bold() -> MarkdownFont {
+  func bold() -> MarkdownFont {
     return NSFontManager().convert(self, toHaveTrait: NSFontTraitMask.boldFontMask)
   }
   
-  public func withSize(_ size: CGFloat) -> NSFont {
+  func withSize(_ size: CGFloat) -> NSFont {
     return NSFontManager().convert(self, toSize: size)
   }
 }

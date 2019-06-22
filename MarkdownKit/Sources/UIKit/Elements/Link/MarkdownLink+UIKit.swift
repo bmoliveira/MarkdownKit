@@ -9,5 +9,5 @@
 import UIKit
 
 public extension MarkdownLink {
-  public static let defaultColor = UIColor.blue
+  static let defaultColor = UIColor.blue
 }
