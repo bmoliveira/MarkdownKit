@@ -9,7 +9,7 @@ import Foundation
 
 open class MarkdownList: MarkdownLevelElement {
 
-  fileprivate static let regex = "^([\\*\\+\\-]{1,%@})\\s+(.+)$"
+  fileprivate static let regex = "^( {0,%@}[\\*\\+\\-])\\s+(.+)$"
 
   open var maxLevel: Int
   open var font: MarkdownFont?
