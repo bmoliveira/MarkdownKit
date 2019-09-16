@@ -37,5 +37,11 @@ open class MarkdownList: MarkdownLevelElement {
     }
     string = "\(string)\(indicator) "
     attributedString.replaceCharacters(in: range, with: string)
+  private func defaultParagraphStyle() -> NSMutableParagraphStyle {
+    let paragraphStyle = NSMutableParagraphStyle()
+    paragraphStyle.firstLineHeadIndent = 0
+    paragraphStyle.headIndent = 16
+    paragraphStyle.paragraphSpacing = 4
+    return paragraphStyle
   }
 }
