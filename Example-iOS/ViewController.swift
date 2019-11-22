@@ -26,6 +26,7 @@ class ViewController: UIViewController {
     // fileprivate let markdownParser = MarkdownParser(font: UIFont(name: "Product Sans", size: UIFont.systemFontSize)!)
     let parser = MarkdownParser()
     parser.addCustomElement(MarkdownSubreddit())
+    parser.link.automaticURLScheme = "http"
     
     let viewModel = MarkdownKitViewModel(markdownParser: parser)
     viewModel.markdownAttributedStringChanged = { [weak self](attributtedString, error) in
