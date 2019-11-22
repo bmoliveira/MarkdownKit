@@ -27,6 +27,10 @@ class MarkdownKitViewModel {
 
 extension MarkdownKitViewModel {
   func parseString(markdownString: String) {
+    let markdownString = """
+        Link with implicit scheme: old.reddit.com
+        Link with explicit scheme: https://old.reddit.com/
+        """
     markdownAttributedStringChanged?(markdownParser.parse(markdownString), nil)
   }
   

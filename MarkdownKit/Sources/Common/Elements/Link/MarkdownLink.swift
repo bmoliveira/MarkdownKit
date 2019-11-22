@@ -14,6 +14,8 @@ open class MarkdownLink: MarkdownLinkElement {
   // This regex is eager if does not count even trailing Parentheses.
   fileprivate static let onlyLinkRegex = "\\(\\S+(?=\\))\\)"
   
+  private static let defaultURLSchemePrefix = "http://"
+  
   open var font: MarkdownFont?
   open var color: MarkdownColor?
   
@@ -37,8 +39,8 @@ open class MarkdownLink: MarkdownLinkElement {
       else {
       return
     }
-    guard let url = URL(string: link) ?? URL(string: encodedLink) else { return }
-    attributedString.addAttribute(NSAttributedString.Key.link, value: url, range: range)
+    guard let url = URL(string: link) ?? URL(string: encodedLink), let transformedURL = transformedURL(url) else { return }
+    attributedString.addAttribute(NSAttributedString.Key.link, value: transformedURL, range: range)
   }
   
   open func match(_ match: NSTextCheckingResult, attributedString: NSMutableAttributedString) {
@@ -80,5 +82,13 @@ open class MarkdownLink: MarkdownLinkElement {
   open func addAttributes(_ attributedString: NSMutableAttributedString, range: NSRange,
                             link: String) {
     attributedString.addAttributes(attributes, range: range)
+  }
+  
+  private func transformedURL(_ url: URL) -> URL? {
+    if url.scheme != nil {
+      return url
+    } else {
+      return URL(string: MarkdownLink.defaultURLSchemePrefix + url.absoluteString)
+    }
   }
 }
