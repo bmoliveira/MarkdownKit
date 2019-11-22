@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
-  s.name                  = "MarkdownKit"
-  s.version               = "1.0"
-  s.summary               = "MarkdownKit is a customizable and extensible Markdown parser for iOS."
+  s.name                  = "AccedoMarkdownKit"
+  s.version               = "1.5.1"
+  s.summary               = "AccedoMarkdownKit is a customizable and extensible Markdown parser for iOS."
   s.description           = <<-DESC
 A fork of MarkdownKit by bmoliveira (https://github.com/bmoliveira/MarkdownKit). Original description:
 
@@ -13,7 +13,7 @@ all the Markdown elements.
   s.homepage              = "https://github.com/Accedo-Products/MarkdownKit"
   s.license               = {:type => "MIT", :file => "LICENSE"}
   s.author                = {"Rasmus Berggrén" => "rasmus.berggren@accedo.tv"}
-  s.source                = {:git => "https://github.com/Accedo-Products/MarkdownKit", :tag => s.version.to_s}
+  s.source                = {:git => "git@github.com:Accedo-Products/MarkdownKit.git", :tag => s.version.to_s}
 
   s.source_files          = "MarkdownKit/Sources/Common/**/*"
 
