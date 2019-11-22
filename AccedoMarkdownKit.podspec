@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name                  = "AccedoMarkdownKit"
-  s.version               = "1.5.1"
+  s.version               = "1.5.3"
   s.summary               = "AccedoMarkdownKit is a customizable and extensible Markdown parser for iOS."
   s.description           = <<-DESC
 A fork of MarkdownKit by bmoliveira (https://github.com/bmoliveira/MarkdownKit). Original description:
