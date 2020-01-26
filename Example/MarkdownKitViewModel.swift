@@ -36,8 +36,7 @@ extension MarkdownKitViewModel {
         self?.markdownAttributedStringChanged?(nil, error)
         return
       }
-
-      response.result.withValue { [weak self]markdownString in
+      if let markdownString = try? response.result.get() {
         self?.parseString(markdownString: markdownString)
       }
     }
