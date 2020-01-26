@@ -23,7 +23,7 @@ open class MarkdownCodeEscaping: MarkdownElement {
     let range = match.range(at: 3)
     // escaping all characters
     let matchString = attributedString.attributedSubstring(from: range).string
-    let escapedString = Array<UInt16>(matchString.utf16)
+    let escapedString = [UInt16](matchString.utf16)
       .map { (value: UInt16) -> String in String(format: "%04x", value) }
       .reduce("") { (string: String, character: String) -> String in
         return "\(string)\(character)"
