@@ -141,7 +141,7 @@
 		B672001821EF8A96008649E1 /* MarkdownLevelElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarkdownLevelElement.swift; sourceTree = "<group>"; };
 		B672001921EF8A96008649E1 /* MarkdownElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarkdownElement.swift; sourceTree = "<group>"; };
 		B672001A21EF8A96008649E1 /* MarkdownStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarkdownStyle.swift; sourceTree = "<group>"; };
-		B695DA0D21F5E60300FC6FCD /* MarkdownKitViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkdownKitViewModel.swift; sourceTree = "<group>"; };
+		B695DA0D21F5E60300FC6FCD /* MarkdownKitViewModel.swift */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = MarkdownKitViewModel.swift; sourceTree = "<group>"; tabWidth = 2; };
 		BD13FDBC49B4672EDE319F41 /* Pods-Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Example.debug.xcconfig"; path = "Target Support Files/Pods-Example/Pods-Example.debug.xcconfig"; sourceTree = "<group>"; };
 		E4C4F1B7660F01DC685699BF /* Pods-Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-Example/Pods-Example.release.xcconfig"; sourceTree = "<group>"; };
 		EA7AB6341CB5842439606D40 /* Pods-Example-AppKit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Example-AppKit.release.xcconfig"; path = "Target Support Files/Pods-Example-AppKit/Pods-Example-AppKit.release.xcconfig"; sourceTree = "<group>"; };
@@ -757,22 +757,13 @@
 			inputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-Example-AppKit/Pods-Example-AppKit-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
-			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-Example-AppKit/Pods-Example-AppKit-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/Alamofire-macOS/Alamofire.framework",
-				"${BUILT_PRODUCTS_DIR}/MarkdownKit-macOS/MarkdownKit.framework",
-			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-Example-AppKit/Pods-Example-AppKit-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MarkdownKit.framework",
-			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Example-AppKit/Pods-Example-AppKit-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Example-AppKit/Pods-Example-AppKit-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		71E3922606889FD6BE5D438F /* [CP] Check Pods Manifest.lock */ = {
@@ -827,22 +818,13 @@
 			inputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-Example/Pods-Example-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
-			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-Example/Pods-Example-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/Alamofire-iOS/Alamofire.framework",
-				"${BUILT_PRODUCTS_DIR}/MarkdownKit-iOS/MarkdownKit.framework",
-			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-Example/Pods-Example-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MarkdownKit.framework",
-			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Example/Pods-Example-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Example/Pods-Example-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -1081,7 +1063,7 @@
 		};
 		B62C1BCB21EF7C8100308C8C /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B468AF6EE53A9104B5A0D1C8 /* Pods-Example.debug.xcconfig */;
+			baseConfigurationReference = BD13FDBC49B4672EDE319F41 /* Pods-Example.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -1094,14 +1076,14 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.md.MarkdownKit.example;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
 		B62C1BCC21EF7C8100308C8C /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E4C4F1B7660F01DC685699BF /* Pods-Example.release.xcconfig */;
+			baseConfigurationReference = 53C5892615913D5AFC9420DD /* Pods-Example.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -1113,7 +1095,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.md.MarkdownKit.example;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -1141,7 +1123,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -1170,7 +1152,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.md.MarkdownKit;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -1201,7 +1183,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
@@ -1231,7 +1213,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
@@ -1239,7 +1221,7 @@
 		};
 		B64AF654220349920048439D /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 330677E6D2FE9F16CAD4F8D7 /* Pods-Example-AppKit.debug.xcconfig */;
+			baseConfigurationReference = 38B62CADC4622978652DE843 /* Pods-Example-AppKit.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "Example-AppKit/Example-AppKit.entitlements";
@@ -1255,13 +1237,13 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.Example-Appkit";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
 		B64AF655220349920048439D /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 34810B607C4D22C8D6BAAA18 /* Pods-Example-AppKit.release.xcconfig */;
+			baseConfigurationReference = EA7AB6341CB5842439606D40 /* Pods-Example-AppKit.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "Example-AppKit/Example-AppKit.entitlements";
@@ -1277,7 +1259,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.Example-Appkit";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};
