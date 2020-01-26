@@ -1,5 +1,5 @@
 PODS:
-  - Alamofire (5.0.0.beta.1)
+  - Alamofire (5.0.0-beta.7)
   - MarkdownKit (1.5)
 
 DEPENDENCIES:
@@ -15,9 +15,9 @@ EXTERNAL SOURCES:
     :path: "."
 
 SPEC CHECKSUMS:
-  Alamofire: 2ef6d6c984c5d21c366e9b41a9ae7dfee2b67a44
-  MarkdownKit: 379028e9cd3ebf05ccac87205cd9aead446159d4
+  Alamofire: bd07938ceecad59d2492aeecb1f785a8f2721160
+  MarkdownKit: a092ec069b83d124835330a5b0f00f054ce706e2
 
 PODFILE CHECKSUM: f7d262aa3fe12d8080e47f956736b75f868ec2e7
 
-COCOAPODS: 1.7.1
+COCOAPODS: 1.5.3

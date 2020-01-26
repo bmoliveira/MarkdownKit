@@ -64,6 +64,7 @@ carthage update
 ```
 *italic* or _italics_
 **bold** or __bold__
+~~strikethrough~~
 
 # Header 1
 ## Header 2
