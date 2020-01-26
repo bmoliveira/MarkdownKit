@@ -8,6 +8,7 @@ It supports many of the standard Markdown elements through the use of Regular
 Expressions. It also allows customization of font and color attributes for
 all the Markdown elements.
                       DESC
+  s.swift_version         = '5'
   s.homepage              = "https://github.com/bmoliveira/MarkdownKit"
   s.screenshots           = "https://raw.githubusercontent.com/bmoliveira/MarkdownKit/master/Resources/MarkdownKitExample.png"
   s.license               = {:type => "MIT", :file => "LICENSE"}
