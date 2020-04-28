@@ -31,12 +31,14 @@ let package = Package(
         ),
         .target(
             name: "MarkdownKit-UIKit",
-            path: "MarkdownKit/Sources",
+            dependencies: ["MarkdownKit-Common"],
+            path: "MarkdownKit/Sources/UIKit",
             sources: ["Common", "UIKit"]
         ),
         .target(
             name: "MarkdownKit-AppKit",
-            path: "MarkdownKit/Sources",
+            dependencies: ["MarkdownKit-Common"],
+            path: "MarkdownKit/Sources/AppKit",
             sources: ["Common", "AppKit"]
         ),
     ]
