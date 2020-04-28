@@ -13,31 +13,13 @@ let package = Package(
         // Products define the executables and libraries produced by a package, and make them visible to other packages.
         .library(
             name: "MarkdownKit",
-            targets: ["MarkdownKit-Common", "MarkdownKit-UIKit"]
-        ),
-        .library(
-            name: "MarkdownKit-AppKit",
-            targets: ["MarkdownKit-Common", "MarkdownKit-AppKit"]
-        ),
+            targets: ["MarkdownKit"]
+        )
     ],
     targets: [
         .target(
-            name: "MarkdownKit-Common",
-            path: "MarkdownKit/Sources/Common"
-        ),
-        .target(
-            name: "MarkdownKit-UIKit",
-            dependencies: [
-                "MarkdownKit-Common",
-            ],
-            path: "MarkdownKit/Sources/UIKit"
-        ),
-        .target(
-            name: "MarkdownKit-AppKit",
-            dependencies: [
-                "MarkdownKit-Common",
-            ],
-            path: "MarkdownKit/Sources/AppKit"
-        ),
+            name: "MarkdownKit",
+            path: "MarkdownKit/Sources"
+        )
     ]
 )
