@@ -45,9 +45,9 @@ open class MarkdownParser {
   fileprivate var escapingElements: [MarkdownElement]
   fileprivate var defaultElements: [MarkdownElement] = []
   fileprivate var unescapingElements: [MarkdownElement]
-  
+
   open var customElements: [MarkdownElement]
-  
+
   // MARK: Basic Elements
   public let header: MarkdownHeader
   public let list: MarkdownList
@@ -58,12 +58,12 @@ open class MarkdownParser {
   public let italic: MarkdownItalic
   public let code: MarkdownCode
   public let strikethrough: MarkdownStrikethrough
-  
+
   // MARK: Escaping Elements
   fileprivate var codeEscaping = MarkdownCodeEscaping()
   fileprivate var escaping = MarkdownEscaping()
   fileprivate var unescaping = MarkdownUnescaping()
-  
+
   // MARK: Configuration
   /// Enables individual Markdown elements and automatic link detection
   open var enabledElements: EnabledElements {
@@ -74,28 +74,31 @@ open class MarkdownParser {
 
   public let font: MarkdownFont
   public let color: MarkdownColor
-  
+  public let textBackgroundColor: MarkdownColor
+
   // MARK: Legacy Initializer
   @available(*, deprecated, renamed: "init", message: "This constructor will be removed soon, please use the new opions constructor")
   public convenience init(automaticLinkDetectionEnabled: Bool,
                           font: MarkdownFont = MarkdownParser.defaultFont,
-                          customElements: [MarkdownElement] = []) {
+                          customElements: [MarkdownElement] = [],textBackgroundColor: MarkdownColor) {
     let enabledElements: EnabledElements = automaticLinkDetectionEnabled ? .all : .disabledAutomaticLink
-    self.init(font: font, enabledElements: enabledElements, customElements: customElements)
+    self.init(font: font, enabledElements: enabledElements, customElements: customElements, textBackgroundColor: textBackgroundColor)
   }
-  
+
   // MARK: Initializer
   public init(font: MarkdownFont = MarkdownParser.defaultFont,
               color: MarkdownColor = MarkdownParser.defaultColor,
               enabledElements: EnabledElements = .all,
-              customElements: [MarkdownElement] = []) {
+              customElements: [MarkdownElement] = [],
+              textBackgroundColor: MarkdownColor) {
     self.font = font
     self.color = color
-    
+    self.textBackgroundColor = textBackgroundColor
+
     header = MarkdownHeader(font: font)
     list = MarkdownList(font: font)
     quote = MarkdownQuote(font: font)
-    link = MarkdownLink(font: font)
+    link = MarkdownLink(font: font,textBackgroundColor: textBackgroundColor)
     automaticLink = MarkdownAutomaticLink(font: font)
     bold = MarkdownBold(font: font)
     italic = MarkdownItalic(font: font)
@@ -108,12 +111,12 @@ open class MarkdownParser {
     self.enabledElements = enabledElements
     updateDefaultElements()
   }
-  
+
   // MARK: Element Extensibility
   open func addCustomElement(_ element: MarkdownElement) {
     customElements.append(element)
   }
-  
+
   open func removeCustomElement(_ element: MarkdownElement) {
     guard let index = customElements.firstIndex(where: { someElement -> Bool in
       return element === someElement
@@ -122,12 +125,12 @@ open class MarkdownParser {
     }
     customElements.remove(at: index)
   }
-  
+
   // MARK: Parsing
   open func parse(_ markdown: String) -> NSAttributedString {
     return parse(NSAttributedString(string: markdown))
   }
-  
+
   open func parse(_ markdown: NSAttributedString) -> NSAttributedString {
     let attributedString = NSMutableAttributedString(attributedString: markdown)
     attributedString.addAttribute(.font, value: font,
@@ -162,3 +165,4 @@ open class MarkdownParser {
         element })
   }
 }
+
