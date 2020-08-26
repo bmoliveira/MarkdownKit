@@ -9,5 +9,10 @@
 import UIKit
 
 public extension MarkdownHeader {
-    static let defaultFont = UIFont.boldSystemFont(ofSize: UIFont.smallSystemFontSize)
+	#if os(tvOS)
+	static let defaultFont = UIFont.preferredFont(forTextStyle: .footnote)
+	#else
+	   static let defaultFont = UIFont.boldSystemFont(ofSize: UIFont.smallSystemFontSize)
+	#endif
+ 
 }

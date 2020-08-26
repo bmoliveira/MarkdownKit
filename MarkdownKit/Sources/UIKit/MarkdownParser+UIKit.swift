@@ -9,6 +9,10 @@
 import UIKit
 
 public extension MarkdownParser {
-  static let defaultFont = UIFont.systemFont(ofSize: UIFont.smallSystemFontSize)
+  #if os(tvOS)
+  static let defaultFont = UIFont.preferredFont(forTextStyle: .footnote)
+  #else
+	 static let defaultFont = UIFont.boldSystemFont(ofSize: UIFont.smallSystemFontSize)
+  #endif
   static let defaultColor = UIColor.black
 }
