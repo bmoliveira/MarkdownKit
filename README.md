@@ -64,6 +64,7 @@ carthage update
 ```
 *italic* or _italics_
 **bold** or __bold__
+~~strikethrough~~
 
 # Header 1
 ## Header 2
@@ -95,10 +96,10 @@ label.attributedText = markdownParser.parse(markdown)
 ## Customization
 
 ```swift
-let markdownParser = MarkdownParser(font: UIFont.systemFontOfSize(18))
+let markdownParser = MarkdownParser(font: UIFont.systemFont(ofSize: 18))
 markdownParser.enabledElements = .disabledAutomaticLink
-markdownParser.bold.color = UIColor.redColor()
-markdownParser.italic.font = UIFont.italicSystemFontOfSize(300)
+markdownParser.bold.color = UIColor.red
+markdownParser.italic.font = UIFont.italicSystemFont(ofSize: 300)
 markdownParser.header.fontIncrease = 4
 ```
 

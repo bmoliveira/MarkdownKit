@@ -9,6 +9,6 @@
 import UIKit
 
 public extension MarkdownParser {
-  public static let defaultFont = UIFont.systemFont(ofSize: UIFont.smallSystemFontSize)
-  public static let defaultColor = UIColor.black
+  static let defaultFont = UIFont.systemFont(ofSize: UIFont.smallSystemFontSize)
+  static let defaultColor = UIColor.black
 }

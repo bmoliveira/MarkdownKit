@@ -22,6 +22,7 @@ open class MarkdownParser {
     public static let bold          = EnabledElements(rawValue: 1 << 5)
     public static let italic        = EnabledElements(rawValue: 1 << 6)
     public static let code          = EnabledElements(rawValue: 1 << 7)
+    public static let strikethrough = EnabledElements(rawValue: 1 << 8)
 
     public static let disabledAutomaticLink: EnabledElements = [
       .header,
@@ -30,7 +31,8 @@ open class MarkdownParser {
       .link,
       .bold,
       .italic,
-      .code
+      .code,
+      .strikethrough,
       ]
 
     public static let all: EnabledElements = [
@@ -55,6 +57,7 @@ open class MarkdownParser {
   public let bold: MarkdownBold
   public let italic: MarkdownItalic
   public let code: MarkdownCode
+  public let strikethrough: MarkdownStrikethrough
   
   // MARK: Escaping Elements
   fileprivate var codeEscaping = MarkdownCodeEscaping()
@@ -97,6 +100,7 @@ open class MarkdownParser {
     bold = MarkdownBold(font: font)
     italic = MarkdownItalic(font: font)
     code = MarkdownCode(font: font)
+    strikethrough = MarkdownStrikethrough(font: font)
 
     self.escapingElements = [codeEscaping, escaping]
     self.unescapingElements = [code, unescaping]
@@ -111,7 +115,7 @@ open class MarkdownParser {
   }
   
   open func removeCustomElement(_ element: MarkdownElement) {
-    guard let index = customElements.index(where: { someElement -> Bool in
+    guard let index = customElements.firstIndex(where: { someElement -> Bool in
       return element === someElement
     }) else {
       return
@@ -149,7 +153,8 @@ open class MarkdownParser {
       (.link, link),
       (.bold, bold),
       (.italic, italic),
-      (.code, code)
+      (.code, code),
+      (.strikethrough, strikethrough),
       ]
     defaultElements = pairs.filter({ (enabled, _) in
       enabledElements.contains(enabled) })
