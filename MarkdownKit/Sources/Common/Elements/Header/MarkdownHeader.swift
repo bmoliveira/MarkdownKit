@@ -6,6 +6,9 @@
 //
 //
 import Foundation
+#if canImport(UIKit)
+import UIKit
+#endif
 
 open class MarkdownHeader: MarkdownLevelElement {
 

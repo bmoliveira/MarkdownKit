@@ -6,6 +6,8 @@
 //  Copyright © 2019 Ivan Bruel. All rights reserved.
 //
 
+#if canImport(AppKit)
+
 import AppKit
 
 public extension MarkdownFont {
@@ -21,3 +23,5 @@ public extension MarkdownFont {
     return NSFontManager().convert(self, toSize: size)
   }
 }
+
+#endif

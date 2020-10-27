@@ -6,8 +6,12 @@
 //  Copyright © 2019 Ivan Bruel. All rights reserved.
 //
 
+#if canImport(AppKit)
+
 import AppKit
 
 public extension MarkdownHeader {
   static let defaultFont = NSFont.boldSystemFont(ofSize: NSFont.systemFontSize)
 }
+
+#endif
