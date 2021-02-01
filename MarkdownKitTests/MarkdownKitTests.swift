@@ -16,7 +16,7 @@ class MarkdownKitTests: XCTestCase {
         return parser
     }()
     
-    func testLinkWithBracketsInStartofLinkText() {
+    func testLinkWithParenthesesInStartofLinkText() {
         let expected = "(hidden) link on Youtube"
         let testString = "[\(expected)](https://youtube.com)"
         
@@ -26,7 +26,7 @@ class MarkdownKitTests: XCTestCase {
         XCTAssertEqual(actual.string, expected)
     }
 
-    func testLinkWithBracketsInMiddleOfLinkText() {
+    func testLinkWithParenthesesInMiddleOfLinkText() {
         let expected = "link (hidden) on Youtube"
         let testString = "[\(expected)](https://youtube.com)"
 
@@ -35,7 +35,7 @@ class MarkdownKitTests: XCTestCase {
         XCTAssertEqual(actual.string, expected)
     }
 
-    func testLinkWithBracketsInEndOfLinkText() {
+    func testLinkWithParenthesesInEndOfLinkText() {
         let expected = "link on Youtube (hidden)"
         let testString = "[\(expected)](https://youtube.com)"
 
