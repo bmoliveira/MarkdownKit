@@ -9,7 +9,7 @@ import Foundation
 
 open class MarkdownLink: MarkdownLinkElement {
   
-  fileprivate static let regex = "\\[[^\\]]+\\]\\(\\S+?(?=\\))\\)"
+  fileprivate static let regex = "\\[[^\\]]+\\]\\(\\S+(?=\\))\\)"
   
   // This regex is eager if does not count even trailing Parentheses.
   fileprivate static let onlyLinkRegex = "\\(\\S+(?=\\))\\)"
@@ -57,12 +57,23 @@ open class MarkdownLink: MarkdownLinkElement {
 
     let urlLinkAbsoluteStart = match.range.location
     
-    let linkURLString = nsString
+    var linkURLString = nsString
       .substring(with: NSRange(location: urlLinkAbsoluteStart + linkMatch.range.location + 1, length: linkMatch.range.length - 2))
+
+	let numberOfOpeningParentheses = linkURLString.numberOfOccurrences(of: "(")
+	let numberOfClosingParentheses = linkURLString.numberOfOccurrences(of: ")")
+	var numberOfExtraClosingParentheses = max(0, numberOfClosingParentheses - numberOfOpeningParentheses)
+
+	var numberOfChoppedOffCharacters = 0
+	while numberOfExtraClosingParentheses > 0 && linkURLString.hasSuffix(")") {
+		numberOfExtraClosingParentheses -= 1
+		numberOfChoppedOffCharacters += 1
+		linkURLString = String(linkURLString.dropLast())
+	}
     
     // deleting trailing markdown
     // needs to be called before formattingBlock to support modification of length
-    let trailingMarkdownRange = NSRange(location: urlLinkAbsoluteStart + linkMatch.range.location - 1, length: linkMatch.range.length + 1)
+    let trailingMarkdownRange = NSRange(location: urlLinkAbsoluteStart + linkMatch.range.location - 1, length: linkMatch.range.length + 1 - numberOfChoppedOffCharacters)
     attributedString.deleteCharacters(in: trailingMarkdownRange)
     
     // deleting leading markdown
@@ -71,7 +82,7 @@ open class MarkdownLink: MarkdownLinkElement {
     attributedString.deleteCharacters(in: leadingMarkdownRange)
     
     let formatRange = NSRange(location: match.range.location,
-                              length: linkMatch.range.location - 2)
+                              length: linkMatch.range.location - 2 - numberOfExtraClosingParentheses)
     
     formatText(attributedString, range: formatRange, link: linkURLString)
     addAttributes(attributedString, range: formatRange, link: linkURLString)
@@ -81,4 +92,10 @@ open class MarkdownLink: MarkdownLinkElement {
                             link: String) {
     attributedString.addAttributes(attributes, range: range)
   }
+}
+
+extension String {
+	fileprivate func numberOfOccurrences(of string: String) -> Int {
+		return components(separatedBy: string).count - 1
+	}
 }
