@@ -82,7 +82,7 @@ open class MarkdownLink: MarkdownLinkElement {
     attributedString.deleteCharacters(in: leadingMarkdownRange)
     
     let formatRange = NSRange(location: match.range.location,
-                              length: linkMatch.range.location - 2 - numberOfExtraClosingParentheses)
+                              length: linkMatch.range.location - 2)
     
     formatText(attributedString, range: formatRange, link: linkURLString)
     addAttributes(attributedString, range: formatRange, link: linkURLString)
