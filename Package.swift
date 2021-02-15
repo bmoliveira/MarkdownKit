@@ -16,5 +16,6 @@ let package = Package(
 			name: "MarkdownKit",
 			dependencies: []),
 	],
+	path: "Sources",
 	cxxLanguageStandard: .cxx14
 )
