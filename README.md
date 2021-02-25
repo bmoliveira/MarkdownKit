@@ -59,6 +59,16 @@ Afterwards, run the following command:
 carthage update
 ```
 
+### Installation via Swift Package Manager
+
+MarkdownKit is available through [Swift Package Manager](https://swift.org/package-manager/).
+
+To add MarkdownKit as a dependency of your Swift package, simply add the following line to your `Package.swift` file:
+
+```swift
+.package(url: "https://github.com/bmoliveira/MarkdownKit.git", from: "1.7.0")
+```
+
 ## Supported Elements
 
 ```
