@@ -5,6 +5,9 @@
 //  Created by Ivan Bruel on 19/07/16.
 //
 //
+
+#if canImport(UIKit)
+
 import UIKit
 
 extension UIFont {
@@ -24,3 +27,5 @@ extension UIFont {
     return withTraits(.traitItalic)
   }
 }
+
+#endif
