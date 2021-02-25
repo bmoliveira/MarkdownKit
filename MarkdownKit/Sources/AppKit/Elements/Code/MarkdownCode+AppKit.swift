@@ -5,6 +5,8 @@
 //  Created by Bruno Oliveira on 31/01/2019.
 //  Copyright © 2019 Ivan Bruel. All rights reserved.
 //
+#if canImport(AppKit)
+
 import AppKit
 
 public extension MarkdownCode {
@@ -12,3 +14,5 @@ public extension MarkdownCode {
   static let defaultBackgroundColor = MarkdownColor(red: 0.85, green: 0.85, blue: 0.85, alpha: 1.0)
   static let defaultFont = MarkdownFont(name: "Menlo-Regular", size: 16)
 }
+
+#endif
