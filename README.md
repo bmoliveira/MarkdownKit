@@ -56,7 +56,7 @@ github "ivanbruel/MarkdownKit"
 Afterwards, run the following command:
 
 ```ruby
-carthage update
+carthage update --use-xcframeworks
 ```
 
 ### Installation via Swift Package Manager
