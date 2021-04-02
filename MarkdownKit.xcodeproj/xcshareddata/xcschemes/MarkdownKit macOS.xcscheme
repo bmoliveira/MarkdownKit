@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "B64AF6132203402F0048439D"
-               BuildableName = "MarkdownKit macOS.framework"
+               BuildableName = "MarkdownKit.framework"
                BlueprintName = "MarkdownKit macOS"
                ReferencedContainer = "container:MarkdownKit.xcodeproj">
             </BuildableReference>
@@ -44,7 +44,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "B64AF6132203402F0048439D"
-            BuildableName = "MarkdownKit macOS.framework"
+            BuildableName = "MarkdownKit.framework"
             BlueprintName = "MarkdownKit macOS"
             ReferencedContainer = "container:MarkdownKit.xcodeproj">
          </BuildableReference>
@@ -60,7 +60,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "B64AF6132203402F0048439D"
-            BuildableName = "MarkdownKit macOS.framework"
+            BuildableName = "MarkdownKit.framework"
             BlueprintName = "MarkdownKit macOS"
             ReferencedContainer = "container:MarkdownKit.xcodeproj">
          </BuildableReference>
