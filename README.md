@@ -7,7 +7,7 @@ MarkdownKit
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 [![License](https://img.shields.io/cocoapods/l/MarkdownKit.svg?style=flat)](http://cocoapods.org/pods/MarkdownKit)
 [![Platform](https://img.shields.io/cocoapods/p/MarkdownKit.svg?style=flat)](http://cocoapods.org/pods/MarkdownKit)
-[![CI](https://github.com/gaebel/MarkdownKit/actions/workflows/CI.yml/badge.svg)](https://github.com/gaebel/MarkdownKit/actions/workflows/CI.yml)
+[![CI](https://github.com/bmoliveira/MarkdownKit/actions/workflows/CI.yml/badge.svg)](https://github.com/bmoliveira/MarkdownKit/actions/workflows/CI.yml)
 
 MarkdownKit is a customizable and extensible Markdown parser for iOS and macOS. It supports many of the standard Markdown elements through the use of Regular Expressions. It also allows customization of font and color attributes for all the Markdown elements.
 
