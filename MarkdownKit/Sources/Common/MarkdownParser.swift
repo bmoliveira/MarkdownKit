@@ -69,6 +69,8 @@ open class MarkdownParser {
   open var enabledElements: EnabledElements {
     didSet {
       updateDefaultElements()
+      updateEscapingElements()
+      updateUnescapingElements()
     }
   }
 
@@ -107,6 +109,8 @@ open class MarkdownParser {
     self.customElements = customElements
     self.enabledElements = enabledElements
     updateDefaultElements()
+    updateEscapingElements()
+    updateUnescapingElements()
   }
   
   // MARK: Element Extensibility
@@ -160,5 +164,21 @@ open class MarkdownParser {
       enabledElements.contains(enabled) })
       .map({ (_, element) in
         element })
+  }
+
+  fileprivate func updateEscapingElements() {
+    if enabledElements.contains(.code) {
+      escapingElements = [codeEscaping, escaping]
+    } else {
+      escapingElements = [escaping]
+    }
+  }
+
+  fileprivate func updateUnescapingElements() {
+    if enabledElements.contains(.code) {
+      unescapingElements = [code, unescaping]
+    } else {
+      unescapingElements = [unescaping]
+    }
   }
 }
