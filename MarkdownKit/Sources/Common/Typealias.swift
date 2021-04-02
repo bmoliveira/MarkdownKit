@@ -6,7 +6,7 @@
 //  Copyright © 2019 Ivan Bruel. All rights reserved.
 //
 
-#if canImport(AppKit)
+#if canImport(AppKit) && !targetEnvironment(macCatalyst)
 
 import AppKit
 
