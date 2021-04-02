@@ -22,7 +22,7 @@ open class MarkdownList: MarkdownLevelElement {
     return String(format: MarkdownList.regex, level)
   }
 
-  public init(font: MarkdownFont? = nil, maxLevel: Int = 6, indicator: String = "●",
+  public init(font: MarkdownFont? = nil, maxLevel: Int = 6, indicator: String = "•",
               separator: String = "  ", color: MarkdownColor? = nil) {
     self.maxLevel = maxLevel
     self.indicator = indicator
