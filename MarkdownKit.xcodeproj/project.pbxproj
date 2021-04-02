@@ -8,9 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		3D5A80C926177A1100EE65C6 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 3D5A80C826177A1100EE65C6 /* Alamofire */; };
-		3D5A80D026177A2D00EE65C6 /* MarkdownKit in Frameworks */ = {isa = PBXBuildFile; productRef = 3D5A80CF26177A2D00EE65C6 /* MarkdownKit */; };
 		3D5A80D626177A3800EE65C6 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 3D5A80D526177A3800EE65C6 /* Alamofire */; };
-		3D5A80D826177A3B00EE65C6 /* MarkdownKit in Frameworks */ = {isa = PBXBuildFile; productRef = 3D5A80D726177A3B00EE65C6 /* MarkdownKit */; };
+		3D5A81362617830500EE65C6 /* MarkdownKit in Frameworks */ = {isa = PBXBuildFile; productRef = 3D5A81352617830500EE65C6 /* MarkdownKit */; };
+		3D5A813C2617830D00EE65C6 /* MarkdownKit in Frameworks */ = {isa = PBXBuildFile; productRef = 3D5A813B2617830D00EE65C6 /* MarkdownKit */; };
 		3D6C279C25E80DD8008ED858 /* Typealias.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D6C279B25E80DD8008ED858 /* Typealias.swift */; };
 		3D6C279D25E80DD8008ED858 /* Typealias.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D6C279B25E80DD8008ED858 /* Typealias.swift */; };
 		3D6C27A225E80DE5008ED858 /* MarkdownStrikethrough.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EB3627C23154D90005D48C8 /* MarkdownStrikethrough.swift */; };
@@ -144,7 +144,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3D5A80D026177A2D00EE65C6 /* MarkdownKit in Frameworks */,
+				3D5A81362617830500EE65C6 /* MarkdownKit in Frameworks */,
 				3D5A80C926177A1100EE65C6 /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -167,7 +167,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3D5A80D826177A3B00EE65C6 /* MarkdownKit in Frameworks */,
+				3D5A813C2617830D00EE65C6 /* MarkdownKit in Frameworks */,
 				3D5A80D626177A3800EE65C6 /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -175,6 +175,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3D5A81222617823200EE65C6 /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				B62C1C0121EF7EED00308C8C /* MarkdownKit.h */,
+				B62C1C0221EF7EED00308C8C /* Info.plist */,
+			);
+			path = iOS;
+			sourceTree = "<group>";
+		};
+		3D5A81232617823600EE65C6 /* macOS */ = {
+			isa = PBXGroup;
+			children = (
+				B64AF616220340300048439D /* MarkdownKit_mac.h */,
+				B64AF617220340300048439D /* Info.plist */,
+			);
+			path = macOS;
+			sourceTree = "<group>";
+		};
 		3EB3627B23154D7C005D48C8 /* Strikethrough */ = {
 			isa = PBXGroup;
 			children = (
@@ -195,7 +213,6 @@
 			children = (
 				B64AF666220354EB0048439D /* Examples */,
 				B62C1C0021EF7EED00308C8C /* MarkdownKit */,
-				B64AF615220340300048439D /* MarkdownKit macOS */,
 				B62C1BAE21EF7C8000308C8C /* Products */,
 				9CEAFB3D64DC33AB394392A3 /* Frameworks */,
 			);
@@ -237,8 +254,8 @@
 		B62C1C4221EF7F2E00308C8C /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				B62C1C0121EF7EED00308C8C /* MarkdownKit.h */,
-				B62C1C0221EF7EED00308C8C /* Info.plist */,
+				3D5A81232617823600EE65C6 /* macOS */,
+				3D5A81222617823200EE65C6 /* iOS */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -298,15 +315,6 @@
 				B672000F21EF8A96008649E1 /* MarkdownQuote.swift */,
 			);
 			path = Quote;
-			sourceTree = "<group>";
-		};
-		B64AF615220340300048439D /* MarkdownKit macOS */ = {
-			isa = PBXGroup;
-			children = (
-				B64AF616220340300048439D /* MarkdownKit_mac.h */,
-				B64AF617220340300048439D /* Info.plist */,
-			);
-			path = "MarkdownKit macOS";
 			sourceTree = "<group>";
 		};
 		B64AF647220349900048439D /* Example macOS */ = {
@@ -570,15 +578,15 @@
 			name = "Example iOS";
 			packageProductDependencies = (
 				3D5A80C826177A1100EE65C6 /* Alamofire */,
-				3D5A80CF26177A2D00EE65C6 /* MarkdownKit */,
+				3D5A81352617830500EE65C6 /* MarkdownKit */,
 			);
 			productName = MarkdownKit;
 			productReference = B62C1BAD21EF7C8000308C8C /* Example iOS.app */;
 			productType = "com.apple.product-type.application";
 		};
-		B62C1BFE21EF7EED00308C8C /* MarkdownKit */ = {
+		B62C1BFE21EF7EED00308C8C /* MarkdownKit iOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = B62C1C1021EF7EED00308C8C /* Build configuration list for PBXNativeTarget "MarkdownKit" */;
+			buildConfigurationList = B62C1C1021EF7EED00308C8C /* Build configuration list for PBXNativeTarget "MarkdownKit iOS" */;
 			buildPhases = (
 				B62C1BFA21EF7EED00308C8C /* Headers */,
 				B62C1BFB21EF7EED00308C8C /* Sources */,
@@ -589,7 +597,7 @@
 			);
 			dependencies = (
 			);
-			name = MarkdownKit;
+			name = "MarkdownKit iOS";
 			productName = MarkdownKit;
 			productReference = B62C1BFF21EF7EED00308C8C /* MarkdownKit.framework */;
 			productType = "com.apple.product-type.framework";
@@ -627,7 +635,7 @@
 			name = "Example macOS";
 			packageProductDependencies = (
 				3D5A80D526177A3800EE65C6 /* Alamofire */,
-				3D5A80D726177A3B00EE65C6 /* MarkdownKit */,
+				3D5A813B2617830D00EE65C6 /* MarkdownKit */,
 			);
 			productName = "Example-Appkit";
 			productReference = B64AF646220349900048439D /* Example macOS.app */;
@@ -675,7 +683,7 @@
 			mainGroup = B62C1BA421EF7C8000308C8C;
 			packageReferences = (
 				3D5A80C726177A1100EE65C6 /* XCRemoteSwiftPackageReference "Alamofire" */,
-				3D5A80CE26177A2D00EE65C6 /* XCRemoteSwiftPackageReference "MarkdownKit" */,
+				3D5A81342617830500EE65C6 /* XCRemoteSwiftPackageReference "MarkdownKit" */,
 			);
 			productRefGroup = B62C1BAE21EF7C8000308C8C /* Products */;
 			projectDirPath = "";
@@ -683,7 +691,7 @@
 			targets = (
 				B62C1BAC21EF7C8000308C8C /* Example iOS */,
 				B64AF645220349900048439D /* Example macOS */,
-				B62C1BFE21EF7EED00308C8C /* MarkdownKit */,
+				B62C1BFE21EF7EED00308C8C /* MarkdownKit iOS */,
 				B64AF6132203402F0048439D /* MarkdownKit macOS */,
 			);
 		};
@@ -976,7 +984,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.md.MarkdownKit.example;
+				PRODUCT_BUNDLE_IDENTIFIER = com.md.MarkdownKit.example.iOS;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -996,7 +1004,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.md.MarkdownKit.example;
+				PRODUCT_BUNDLE_IDENTIFIER = com.md.MarkdownKit.example.iOS;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1013,7 +1021,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = MarkdownKit/Resources/Info.plist;
+				INFOPLIST_FILE = MarkdownKit/Resources/iOS/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1042,7 +1050,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = MarkdownKit/Resources/Info.plist;
+				INFOPLIST_FILE = MarkdownKit/Resources/iOS/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1071,7 +1079,7 @@
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				FRAMEWORK_VERSION = A;
-				INFOPLIST_FILE = "MarkdownKit macOS/Info.plist";
+				INFOPLIST_FILE = MarkdownKit/macOS/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1100,7 +1108,7 @@
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				FRAMEWORK_VERSION = A;
-				INFOPLIST_FILE = "MarkdownKit macOS/Info.plist";
+				INFOPLIST_FILE = MarkdownKit/macOS/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1132,7 +1140,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.Example-Appkit";
+				PRODUCT_BUNDLE_IDENTIFIER = com.md.MarkdownKit.example.macOS;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 				SWIFT_VERSION = 5.0;
@@ -1153,7 +1161,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.Example-Appkit";
+				PRODUCT_BUNDLE_IDENTIFIER = com.md.MarkdownKit.example.macOS;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 				SWIFT_VERSION = 5.0;
@@ -1181,7 +1189,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		B62C1C1021EF7EED00308C8C /* Build configuration list for PBXNativeTarget "MarkdownKit" */ = {
+		B62C1C1021EF7EED00308C8C /* Build configuration list for PBXNativeTarget "MarkdownKit iOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				B62C1C1121EF7EED00308C8C /* Debug */,
@@ -1219,7 +1227,7 @@
 				minimumVersion = 5.4.1;
 			};
 		};
-		3D5A80CE26177A2D00EE65C6 /* XCRemoteSwiftPackageReference "MarkdownKit" */ = {
+		3D5A81342617830500EE65C6 /* XCRemoteSwiftPackageReference "MarkdownKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/bmoliveira/MarkdownKit";
 			requirement = {
@@ -1235,19 +1243,19 @@
 			package = 3D5A80C726177A1100EE65C6 /* XCRemoteSwiftPackageReference "Alamofire" */;
 			productName = Alamofire;
 		};
-		3D5A80CF26177A2D00EE65C6 /* MarkdownKit */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 3D5A80CE26177A2D00EE65C6 /* XCRemoteSwiftPackageReference "MarkdownKit" */;
-			productName = MarkdownKit;
-		};
 		3D5A80D526177A3800EE65C6 /* Alamofire */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 3D5A80C726177A1100EE65C6 /* XCRemoteSwiftPackageReference "Alamofire" */;
 			productName = Alamofire;
 		};
-		3D5A80D726177A3B00EE65C6 /* MarkdownKit */ = {
+		3D5A81352617830500EE65C6 /* MarkdownKit */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 3D5A80CE26177A2D00EE65C6 /* XCRemoteSwiftPackageReference "MarkdownKit" */;
+			package = 3D5A81342617830500EE65C6 /* XCRemoteSwiftPackageReference "MarkdownKit" */;
+			productName = MarkdownKit;
+		};
+		3D5A813B2617830D00EE65C6 /* MarkdownKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3D5A81342617830500EE65C6 /* XCRemoteSwiftPackageReference "MarkdownKit" */;
 			productName = MarkdownKit;
 		};
 /* End XCSwiftPackageProductDependency section */
