@@ -15,15 +15,15 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-      - name: Build
-        run: swift build
-      - name: Test macOS
-        run: swift test
-      - name: Test iOS
+      - name: Lint
+        run: pod lib lint
+      - name: Build & test macOS
+        run: |
+         swift build
+         swift test
+      - name: Build & test iOS
         run: |
          swift package generate-xcodeproj --output temp && cd temp
          xcodebuild build -sdk iphoneos -scheme 'MarkdownKit-Package'
          xcodebuild test -destination 'name=iPhone 12' -scheme 'MarkdownKit-Package'
          cd .. && rm -r temp
-      - name: Lint pod
-        run: pod lib lint
