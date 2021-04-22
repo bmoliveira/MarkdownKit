@@ -96,6 +96,6 @@ open class MarkdownLink: MarkdownLinkElement {
 
 fileprivate extension String {
 	func numberOfOccurrences(of string: String) -> Int {
-		return components(separatedBy: string).count - 1
+		return max(0, components(separatedBy: string).count - 1)
 	}
 }
