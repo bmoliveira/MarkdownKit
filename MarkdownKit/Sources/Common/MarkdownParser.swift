@@ -155,11 +155,11 @@ open class MarkdownParser {
       (.list, list),
       (.quote, quote),
       (.link, link),
+      (.strikethrough, strikethrough),
       (.bold, bold),
       (.italic, italic),
       (.code, code),
-      (.strikethrough, strikethrough),
-      ]
+    ]
     defaultElements = pairs.filter({ (enabled, _) in
       enabledElements.contains(enabled) })
       .map({ (_, element) in

@@ -24,19 +24,20 @@ open class MarkdownItalic: MarkdownCommonElement {
   }
   
   public func match(_ match: NSTextCheckingResult, attributedString: NSMutableAttributedString) {
-    // deleting trailing markdown
     attributedString.deleteCharacters(in: match.range(at: 4))
-    
-    // formatting string (may alter the length)
-    let stringAttributes = attributedString.attributes(at: match.range(at: 3).location, longestEffectiveRange: nil, in: match.range(at: 3))
-    addAttributes(attributedString, range: match.range(at: 3))
 
-    if let stringFont = stringAttributes[.font] as? MarkdownFont {
-      let italicFont: MarkdownFont = stringFont.italic()
-      attributedString.addAttributes([NSAttributedString.Key.font: italicFont], range: match.range(at: 3))
+    var attributes = attributedString.attributes(
+        at: match.range(at: 3).location,
+        longestEffectiveRange: nil,
+        in: match.range(at: 3)
+    )
+
+    if let font = attributes[.font] as? MarkdownFont {
+        attributes[NSAttributedString.Key.font] = font.italic()
     }
-    
-    // deleting leading markdown
+
+    attributedString.addAttributes(attributes, range: match.range(at: 3))
+
     attributedString.deleteCharacters(in: match.range(at: 2))
   }
 }

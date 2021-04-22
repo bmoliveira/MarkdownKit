@@ -125,6 +125,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		3D3A84BA2632058A00E69F9F /* MarkdownParserTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkdownParserTests.swift; sourceTree = "<group>"; };
 		3D6C279B25E80DD8008ED858 /* Typealias.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Typealias.swift; sourceTree = "<group>"; };
 		3EB3627C23154D90005D48C8 /* MarkdownStrikethrough.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkdownStrikethrough.swift; sourceTree = "<group>"; };
 		B62C1BAD21EF7C8000308C8C /* Example iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Example iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -219,6 +220,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3D3A84B92632058A00E69F9F /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				3D3A84BA2632058A00E69F9F /* MarkdownParserTests.swift */,
+			);
+			path = Tests;
+			sourceTree = "<group>";
+		};
 		3D5A81222617823200EE65C6 /* iOS */ = {
 			isa = PBXGroup;
 			children = (
@@ -290,6 +299,7 @@
 			isa = PBXGroup;
 			children = (
 				B672000221EF8A96008649E1 /* Sources */,
+				3D3A84B92632058A00E69F9F /* Tests */,
 				B62C1C4221EF7F2E00308C8C /* Resources */,
 			);
 			path = MarkdownKit;
@@ -693,7 +703,7 @@
 		B62C1BA521EF7C8000308C8C /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1010;
+				LastSwiftUpdateCheck = 1240;
 				LastUpgradeCheck = 1240;
 				ORGANIZATIONNAME = "Ivan Bruel";
 				TargetAttributes = {
