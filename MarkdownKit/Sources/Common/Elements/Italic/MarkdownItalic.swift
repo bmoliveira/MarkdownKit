@@ -30,12 +30,9 @@ open class MarkdownItalic: MarkdownCommonElement {
     // formatting string (may alter the length)
     let stringAttributes = attributedString.attributes(at: match.range(at: 3).location, longestEffectiveRange: nil, in: match.range(at: 3))
     addAttributes(attributedString, range: match.range(at: 3))
-    if let font = font,
-      let stringFont = stringAttributes[.font] as? MarkdownFont {
-      let fontSize: CGFloat = stringFont.fontDescriptor.pointSize
-      var italicFont: MarkdownFont = font.withSize(fontSize)
-      let fontTraits = stringFont.fontDescriptor.symbolicTraits
-      italicFont = italicFont.withTraits(fontTraits, .traitItalic) ?? italicFont
+
+    if let stringFont = stringAttributes[.font] as? MarkdownFont {
+      let italicFont: MarkdownFont = stringFont.italic()
       attributedString.addAttributes([NSAttributedString.Key.font: italicFont], range: match.range(at: 3))
     }
     

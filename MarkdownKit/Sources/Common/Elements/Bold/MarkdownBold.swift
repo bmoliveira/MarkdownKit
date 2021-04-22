@@ -31,12 +31,8 @@ open class MarkdownBold: MarkdownCommonElement {
     let stringAttributes = attributedString.attributes(at: match.range(at: 3).location, longestEffectiveRange: nil, in: match.range(at: 3))
     addAttributes(attributedString, range: match.range(at: 3))
     
-    if let font = font,
-      let stringFont = stringAttributes[.font] as? MarkdownFont {
-      let fontSize: CGFloat = stringFont.fontDescriptor.pointSize
-      let fontTraits = stringFont.fontDescriptor.symbolicTraits
-      var boldFont: MarkdownFont = font.withSize(fontSize)
-      boldFont = boldFont.withTraits(fontTraits, .traitBold) ?? boldFont
+    if let stringFont = stringAttributes[.font] as? MarkdownFont {
+      let boldFont: MarkdownFont = stringFont.bold()
       attributedString.addAttributes([NSAttributedString.Key.font: boldFont], range: match.range(at: 3))
     }
     
