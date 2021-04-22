@@ -20,6 +20,11 @@ let package = Package(
         .target(
             name: "MarkdownKit",
             path: "MarkdownKit/Sources"
+        ),
+        .testTarget(
+            name: "MarkdownKitTests",
+            dependencies: ["MarkdownKit"],
+            path: "MarkdownKit/Tests"
         )
     ]
 )
