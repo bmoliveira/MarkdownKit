@@ -17,5 +17,14 @@ jobs:
         uses: actions/checkout@v2
       - name: Build
         run: swift build
+      - name: Test macOS
+        run: swift test
+      - name: Test iOS
+        run: |
+         mkdir iosTest && cd iosTest
+         swift package generate-xcodeproj
+         xcodebuild build -sdk iphoneos -scheme 'MarkdownKit-Package'
+         xcodebuild test -destination 'name=iPhone 12' -scheme 'MarkdownKit-Package'
+         cd .. / rm -r iosTest
       - name: Lint pod
         run: pod lib lint
