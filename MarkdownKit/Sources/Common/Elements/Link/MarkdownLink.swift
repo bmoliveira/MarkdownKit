@@ -10,10 +10,10 @@ import Foundation
 open class MarkdownLink: MarkdownLinkElement {
   
   fileprivate static let regex = "\\[[^\\]]+\\]\\(\\S+(?=\\))\\)"
-  
+
   // This regex is eager if does not count even trailing Parentheses.
-  fileprivate static let onlyLinkRegex = "\\(\\S+(?=\\))\\)"
-  
+  fileprivate static let onlyLinkRegex = "\\]\\(\\S+(?=\\))\\)"
+
   open var font: MarkdownFont?
   open var color: MarkdownColor?
   
@@ -33,11 +33,13 @@ open class MarkdownLink: MarkdownLinkElement {
   
   open func formatText(_ attributedString: NSMutableAttributedString, range: NSRange,
                          link: String) {
-    guard let encodedLink = link.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlHostAllowed)
+    let fullLink = link.starts(with: "http") ? link : "https://\(link)"
+
+    guard let encodedLink = fullLink.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlHostAllowed)
       else {
       return
     }
-    guard let url = URL(string: link) ?? URL(string: encodedLink) else { return }
+    guard let url = URL(string: fullLink) ?? URL(string: encodedLink) else { return }
     attributedString.addAttribute(NSAttributedString.Key.link, value: url, range: range)
   }
   
