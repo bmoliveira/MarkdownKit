@@ -9,11 +9,13 @@
 /* Begin PBXBuildFile section */
 		3D5A80C926177A1100EE65C6 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 3D5A80C826177A1100EE65C6 /* Alamofire */; };
 		3D5A80D626177A3800EE65C6 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 3D5A80D526177A3800EE65C6 /* Alamofire */; };
-		3D5A81362617830500EE65C6 /* MarkdownKit in Frameworks */ = {isa = PBXBuildFile; productRef = 3D5A81352617830500EE65C6 /* MarkdownKit */; };
-		3D5A813C2617830D00EE65C6 /* MarkdownKit in Frameworks */ = {isa = PBXBuildFile; productRef = 3D5A813B2617830D00EE65C6 /* MarkdownKit */; };
 		3D6C279C25E80DD8008ED858 /* Typealias.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D6C279B25E80DD8008ED858 /* Typealias.swift */; };
 		3D6C279D25E80DD8008ED858 /* Typealias.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D6C279B25E80DD8008ED858 /* Typealias.swift */; };
 		3D6C27A225E80DE5008ED858 /* MarkdownStrikethrough.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EB3627C23154D90005D48C8 /* MarkdownStrikethrough.swift */; };
+		3DBA812126317375009CEB6B /* MarkdownKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B62C1BFF21EF7EED00308C8C /* MarkdownKit.framework */; };
+		3DBA812226317375009CEB6B /* MarkdownKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B62C1BFF21EF7EED00308C8C /* MarkdownKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		3DBA81262631737A009CEB6B /* MarkdownKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B64AF6142203402F0048439D /* MarkdownKit.framework */; };
+		3DBA81272631737A009CEB6B /* MarkdownKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B64AF6142203402F0048439D /* MarkdownKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		3EB3627D23154D90005D48C8 /* MarkdownStrikethrough.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EB3627C23154D90005D48C8 /* MarkdownStrikethrough.swift */; };
 		B62C1BEB21EF7D8D00308C8C /* String+HTMLDecode.swift in Sources */ = {isa = PBXBuildFile; fileRef = B62C1BE221EF7D8C00308C8C /* String+HTMLDecode.swift */; };
 		B62C1BEC21EF7D8D00308C8C /* MarkdownSubreddit.swift in Sources */ = {isa = PBXBuildFile; fileRef = B62C1BE321EF7D8C00308C8C /* MarkdownSubreddit.swift */; };
@@ -80,6 +82,48 @@
 		B695DA0E21F5E60300FC6FCD /* MarkdownKitViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B695DA0D21F5E60300FC6FCD /* MarkdownKitViewModel.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		3DBA812326317375009CEB6B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B62C1BA521EF7C8000308C8C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B62C1BFE21EF7EED00308C8C;
+			remoteInfo = "MarkdownKit iOS";
+		};
+		3DBA81282631737A009CEB6B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B62C1BA521EF7C8000308C8C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B64AF6132203402F0048439D;
+			remoteInfo = "MarkdownKit macOS";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		3DBA812526317375009CEB6B /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				3DBA812226317375009CEB6B /* MarkdownKit.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3DBA812A2631737A009CEB6B /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				3DBA81272631737A009CEB6B /* MarkdownKit.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		3D6C279B25E80DD8008ED858 /* Typealias.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Typealias.swift; sourceTree = "<group>"; };
 		3EB3627C23154D90005D48C8 /* MarkdownStrikethrough.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkdownStrikethrough.swift; sourceTree = "<group>"; };
@@ -144,7 +188,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3D5A81362617830500EE65C6 /* MarkdownKit in Frameworks */,
+				3DBA812126317375009CEB6B /* MarkdownKit.framework in Frameworks */,
 				3D5A80C926177A1100EE65C6 /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -167,7 +211,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3D5A813C2617830D00EE65C6 /* MarkdownKit in Frameworks */,
+				3DBA81262631737A009CEB6B /* MarkdownKit.framework in Frameworks */,
 				3D5A80D626177A3800EE65C6 /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -570,15 +614,16 @@
 				B62C1BA921EF7C8000308C8C /* Sources */,
 				B62C1BAA21EF7C8000308C8C /* Frameworks */,
 				B62C1BAB21EF7C8000308C8C /* Resources */,
+				3DBA812526317375009CEB6B /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				3DBA812426317375009CEB6B /* PBXTargetDependency */,
 			);
 			name = "Example iOS";
 			packageProductDependencies = (
 				3D5A80C826177A1100EE65C6 /* Alamofire */,
-				3D5A81352617830500EE65C6 /* MarkdownKit */,
 			);
 			productName = MarkdownKit;
 			productReference = B62C1BAD21EF7C8000308C8C /* Example iOS.app */;
@@ -627,15 +672,16 @@
 				B64AF642220349900048439D /* Sources */,
 				B64AF643220349900048439D /* Frameworks */,
 				B64AF644220349900048439D /* Resources */,
+				3DBA812A2631737A009CEB6B /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				3DBA81292631737A009CEB6B /* PBXTargetDependency */,
 			);
 			name = "Example macOS";
 			packageProductDependencies = (
 				3D5A80D526177A3800EE65C6 /* Alamofire */,
-				3D5A813B2617830D00EE65C6 /* MarkdownKit */,
 			);
 			productName = "Example-Appkit";
 			productReference = B64AF646220349900048439D /* Example macOS.app */;
@@ -683,7 +729,6 @@
 			mainGroup = B62C1BA421EF7C8000308C8C;
 			packageReferences = (
 				3D5A80C726177A1100EE65C6 /* XCRemoteSwiftPackageReference "Alamofire" */,
-				3D5A81342617830500EE65C6 /* XCRemoteSwiftPackageReference "MarkdownKit" */,
 			);
 			productRefGroup = B62C1BAE21EF7C8000308C8C /* Products */;
 			projectDirPath = "";
@@ -823,6 +868,19 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		3DBA812426317375009CEB6B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B62C1BFE21EF7EED00308C8C /* MarkdownKit iOS */;
+			targetProxy = 3DBA812326317375009CEB6B /* PBXContainerItemProxy */;
+		};
+		3DBA81292631737A009CEB6B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B64AF6132203402F0048439D /* MarkdownKit macOS */;
+			targetProxy = 3DBA81282631737A009CEB6B /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		B62C1BF421EF7DA400308C8C /* LaunchScreen.xib */ = {
@@ -1227,14 +1285,6 @@
 				minimumVersion = 5.4.1;
 			};
 		};
-		3D5A81342617830500EE65C6 /* XCRemoteSwiftPackageReference "MarkdownKit" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/bmoliveira/MarkdownKit";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.7.0;
-			};
-		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1247,16 +1297,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 3D5A80C726177A1100EE65C6 /* XCRemoteSwiftPackageReference "Alamofire" */;
 			productName = Alamofire;
-		};
-		3D5A81352617830500EE65C6 /* MarkdownKit */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 3D5A81342617830500EE65C6 /* XCRemoteSwiftPackageReference "MarkdownKit" */;
-			productName = MarkdownKit;
-		};
-		3D5A813B2617830D00EE65C6 /* MarkdownKit */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 3D5A81342617830500EE65C6 /* XCRemoteSwiftPackageReference "MarkdownKit" */;
-			productName = MarkdownKit;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
