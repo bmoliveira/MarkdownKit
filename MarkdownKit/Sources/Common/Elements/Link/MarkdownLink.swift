@@ -57,12 +57,23 @@ open class MarkdownLink: MarkdownLinkElement {
 
     let urlLinkAbsoluteStart = match.range.location
     
-    let linkURLString = nsString
+    var linkURLString = nsString
       .substring(with: NSRange(location: urlLinkAbsoluteStart + linkMatch.range.location + 1, length: linkMatch.range.length - 2))
+
+	let numberOfOpeningParentheses = linkURLString.numberOfOccurrences(of: "(")
+	let numberOfClosingParentheses = linkURLString.numberOfOccurrences(of: ")")
+	var numberOfExtraClosingParentheses = max(0, numberOfClosingParentheses - numberOfOpeningParentheses)
+
+	var numberOfChoppedOffCharacters = 0
+	while numberOfExtraClosingParentheses > 0 && linkURLString.hasSuffix(")") {
+		numberOfExtraClosingParentheses -= 1
+		numberOfChoppedOffCharacters += 1
+		linkURLString = String(linkURLString.dropLast())
+	}
     
     // deleting trailing markdown
     // needs to be called before formattingBlock to support modification of length
-    let trailingMarkdownRange = NSRange(location: urlLinkAbsoluteStart + linkMatch.range.location - 1, length: linkMatch.range.length + 1)
+    let trailingMarkdownRange = NSRange(location: urlLinkAbsoluteStart + linkMatch.range.location - 1, length: linkMatch.range.length + 1 - numberOfChoppedOffCharacters)
     attributedString.deleteCharacters(in: trailingMarkdownRange)
     
     // deleting leading markdown
@@ -81,4 +92,10 @@ open class MarkdownLink: MarkdownLinkElement {
                             link: String) {
     attributedString.addAttributes(attributes, range: range)
   }
+}
+
+fileprivate extension String {
+	func numberOfOccurrences(of string: String) -> Int {
+		return components(separatedBy: string).count - 1
+	}
 }

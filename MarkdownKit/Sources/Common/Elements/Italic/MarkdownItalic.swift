@@ -22,7 +22,7 @@ open class MarkdownItalic: MarkdownCommonElement {
     self.font = font?.italic()
     self.color = color
   }
-  
+    
   public func match(_ match: NSTextCheckingResult, attributedString: NSMutableAttributedString) {
     // deleting trailing markdown
     attributedString.deleteCharacters(in: match.range(at: 4))

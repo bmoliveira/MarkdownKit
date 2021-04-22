@@ -22,7 +22,7 @@ open class MarkdownBold: MarkdownCommonElement {
     self.font = font?.bold()
     self.color = color
   }
-  
+
   public func match(_ match: NSTextCheckingResult, attributedString: NSMutableAttributedString) {
     // deleting trailing markdown
     attributedString.deleteCharacters(in: match.range(at: 4))
