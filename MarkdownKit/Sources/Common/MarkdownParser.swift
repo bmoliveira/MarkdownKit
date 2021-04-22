@@ -113,10 +113,10 @@ open class MarkdownParser {
     updateUnescapingElements()
   }
 
-   public func replaceDefaultElement(_ defaultElement: MarkdownElement, with element: MarkdownElement) {
-	guard let index = defaultElements.firstIndex(where: {$0  === defaultElement}) else { return }
+  public func replaceDefaultElement<E: MarkdownElement>(_ defaultElement: E.Type, with element: MarkdownElement) {
+    guard let index = defaultElements.firstIndex(where: { $0 is E }) else { return }
 	defaultElements[index] = element
-   }
+  }
   
   // MARK: Element Extensibility
   open func addCustomElement(_ element: MarkdownElement) {
