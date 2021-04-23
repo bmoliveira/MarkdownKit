@@ -155,11 +155,11 @@ open class MarkdownParser {
 
   fileprivate func updateDefaultElements() {
     let pairs: [(EnabledElements, MarkdownElement)] = [
-      (.automaticLink, automaticLink),
       (.header, header),
       (.list, list),
       (.quote, quote),
       (.link, link),
+      (.automaticLink, automaticLink),
       (.strikethrough, strikethrough),
       (.bold, bold),
       (.italic, italic),
