@@ -10,7 +10,7 @@ import Foundation
 open class MarkdownBold: MarkdownCommonElement {
   
   fileprivate static let regex = "(.?|^)(\\*\\*|__)(?=\\S)(.+?)(?<=\\S)(\\2)"
-  
+
   open var font: MarkdownFont?
   open var color: MarkdownColor?
   
@@ -24,19 +24,20 @@ open class MarkdownBold: MarkdownCommonElement {
   }
   
   public func match(_ match: NSTextCheckingResult, attributedString: NSMutableAttributedString) {
-    // deleting trailing markdown
     attributedString.deleteCharacters(in: match.range(at: 4))
-    
-    // formatting string (may alter the length)
-    let stringAttributes = attributedString.attributes(at: match.range(at: 3).location, longestEffectiveRange: nil, in: match.range(at: 3))
-    addAttributes(attributedString, range: match.range(at: 3))
-    
-    if let stringFont = stringAttributes[.font] as? MarkdownFont {
-      let boldFont: MarkdownFont = stringFont.bold()
-      attributedString.addAttributes([NSAttributedString.Key.font: boldFont], range: match.range(at: 3))
+
+    var attributes = attributedString.attributes(
+        at: match.range(at: 3).location,
+        longestEffectiveRange: nil,
+        in: match.range(at: 3)
+    )
+
+    if let font = attributes[.font] as? MarkdownFont {
+        attributes[NSAttributedString.Key.font] = font.bold()
     }
-    
-    // deleting leading markdown
+
+    attributedString.addAttributes(attributes, range: match.range(at: 3))
+
     attributedString.deleteCharacters(in: match.range(at: 2))
   }
 }
