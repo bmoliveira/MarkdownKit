@@ -165,10 +165,9 @@ open class MarkdownParser {
       (.italic, italic),
       (.code, code),
     ]
-    defaultElements = pairs.filter({ (enabled, _) in
-      enabledElements.contains(enabled) })
-      .map({ (_, element) in
-        element })
+    defaultElements = pairs.compactMap { enabled, element in
+        enabledElements.contains(enabled) ? element : nil
+    }
   }
 
   fileprivate func updateEscapingElements() {
