@@ -8,29 +8,25 @@
 import Foundation
 
 open class MarkdownLink: MarkdownLinkElement {
-  
-  fileprivate static let regex = "\\[[^\\]]+\\]\\(\\S+(?=\\))\\)"
 
-  // This regex is eager if does not count even trailing Parentheses.
-  fileprivate static let onlyLinkRegex = "\\]\\(\\S+(?=\\))\\)"
+  fileprivate static let regex = "(\\[[^\\]]+)(\\]\\([^\\s]+)?\\)"
 
   open var font: MarkdownFont?
   open var color: MarkdownColor?
-  
+
   open var regex: String {
     return MarkdownLink.regex
   }
-  
+
   open func regularExpression() throws -> NSRegularExpression {
     return try NSRegularExpression(pattern: regex, options: .dotMatchesLineSeparators)
   }
-  
+
   public init(font: MarkdownFont? = nil, color: MarkdownColor? = MarkdownLink.defaultColor) {
     self.font = font
     self.color = color
   }
-  
-  
+
   open func formatText(_ attributedString: NSMutableAttributedString, range: NSRange,
                          link: String) {
     let fullLink = link.starts(with: "http") ? link : "https://\(link)"
@@ -42,62 +38,49 @@ open class MarkdownLink: MarkdownLinkElement {
     guard let url = URL(string: fullLink) ?? URL(string: encodedLink) else { return }
     attributedString.addAttribute(NSAttributedString.Key.link, value: url, range: range)
   }
-  
+
   open func match(_ match: NSTextCheckingResult, attributedString: NSMutableAttributedString) {
-    let nsString = (attributedString.string as NSString)
-    let urlString = nsString.substring(with: match.range)
-    
-    guard let onlyLinkRegex = try? NSRegularExpression(pattern: MarkdownLink.onlyLinkRegex, options: .dotMatchesLineSeparators) else {
-      return
+    // Remove opening bracket
+    attributedString.deleteCharacters(in: NSRange(location: match.range(at: 1).location, length: 1))
+
+    // Remove closing bracket
+    attributedString.deleteCharacters(in: NSRange(location: match.range(at: 2).location - 1, length: 1))
+
+    let urlStart = match.range(at: 2).location
+
+    let string = NSString(string: attributedString.string)
+    var urlString = String(string.substring(with: NSRange(urlStart..<match.range(at: 2).upperBound - 2 )))
+
+    // Determine url bounds by balancing opening and closing paranthesis
+    // Removes remaining extra closing parantheses
+    let numberOfOpeningParentheses = urlString.numberOfOccurrences(of: "(")
+    let numberOfClosingParentheses = urlString.numberOfOccurrences(of: ")")
+    var numberOfExtraClosingParentheses = max(0, numberOfClosingParentheses - numberOfOpeningParentheses)
+
+    while numberOfExtraClosingParentheses > 0 && urlString.hasSuffix(")") {
+      numberOfExtraClosingParentheses -= 1
+      urlString = String(urlString.dropLast())
     }
-    
-    guard let linkMatch = onlyLinkRegex.firstMatch(in: urlString,
-                     options: .withoutAnchoringBounds,
-                     range: NSRange(location: 0, length: urlString.count)) else {
-                      return
-    }
 
-    let urlLinkAbsoluteStart = match.range.location
-    
-    var linkURLString = nsString
-      .substring(with: NSRange(location: urlLinkAbsoluteStart + linkMatch.range.location + 1, length: linkMatch.range.length - 2))
+    // Remove opening parantheses
+    attributedString.deleteCharacters(in: NSRange(location: match.range(at: 2).location  , length: 1))
 
-	let numberOfOpeningParentheses = linkURLString.numberOfOccurrences(of: "(")
-	let numberOfClosingParentheses = linkURLString.numberOfOccurrences(of: ")")
-	var numberOfExtraClosingParentheses = max(0, numberOfClosingParentheses - numberOfOpeningParentheses)
-
-	var numberOfChoppedOffCharacters = 0
-	while numberOfExtraClosingParentheses > 0 && linkURLString.hasSuffix(")") {
-		numberOfExtraClosingParentheses -= 1
-		numberOfChoppedOffCharacters += 1
-		linkURLString = String(linkURLString.dropLast())
-	}
-    
-    // deleting trailing markdown
-    // needs to be called before formattingBlock to support modification of length
-    let trailingMarkdownRange = NSRange(location: urlLinkAbsoluteStart + linkMatch.range.location - 1, length: linkMatch.range.length + 1 - numberOfChoppedOffCharacters)
+    // Remove closing parantheses
+    let trailingMarkdownRange = NSRange(location: match.range(at: 2).location - 1, length: urlString.count + 1)
     attributedString.deleteCharacters(in: trailingMarkdownRange)
-    
-    // deleting leading markdown
-    // needs to be called before formattingBlock to provide a stable range
-    let leadingMarkdownRange = NSRange(location: match.range.location, length: 1)
-    attributedString.deleteCharacters(in: leadingMarkdownRange)
-    
-    let formatRange = NSRange(location: match.range.location,
-                              length: linkMatch.range.location - 2)
-    
-    formatText(attributedString, range: formatRange, link: linkURLString)
-    addAttributes(attributedString, range: formatRange, link: linkURLString)
+
+    let formatRange = NSRange(match.range(at: 1).location..<match.range(at: 2).location - 1)
+    formatText(attributedString, range: formatRange, link: urlString)
+    addAttributes(attributedString, range: formatRange, link: urlString)
   }
-  
-  open func addAttributes(_ attributedString: NSMutableAttributedString, range: NSRange,
-                            link: String) {
+
+  open func addAttributes(_ attributedString: NSMutableAttributedString, range: NSRange, link: String) {
     attributedString.addAttributes(attributes, range: range)
   }
 }
 
 fileprivate extension String {
-	func numberOfOccurrences(of string: String) -> Int {
-		return max(0, components(separatedBy: string).count - 1)
-	}
+    func numberOfOccurrences(of string: String) -> Int {
+        return max(0, components(separatedBy: string).count - 1)
+    }
 }

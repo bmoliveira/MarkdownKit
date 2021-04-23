@@ -59,7 +59,7 @@
 		B64AF64D220349920048439D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B64AF64C220349920048439D /* Assets.xcassets */; };
 		B64AF650220349920048439D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B64AF64E220349920048439D /* Main.storyboard */; };
 		B64AF66522034C240048439D /* MarkdownFont+Traits.swift in Sources */ = {isa = PBXBuildFile; fileRef = B64AF66322034C240048439D /* MarkdownFont+Traits.swift */; };
-		B64AF667220355120048439D /* MarkdownKitViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B695DA0D21F5E60300FC6FCD /* MarkdownKitViewModel.swift */; };
+		B64AF667220355120048439D /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B695DA0D21F5E60300FC6FCD /* ViewModel.swift */; };
 		B672001B21EF8A96008649E1 /* MarkdownParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = B672000321EF8A96008649E1 /* MarkdownParser.swift */; };
 		B672001C21EF8A96008649E1 /* String+UTF16.swift in Sources */ = {isa = PBXBuildFile; fileRef = B672000521EF8A96008649E1 /* String+UTF16.swift */; };
 		B672001D21EF8A96008649E1 /* UIFont+Traits.swift in Sources */ = {isa = PBXBuildFile; fileRef = B672000621EF8A96008649E1 /* UIFont+Traits.swift */; };
@@ -79,7 +79,7 @@
 		B672002C21EF8A96008649E1 /* MarkdownLevelElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = B672001821EF8A96008649E1 /* MarkdownLevelElement.swift */; };
 		B672002D21EF8A96008649E1 /* MarkdownElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = B672001921EF8A96008649E1 /* MarkdownElement.swift */; };
 		B672002E21EF8A96008649E1 /* MarkdownStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = B672001A21EF8A96008649E1 /* MarkdownStyle.swift */; };
-		B695DA0E21F5E60300FC6FCD /* MarkdownKitViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B695DA0D21F5E60300FC6FCD /* MarkdownKitViewModel.swift */; };
+		B695DA0E21F5E60300FC6FCD /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B695DA0D21F5E60300FC6FCD /* ViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -181,7 +181,7 @@
 		B672001821EF8A96008649E1 /* MarkdownLevelElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarkdownLevelElement.swift; sourceTree = "<group>"; };
 		B672001921EF8A96008649E1 /* MarkdownElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarkdownElement.swift; sourceTree = "<group>"; };
 		B672001A21EF8A96008649E1 /* MarkdownStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarkdownStyle.swift; sourceTree = "<group>"; };
-		B695DA0D21F5E60300FC6FCD /* MarkdownKitViewModel.swift */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = MarkdownKitViewModel.swift; sourceTree = "<group>"; tabWidth = 2; };
+		B695DA0D21F5E60300FC6FCD /* ViewModel.swift */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; tabWidth = 2; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -504,7 +504,7 @@
 		B64AF666220354EB0048439D /* Examples */ = {
 			isa = PBXGroup;
 			children = (
-				B695DA0D21F5E60300FC6FCD /* MarkdownKitViewModel.swift */,
+				B695DA0D21F5E60300FC6FCD /* ViewModel.swift */,
 				B64AF647220349900048439D /* macOS */,
 				B62C1BAF21EF7C8000308C8C /* iOS */,
 			);
@@ -797,7 +797,7 @@
 			files = (
 				B62C1BEF21EF7D8D00308C8C /* AppDelegate.swift in Sources */,
 				B62C1BEB21EF7D8D00308C8C /* String+HTMLDecode.swift in Sources */,
-				B695DA0E21F5E60300FC6FCD /* MarkdownKitViewModel.swift in Sources */,
+				B695DA0E21F5E60300FC6FCD /* ViewModel.swift in Sources */,
 				B62C1BF121EF7D8D00308C8C /* ViewController.swift in Sources */,
 				B62C1BEC21EF7D8D00308C8C /* MarkdownSubreddit.swift in Sources */,
 			);
@@ -871,7 +871,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B64AF667220355120048439D /* MarkdownKitViewModel.swift in Sources */,
+				B64AF667220355120048439D /* ViewModel.swift in Sources */,
 				B64AF64B220349900048439D /* ViewController.swift in Sources */,
 				B64AF649220349900048439D /* AppDelegate.swift in Sources */,
 			);
