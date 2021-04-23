@@ -12,7 +12,7 @@ class Tests: XCTestCase {
 
     let sut: MarkdownParser = MarkdownParser()
 
-    func testBoldItalicStrikethrough() throws {
+    func testParseBoldItalicStrikethrough() throws {
         let combinations = [
             "___~~Bold-Italic-Strikethrough~~___",
             "***~~Bold-Italic-Strikethrough~~***",
@@ -27,7 +27,7 @@ class Tests: XCTestCase {
             "__~~_Bold-Italic-Strikethrough_~~__",
             "**~~*Bold-Italic-Strikethrough*~~**",
             "~~*__Bold-Italic-Strikethrough__*~~",
-            "~~__*Bold-Italic-Strikethrough**__~~",
+            "~~__*Bold-Italic-Strikethrough*__~~",
             "~~*__Bold-Italic-Strikethrough__*~~",
             "~~_**Bold-Italic-Strikethrough**_~~",
             "~~**_Bold-Italic-Strikethrough_**~~",
@@ -43,13 +43,14 @@ class Tests: XCTestCase {
                 return
             }
 
+            XCTAssertTrue(!attributedString.isSurroundedBy("*", "_", "__", "**", "~~"))
             XCTAssertTrue(font.contains(attribute: .bold))
             XCTAssertTrue(font.contains(attribute: .italic))
             XCTAssertNotNil(attributes[NSAttributedString.Key.strikethroughStyle])
         }
     }
 
-    func testBoldItalic() throws {
+    func testParseBoldItalic() throws {
         let combinations = [
             "***Bold-Italic***",
             "___Bold-Italic___",
@@ -66,9 +67,52 @@ class Tests: XCTestCase {
                 XCTFail("Font attributes missing")
                 return
             }
+            XCTAssertTrue(!attributedString.isSurroundedBy("*", "_", "__", "**"))
             XCTAssertTrue(font.contains(attribute: .bold))
             XCTAssertTrue(font.contains(attribute: .italic))
         }
+    }
+
+    func testParseBold() throws {
+        let combinations = [
+            "**Bold**",
+            "__Bold__",
+        ]
+
+        combinations.forEach {
+            let attributedString = sut.parse($0)
+            let attributes = attributedString.attributes(at: 0, effectiveRange: nil)
+            guard let font = attributes[NSAttributedString.Key.font] as? MarkdownFont else {
+                XCTFail("Font attributes missing")
+                return
+            }
+            XCTAssertTrue(!attributedString.isSurroundedBy("__", "**"))
+            XCTAssertTrue(font.contains(attribute: .bold))
+        }
+    }
+
+    func testParseItalic() throws {
+        let combinations = [
+            "*Italic*",
+            "_Italic_"
+        ]
+
+        combinations.forEach {
+            let attributedString = sut.parse($0)
+            let attributes = attributedString.attributes(at: 0, effectiveRange: nil)
+            guard let font = attributes[NSAttributedString.Key.font] as? MarkdownFont else {
+                XCTFail("Font attributes missing")
+                return
+            }
+            XCTAssertTrue(!attributedString.isSurroundedBy("*", "_"))
+            XCTAssertTrue(font.contains(attribute: .italic))
+        }
+    }
+
+    func testParseStrikethrough() throws {
+        let attributedString = sut.parse("~~Strikethrough~~")
+        let attributes = attributedString.attributes(at: 0, effectiveRange: nil)
+        XCTAssertNotNil(attributes[NSAttributedString.Key.strikethroughStyle])
     }
 }
 
@@ -99,5 +143,13 @@ fileprivate extension MarkdownFont {
             return traits.contains(.traitItalic)
             #endif
         }
+    }
+}
+
+fileprivate extension NSAttributedString {
+    func isSurroundedBy(_ occurrences: String...) -> Bool {
+        occurrences.map {
+            string.hasPrefix($0) || string.hasSuffix($0)
+        }.first(where: { $0 == true }) != nil
     }
 }
