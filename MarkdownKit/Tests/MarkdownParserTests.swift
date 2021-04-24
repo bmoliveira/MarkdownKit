@@ -114,6 +114,68 @@ class Tests: XCTestCase {
         let attributes = attributedString.attributes(at: 0, effectiveRange: nil)
         XCTAssertNotNil(attributes[NSAttributedString.Key.strikethroughStyle])
     }
+
+    struct Link {
+        var title: String
+        var url: String
+        var prefix: String = ""
+        var suffix: String = ""
+        var string: String {
+            "\(prefix)[\(title)](\(url))\(suffix)"
+        }
+    }
+
+    func testParseLink() throws {
+        let links: [Link] = [
+            Link(title: "Link", url: "https://example.com/test.html"),
+            Link(title: "Link", url: "http://example.com/test.html"),
+            Link(title: "Link", url: "example.com/test.html"),
+            Link(title: "Link", url: "https://example.com/test.html"),
+            Link(title: "Link", url: "https://example.com/test.html", prefix: "(", suffix: ")"),
+            Link(title: "Link", url: "https://example.com/test(1).html"),
+            Link(title: "Link", url: "https://example.com/test(1).html", prefix: "(", suffix: ")"),
+            Link(title: "Link", url: "example.com/test(1).html"),
+            Link(title: "Link", url: "http://example.com/test(1)/another/test(2)"),
+            Link(title: "Link", url: "example.com/test(1)/another/test(2)"),
+            Link(title: "Link", url: "http://example.com/test(1).html"),
+            Link(title: "Lin(k", url: "http://example.com/test.html"),
+            Link(title: "Lin(k", url: "http://example.com/test.html", prefix: "((("),
+            Link(title: "Lin(k", url: "http://example.com/test.html", suffix: ")))"),
+            Link(title: "Lin(k", url: "http://example.com/test.html", prefix: "((", suffix: "))"),
+            Link(title: "Lin(k", url: "http://example.com/test.html", prefix: "(", suffix: "))))"),
+            Link(title: "Li)nk", url: "http://example.com/test.html"),
+            Link(title: "(Link)", url: "http://example.com/test.html")
+        ]
+
+        links.forEach {
+            let attributedString = sut.parse($0.string)
+
+            if !$0.prefix.isEmpty {
+                var prefixRange = NSRange(0..<$0.prefix.count)
+                let prefixAttributes = attributedString.attributes(at: 0, effectiveRange: &prefixRange)
+
+                XCTAssertNil(prefixAttributes[NSAttributedString.Key.link])
+            }
+
+            var range = NSRange(0..<($0.title.count))
+            let attributes = attributedString.attributes(at: $0.prefix.count, effectiveRange: &range)
+            let linkAttribute = attributes[NSAttributedString.Key.link]
+
+            XCTAssertNotNil(linkAttribute)
+            if $0.url.starts(with: "http") {
+                XCTAssertEqual((linkAttribute as! NSURL).absoluteString, $0.url)
+            } else {
+                XCTAssertEqual((linkAttribute as! NSURL).absoluteString, "https://" + $0.url)
+            }
+
+            if !$0.suffix.isEmpty {
+                var suffixRange = NSRange(0..<$0.suffix.count)
+                let suffixAttributes = attributedString.attributes(at: $0.title.count + $0.prefix.count, effectiveRange: &suffixRange)
+
+                XCTAssertNil(suffixAttributes[NSAttributedString.Key.link])
+            }
+        }
+    }
 }
 
 fileprivate extension MarkdownFont {
