@@ -58,15 +58,18 @@ open class MarkdownLink: MarkdownLinkElement {
     let string = NSString(string: attributedString.string)
     var urlString = String(string.substring(with: NSRange(urlStart..<match.range(at: 2).upperBound - 2 )))
 
-    // Determine url bounds by balancing opening and closing paranthesis
-    // Removes remaining extra closing parantheses
-    let numberOfOpeningParentheses = urlString.numberOfOccurrences(of: "(")
-    let numberOfClosingParentheses = urlString.numberOfOccurrences(of: ")")
-    var numberOfExtraClosingParentheses = max(0, numberOfClosingParentheses - numberOfOpeningParentheses)
-
-    while numberOfExtraClosingParentheses > 0 && urlString.hasSuffix(")") {
-      numberOfExtraClosingParentheses -= 1
-      urlString = String(urlString.dropLast())
+    var numberOfOpeningParantheses = 0
+    var numberOfClosingParantheses = 0
+    for (index, character) in urlString.enumerated() {
+        switch character {
+        case "(": numberOfOpeningParantheses += 1
+        case ")": numberOfClosingParantheses += 1
+        default: continue
+        }
+        if numberOfClosingParantheses > numberOfOpeningParantheses {
+            urlString = NSString(string: urlString).substring(with: NSRange(0..<index))
+            break
+        }
     }
 
     // Remove opening parantheses
@@ -84,10 +87,4 @@ open class MarkdownLink: MarkdownLinkElement {
   open func addAttributes(_ attributedString: NSMutableAttributedString, range: NSRange, link: String) {
     attributedString.addAttributes(attributes, range: range)
   }
-}
-
-fileprivate extension String {
-    func numberOfOccurrences(of string: String) -> Int {
-        return max(0, components(separatedBy: string).count - 1)
-    }
 }

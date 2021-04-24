@@ -145,8 +145,9 @@ class Tests: XCTestCase {
             Link(title: "Lin(k", url: "http://example.com/test.html"),
             Link(title: "Lin(k", url: "http://example.com/test.html", prefix: "((("),
             Link(title: "Lin(k", url: "http://example.com/test.html", suffix: ")))"),
-            Link(title: "Lin(k", url: "http://example.com/test.html", prefix: "((", suffix: "))"),
+            Link(title: "Lin(k", url: "http://example.com/tes(t).html", prefix: "((", suffix: "))"),
             Link(title: "Lin(k", url: "http://example.com/test.html", prefix: "(", suffix: "))))"),
+            Link(title: "Lin(k", url: "http://example.com/test.html", prefix: "wwc(", suffix: ")w)ss))"),
             Link(title: "Li)nk", url: "http://example.com/test.html"),
             Link(title: "(Link)", url: "http://example.com/test.html")
         ]
