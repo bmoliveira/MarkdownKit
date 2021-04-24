@@ -114,8 +114,8 @@ open class MarkdownParser {
   }
 
   // MARK: Element Extensibility
-  public func replaceDefaultElement<E: MarkdownElement>(_ defaultElement: E.Type, with element: MarkdownElement) {
-    guard let index = defaultElements.firstIndex(where: { $0 is E }) else { return }
+  public func replaceDefaultElement(_ defaultElement: MarkdownElement, with element: MarkdownElement) {
+    guard let index = defaultElements.firstIndex(where: { $0 === defaultElement }) else { return }
 	defaultElements[index] = element
   }
 
