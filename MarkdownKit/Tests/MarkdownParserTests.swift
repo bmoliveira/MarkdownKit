@@ -10,7 +10,11 @@ import XCTest
 @testable import MarkdownKit
 class Tests: XCTestCase {
 
-    let sut: MarkdownParser = MarkdownParser()
+    var sut: MarkdownParser!
+
+    override func setUp() {
+        sut = MarkdownParser()
+    }
 
     func testParseBoldItalicStrikethrough() throws {
         let combinations = [
@@ -176,6 +180,43 @@ class Tests: XCTestCase {
             }
         }
     }
+
+    func testLinkShouldObtainDefaultScheme() {
+        let links: [Link] = [
+            Link(title: "Link", url: "example.com/test.html"),
+            Link(title: "Link", url: "https://example.com/test.html"),
+        ]
+
+        let defaultScheme = "http://"
+
+        sut = MarkdownParser()
+        sut.link.defaultScheme = defaultScheme
+
+        XCTAssertEqual(sut.parse(links[0].string).link, defaultScheme + links[0].url)
+        XCTAssertEqual(sut.parse(links[1].string).link, links[1].url)
+    }
+
+
+    func testLinkShouldParseDifferentSchemes() {
+        let links: [Link] = [
+            Link(title: "Link", url: "https://example.com/test.html"),
+            Link(title: "Link", url: "http://example.com/test.html"),
+            Link(title: "Link", url: "mailto://test@test.de"),
+            Link(title: "Link", url: "tel://123575433"),
+        ]
+
+        links.forEach {
+            let attributedString = sut.parse($0.string)
+            XCTAssertEqual(attributedString.link, $0.url)
+        }
+    }
+
+    func testLinkShouldFallbackToHttps() {
+        let link = Link(title: "Link", url: "example.com/test.html")
+        let attributedString = sut.parse(link.string)
+        XCTAssertEqual(attributedString.link, "https://" + link.url)
+        XCTAssertNil(sut.link.defaultScheme)
+    }
 }
 
 fileprivate extension MarkdownFont {
@@ -213,5 +254,11 @@ fileprivate extension NSAttributedString {
         occurrences.map {
             string.hasPrefix($0) || string.hasSuffix($0)
         }.first(where: { $0 == true }) != nil
+    }
+
+    var link: String {
+        var range = NSRange(0..<self.length)
+        let attributes = self.attributes(at: 0, effectiveRange: &range)
+        return (attributes[NSAttributedString.Key.link] as? NSURL)?.absoluteString ?? ""
     }
 }
