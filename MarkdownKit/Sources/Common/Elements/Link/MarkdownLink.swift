@@ -6,13 +6,17 @@
 //
 //
 import Foundation
+import OSLog
 
 open class MarkdownLink: MarkdownLinkElement {
 
   fileprivate static let regex = "(\\[[^\\]]+)(\\]\\([^\\s]+)?\\)"
 
+  private let schemeRegex = "([a-z]{2,20}):\\/\\/"
+
   open var font: MarkdownFont?
   open var color: MarkdownColor?
+  open var defaultScheme: String?
 
   open var regex: String {
     return MarkdownLink.regex
@@ -27,14 +31,17 @@ open class MarkdownLink: MarkdownLinkElement {
     self.color = color
   }
 
-  open func formatText(_ attributedString: NSMutableAttributedString, range: NSRange,
-                         link: String) {
-    let fullLink = link.starts(with: "http") ? link : "https://\(link)"
+  open func formatText(_ attributedString: NSMutableAttributedString, range: NSRange, link: String) {
+    let regex = try? NSRegularExpression(pattern: schemeRegex, options: .caseInsensitive)
+    let hasScheme = regex?.firstMatch(
+        in: link,
+        options: .anchored,
+        range: NSRange(0..<link.count)
+    ) != nil
 
-    guard let encodedLink = fullLink.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlHostAllowed)
-      else {
-      return
-    }
+    let fullLink = hasScheme ? link : "\(defaultScheme ?? "https://")\(link)"
+
+    guard let encodedLink = fullLink.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed) else { return }
     guard let url = URL(string: fullLink) ?? URL(string: encodedLink) else { return }
     attributedString.addAttribute(NSAttributedString.Key.link, value: url, range: range)
   }
