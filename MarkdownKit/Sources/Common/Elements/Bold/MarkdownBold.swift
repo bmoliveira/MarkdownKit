@@ -13,7 +13,7 @@ open class MarkdownBold: MarkdownCommonElement {
 
   open var font: MarkdownFont?
   open var color: MarkdownColor?
-  
+
   open var regex: String {
     return MarkdownBold.regex
   }
@@ -26,17 +26,21 @@ open class MarkdownBold: MarkdownCommonElement {
   public func match(_ match: NSTextCheckingResult, attributedString: NSMutableAttributedString) {
     attributedString.deleteCharacters(in: match.range(at: 4))
 
-    var attributes = attributedString.attributes(
-        at: match.range(at: 3).location,
-        longestEffectiveRange: nil,
-        in: match.range(at: 3)
+    let currentAttributes = attributedString.attributes(
+      at: match.range(at: 3).location,
+      longestEffectiveRange: nil,
+      in: match.range(at: 3)
     )
 
-    if let font = attributes[.font] as? MarkdownFont {
-        attributes[NSAttributedString.Key.font] = font.bold()
-    }
+    addAttributes(attributedString, range: match.range(at: 3))
 
-    attributedString.addAttributes(attributes, range: match.range(at: 3))
+    if let font = currentAttributes[.font] as? MarkdownFont {
+      attributedString.addAttribute(
+        NSAttributedString.Key.font,
+        value: font.bold(),
+        range: match.range(at: 3)
+      )
+    }
 
     attributedString.deleteCharacters(in: match.range(at: 2))
   }

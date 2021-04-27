@@ -11,8 +11,11 @@ open class MarkdownLink: MarkdownLinkElement {
 
   fileprivate static let regex = "(\\[[^\\]]+)(\\]\\([^\\s]+)?\\)"
 
+  private let schemeRegex = "([a-z]{2,20}):\\/\\/"
+
   open var font: MarkdownFont?
   open var color: MarkdownColor?
+  open var defaultScheme: String?
 
   open var regex: String {
     return MarkdownLink.regex
@@ -27,14 +30,17 @@ open class MarkdownLink: MarkdownLinkElement {
     self.color = color
   }
 
-  open func formatText(_ attributedString: NSMutableAttributedString, range: NSRange,
-                         link: String) {
-    let fullLink = link.starts(with: "http") ? link : "https://\(link)"
+  open func formatText(_ attributedString: NSMutableAttributedString, range: NSRange, link: String) {
+    let regex = try? NSRegularExpression(pattern: schemeRegex, options: .caseInsensitive)
+    let hasScheme = regex?.firstMatch(
+        in: link,
+        options: .anchored,
+        range: NSRange(0..<link.count)
+    ) != nil
 
-    guard let encodedLink = fullLink.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlHostAllowed)
-      else {
-      return
-    }
+    let fullLink = hasScheme ? link : "\(defaultScheme ?? "https://")\(link)"
+
+    guard let encodedLink = fullLink.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed) else { return }
     guard let url = URL(string: fullLink) ?? URL(string: encodedLink) else { return }
     attributedString.addAttribute(NSAttributedString.Key.link, value: url, range: range)
   }
@@ -51,36 +57,51 @@ open class MarkdownLink: MarkdownLinkElement {
     let string = NSString(string: attributedString.string)
     var urlString = String(string.substring(with: NSRange(urlStart..<match.range(at: 2).upperBound - 2 )))
 
-    // Determine url bounds by balancing opening and closing paranthesis
-    // Removes remaining extra closing parantheses
-    let numberOfOpeningParentheses = urlString.numberOfOccurrences(of: "(")
-    let numberOfClosingParentheses = urlString.numberOfOccurrences(of: ")")
-    var numberOfExtraClosingParentheses = max(0, numberOfClosingParentheses - numberOfOpeningParentheses)
-
-    while numberOfExtraClosingParentheses > 0 && urlString.hasSuffix(")") {
-      numberOfExtraClosingParentheses -= 1
-      urlString = String(urlString.dropLast())
+    // Balance opening and closing parantheses inside the url
+    var numberOfOpeningParantheses = 0
+    var numberOfClosingParantheses = 0
+    for (index, character) in urlString.enumerated() {
+        switch character {
+        case "(": numberOfOpeningParantheses += 1
+        case ")": numberOfClosingParantheses += 1
+        default: continue
+        }
+        if numberOfClosingParantheses > numberOfOpeningParantheses {
+            urlString = NSString(string: urlString).substring(with: NSRange(0..<index))
+            break
+        }
     }
 
     // Remove opening parantheses
-    attributedString.deleteCharacters(in: NSRange(location: match.range(at: 2).location  , length: 1))
+    attributedString.deleteCharacters(in: NSRange(location: match.range(at: 2).location, length: 1))
 
     // Remove closing parantheses
     let trailingMarkdownRange = NSRange(location: match.range(at: 2).location - 1, length: urlString.count + 1)
     attributedString.deleteCharacters(in: trailingMarkdownRange)
 
     let formatRange = NSRange(match.range(at: 1).location..<match.range(at: 2).location - 1)
+
+    // Add attributes while preserving current attributes
+
+    let currentAttributes = attributedString.attributes(
+      at: formatRange.location,
+      longestEffectiveRange: nil,
+      in: formatRange
+    )
+
+    addAttributes(attributedString, range: formatRange)
     formatText(attributedString, range: formatRange, link: urlString)
-    addAttributes(attributedString, range: formatRange, link: urlString)
+
+    if let font = currentAttributes[.font] as? MarkdownFont {
+      attributedString.addAttribute(
+        NSAttributedString.Key.font,
+        value: font,
+        range: formatRange
+      )
+    }
   }
 
-  open func addAttributes(_ attributedString: NSMutableAttributedString, range: NSRange, link: String) {
+  open func addAttributes(_ attributedString: NSMutableAttributedString, range: NSRange) {
     attributedString.addAttributes(attributes, range: range)
   }
-}
-
-fileprivate extension String {
-    func numberOfOccurrences(of string: String) -> Int {
-        return max(0, components(separatedBy: string).count - 1)
-    }
 }

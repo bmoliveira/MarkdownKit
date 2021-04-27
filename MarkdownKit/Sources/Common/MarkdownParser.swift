@@ -58,7 +58,7 @@ open class MarkdownParser {
   public let italic: MarkdownItalic
   public let code: MarkdownCode
   public let strikethrough: MarkdownStrikethrough
-  
+
   // MARK: Escaping Elements
   fileprivate var codeEscaping = MarkdownCodeEscaping()
   fileprivate var escaping = MarkdownEscaping()
@@ -78,7 +78,7 @@ open class MarkdownParser {
   public let color: MarkdownColor
   
   // MARK: Legacy Initializer
-  @available(*, deprecated, renamed: "init", message: "This constructor will be removed soon, please use the new opions constructor")
+  @available(*, deprecated, renamed: "init", message: "This constructor will be removed soon, please use the new options constructor")
   public convenience init(automaticLinkDetectionEnabled: Bool,
                           font: MarkdownFont = MarkdownParser.defaultFont,
                           customElements: [MarkdownElement] = []) {
@@ -94,15 +94,15 @@ open class MarkdownParser {
     self.font = font
     self.color = color
     
-    header = MarkdownHeader(font: font)
-    list = MarkdownList(font: font)
-    quote = MarkdownQuote(font: font)
-    link = MarkdownLink(font: font)
-    automaticLink = MarkdownAutomaticLink(font: font)
-    bold = MarkdownBold(font: font)
-    italic = MarkdownItalic(font: font)
-    code = MarkdownCode(font: font)
-    strikethrough = MarkdownStrikethrough(font: font)
+    self.header = MarkdownHeader(font: font)
+    self.list = MarkdownList(font: font)
+    self.quote = MarkdownQuote(font: font)
+    self.link = MarkdownLink(font: font)
+    self.automaticLink = MarkdownAutomaticLink(font: font)
+    self.bold = MarkdownBold(font: font)
+    self.italic = MarkdownItalic(font: font)
+    self.code = MarkdownCode(font: font)
+    self.strikethrough = MarkdownStrikethrough(font: font)
 
     self.escapingElements = [codeEscaping, escaping]
     self.unescapingElements = [code, unescaping]
@@ -113,23 +113,20 @@ open class MarkdownParser {
     updateUnescapingElements()
   }
 
-  public func replaceDefaultElement<E: MarkdownElement>(_ defaultElement: E.Type, with element: MarkdownElement) {
-    guard let index = defaultElements.firstIndex(where: { $0 is E }) else { return }
+  // MARK: Element Extensibility
+  public func replaceDefaultElement(_ defaultElement: MarkdownElement, with element: MarkdownElement) {
+    guard let index = defaultElements.firstIndex(where: { $0 === defaultElement }) else { return }
 	defaultElements[index] = element
   }
-  
-  // MARK: Element Extensibility
+
   open func addCustomElement(_ element: MarkdownElement) {
     customElements.append(element)
   }
   
   open func removeCustomElement(_ element: MarkdownElement) {
-    guard let index = customElements.firstIndex(where: { someElement -> Bool in
-      return element === someElement
-    }) else {
-      return
+    if let index = customElements.firstIndex(where: { $0 === element }) {
+      customElements.remove(at: index)
     }
-    customElements.remove(at: index)
   }
   
   // MARK: Parsing
@@ -154,15 +151,16 @@ open class MarkdownParser {
   }
 
   fileprivate func updateDefaultElements() {
+    // Parsing order matters!
     let pairs: [(EnabledElements, MarkdownElement)] = [
       (.header, header),
       (.list, list),
       (.quote, quote),
-      (.link, link),
-      (.automaticLink, automaticLink),
       (.strikethrough, strikethrough),
       (.bold, bold),
       (.italic, italic),
+      (.link, link),
+      (.automaticLink, automaticLink),
       (.code, code),
     ]
     defaultElements = pairs.compactMap { enabled, element in

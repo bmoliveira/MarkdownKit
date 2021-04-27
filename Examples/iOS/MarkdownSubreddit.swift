@@ -22,7 +22,7 @@ class MarkdownSubreddit: MarkdownLink {
     let subredditName = attributedString.attributedSubstring(from: match.range(at: 3)).string
     let linkURLString = "http://reddit.com/r/\(subredditName)"
     formatText(attributedString, range: match.range, link: linkURLString)
-    addAttributes(attributedString, range: match.range, link: linkURLString)
+    addAttributes(attributedString, range: match.range)
   }
   
 }
