@@ -19,12 +19,12 @@ extension UIFont {
     return UIFont(descriptor: descriptor, size: 0)
   }
 
-  func bold() -> UIFont? {
-    return withTraits(.traitBold)
+  func bold() -> UIFont {
+    return withTraits(fontDescriptor.symbolicTraits, .traitBold) ?? self
   }
 
-  func italic() -> UIFont? {
-    return withTraits(.traitItalic)
+  func italic() -> UIFont {
+    return withTraits(fontDescriptor.symbolicTraits, .traitItalic) ?? self
   }
 }
 

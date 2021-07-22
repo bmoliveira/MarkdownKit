@@ -9,11 +9,13 @@
 /* Begin PBXBuildFile section */
 		3D5A80C926177A1100EE65C6 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 3D5A80C826177A1100EE65C6 /* Alamofire */; };
 		3D5A80D626177A3800EE65C6 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 3D5A80D526177A3800EE65C6 /* Alamofire */; };
-		3D5A81362617830500EE65C6 /* MarkdownKit in Frameworks */ = {isa = PBXBuildFile; productRef = 3D5A81352617830500EE65C6 /* MarkdownKit */; };
-		3D5A813C2617830D00EE65C6 /* MarkdownKit in Frameworks */ = {isa = PBXBuildFile; productRef = 3D5A813B2617830D00EE65C6 /* MarkdownKit */; };
 		3D6C279C25E80DD8008ED858 /* Typealias.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D6C279B25E80DD8008ED858 /* Typealias.swift */; };
 		3D6C279D25E80DD8008ED858 /* Typealias.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D6C279B25E80DD8008ED858 /* Typealias.swift */; };
 		3D6C27A225E80DE5008ED858 /* MarkdownStrikethrough.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EB3627C23154D90005D48C8 /* MarkdownStrikethrough.swift */; };
+		3DBA812126317375009CEB6B /* MarkdownKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B62C1BFF21EF7EED00308C8C /* MarkdownKit.framework */; };
+		3DBA812226317375009CEB6B /* MarkdownKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B62C1BFF21EF7EED00308C8C /* MarkdownKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		3DBA81262631737A009CEB6B /* MarkdownKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B64AF6142203402F0048439D /* MarkdownKit.framework */; };
+		3DBA81272631737A009CEB6B /* MarkdownKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B64AF6142203402F0048439D /* MarkdownKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		3EB3627D23154D90005D48C8 /* MarkdownStrikethrough.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EB3627C23154D90005D48C8 /* MarkdownStrikethrough.swift */; };
 		B62C1BEB21EF7D8D00308C8C /* String+HTMLDecode.swift in Sources */ = {isa = PBXBuildFile; fileRef = B62C1BE221EF7D8C00308C8C /* String+HTMLDecode.swift */; };
 		B62C1BEC21EF7D8D00308C8C /* MarkdownSubreddit.swift in Sources */ = {isa = PBXBuildFile; fileRef = B62C1BE321EF7D8C00308C8C /* MarkdownSubreddit.swift */; };
@@ -57,7 +59,7 @@
 		B64AF64D220349920048439D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B64AF64C220349920048439D /* Assets.xcassets */; };
 		B64AF650220349920048439D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B64AF64E220349920048439D /* Main.storyboard */; };
 		B64AF66522034C240048439D /* MarkdownFont+Traits.swift in Sources */ = {isa = PBXBuildFile; fileRef = B64AF66322034C240048439D /* MarkdownFont+Traits.swift */; };
-		B64AF667220355120048439D /* MarkdownKitViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B695DA0D21F5E60300FC6FCD /* MarkdownKitViewModel.swift */; };
+		B64AF667220355120048439D /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B695DA0D21F5E60300FC6FCD /* ViewModel.swift */; };
 		B672001B21EF8A96008649E1 /* MarkdownParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = B672000321EF8A96008649E1 /* MarkdownParser.swift */; };
 		B672001C21EF8A96008649E1 /* String+UTF16.swift in Sources */ = {isa = PBXBuildFile; fileRef = B672000521EF8A96008649E1 /* String+UTF16.swift */; };
 		B672001D21EF8A96008649E1 /* UIFont+Traits.swift in Sources */ = {isa = PBXBuildFile; fileRef = B672000621EF8A96008649E1 /* UIFont+Traits.swift */; };
@@ -77,10 +79,53 @@
 		B672002C21EF8A96008649E1 /* MarkdownLevelElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = B672001821EF8A96008649E1 /* MarkdownLevelElement.swift */; };
 		B672002D21EF8A96008649E1 /* MarkdownElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = B672001921EF8A96008649E1 /* MarkdownElement.swift */; };
 		B672002E21EF8A96008649E1 /* MarkdownStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = B672001A21EF8A96008649E1 /* MarkdownStyle.swift */; };
-		B695DA0E21F5E60300FC6FCD /* MarkdownKitViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B695DA0D21F5E60300FC6FCD /* MarkdownKitViewModel.swift */; };
+		B695DA0E21F5E60300FC6FCD /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B695DA0D21F5E60300FC6FCD /* ViewModel.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		3DBA812326317375009CEB6B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B62C1BA521EF7C8000308C8C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B62C1BFE21EF7EED00308C8C;
+			remoteInfo = "MarkdownKit iOS";
+		};
+		3DBA81282631737A009CEB6B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B62C1BA521EF7C8000308C8C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B64AF6132203402F0048439D;
+			remoteInfo = "MarkdownKit macOS";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		3DBA812526317375009CEB6B /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				3DBA812226317375009CEB6B /* MarkdownKit.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3DBA812A2631737A009CEB6B /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				3DBA81272631737A009CEB6B /* MarkdownKit.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		3D3A84BA2632058A00E69F9F /* MarkdownParserTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkdownParserTests.swift; sourceTree = "<group>"; };
 		3D6C279B25E80DD8008ED858 /* Typealias.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Typealias.swift; sourceTree = "<group>"; };
 		3EB3627C23154D90005D48C8 /* MarkdownStrikethrough.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkdownStrikethrough.swift; sourceTree = "<group>"; };
 		B62C1BAD21EF7C8000308C8C /* Example iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Example iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -136,7 +181,7 @@
 		B672001821EF8A96008649E1 /* MarkdownLevelElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarkdownLevelElement.swift; sourceTree = "<group>"; };
 		B672001921EF8A96008649E1 /* MarkdownElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarkdownElement.swift; sourceTree = "<group>"; };
 		B672001A21EF8A96008649E1 /* MarkdownStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarkdownStyle.swift; sourceTree = "<group>"; };
-		B695DA0D21F5E60300FC6FCD /* MarkdownKitViewModel.swift */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = MarkdownKitViewModel.swift; sourceTree = "<group>"; tabWidth = 2; };
+		B695DA0D21F5E60300FC6FCD /* ViewModel.swift */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; tabWidth = 2; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -144,7 +189,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3D5A81362617830500EE65C6 /* MarkdownKit in Frameworks */,
+				3DBA812126317375009CEB6B /* MarkdownKit.framework in Frameworks */,
 				3D5A80C926177A1100EE65C6 /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -167,7 +212,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3D5A813C2617830D00EE65C6 /* MarkdownKit in Frameworks */,
+				3DBA81262631737A009CEB6B /* MarkdownKit.framework in Frameworks */,
 				3D5A80D626177A3800EE65C6 /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -175,6 +220,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3D3A84B92632058A00E69F9F /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				3D3A84BA2632058A00E69F9F /* MarkdownParserTests.swift */,
+			);
+			path = Tests;
+			sourceTree = "<group>";
+		};
 		3D5A81222617823200EE65C6 /* iOS */ = {
 			isa = PBXGroup;
 			children = (
@@ -246,6 +299,7 @@
 			isa = PBXGroup;
 			children = (
 				B672000221EF8A96008649E1 /* Sources */,
+				3D3A84B92632058A00E69F9F /* Tests */,
 				B62C1C4221EF7F2E00308C8C /* Resources */,
 			);
 			path = MarkdownKit;
@@ -450,7 +504,7 @@
 		B64AF666220354EB0048439D /* Examples */ = {
 			isa = PBXGroup;
 			children = (
-				B695DA0D21F5E60300FC6FCD /* MarkdownKitViewModel.swift */,
+				B695DA0D21F5E60300FC6FCD /* ViewModel.swift */,
 				B64AF647220349900048439D /* macOS */,
 				B62C1BAF21EF7C8000308C8C /* iOS */,
 			);
@@ -570,15 +624,16 @@
 				B62C1BA921EF7C8000308C8C /* Sources */,
 				B62C1BAA21EF7C8000308C8C /* Frameworks */,
 				B62C1BAB21EF7C8000308C8C /* Resources */,
+				3DBA812526317375009CEB6B /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				3DBA812426317375009CEB6B /* PBXTargetDependency */,
 			);
 			name = "Example iOS";
 			packageProductDependencies = (
 				3D5A80C826177A1100EE65C6 /* Alamofire */,
-				3D5A81352617830500EE65C6 /* MarkdownKit */,
 			);
 			productName = MarkdownKit;
 			productReference = B62C1BAD21EF7C8000308C8C /* Example iOS.app */;
@@ -627,15 +682,16 @@
 				B64AF642220349900048439D /* Sources */,
 				B64AF643220349900048439D /* Frameworks */,
 				B64AF644220349900048439D /* Resources */,
+				3DBA812A2631737A009CEB6B /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				3DBA81292631737A009CEB6B /* PBXTargetDependency */,
 			);
 			name = "Example macOS";
 			packageProductDependencies = (
 				3D5A80D526177A3800EE65C6 /* Alamofire */,
-				3D5A813B2617830D00EE65C6 /* MarkdownKit */,
 			);
 			productName = "Example-Appkit";
 			productReference = B64AF646220349900048439D /* Example macOS.app */;
@@ -647,7 +703,7 @@
 		B62C1BA521EF7C8000308C8C /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1010;
+				LastSwiftUpdateCheck = 1240;
 				LastUpgradeCheck = 1240;
 				ORGANIZATIONNAME = "Ivan Bruel";
 				TargetAttributes = {
@@ -683,7 +739,6 @@
 			mainGroup = B62C1BA421EF7C8000308C8C;
 			packageReferences = (
 				3D5A80C726177A1100EE65C6 /* XCRemoteSwiftPackageReference "Alamofire" */,
-				3D5A81342617830500EE65C6 /* XCRemoteSwiftPackageReference "MarkdownKit" */,
 			);
 			productRefGroup = B62C1BAE21EF7C8000308C8C /* Products */;
 			projectDirPath = "";
@@ -742,7 +797,7 @@
 			files = (
 				B62C1BEF21EF7D8D00308C8C /* AppDelegate.swift in Sources */,
 				B62C1BEB21EF7D8D00308C8C /* String+HTMLDecode.swift in Sources */,
-				B695DA0E21F5E60300FC6FCD /* MarkdownKitViewModel.swift in Sources */,
+				B695DA0E21F5E60300FC6FCD /* ViewModel.swift in Sources */,
 				B62C1BF121EF7D8D00308C8C /* ViewController.swift in Sources */,
 				B62C1BEC21EF7D8D00308C8C /* MarkdownSubreddit.swift in Sources */,
 			);
@@ -816,13 +871,26 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B64AF667220355120048439D /* MarkdownKitViewModel.swift in Sources */,
+				B64AF667220355120048439D /* ViewModel.swift in Sources */,
 				B64AF64B220349900048439D /* ViewController.swift in Sources */,
 				B64AF649220349900048439D /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		3DBA812426317375009CEB6B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B62C1BFE21EF7EED00308C8C /* MarkdownKit iOS */;
+			targetProxy = 3DBA812326317375009CEB6B /* PBXContainerItemProxy */;
+		};
+		3DBA81292631737A009CEB6B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B64AF6132203402F0048439D /* MarkdownKit macOS */;
+			targetProxy = 3DBA81282631737A009CEB6B /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		B62C1BF421EF7DA400308C8C /* LaunchScreen.xib */ = {
@@ -1235,14 +1303,6 @@
 				minimumVersion = 5.4.1;
 			};
 		};
-		3D5A81342617830500EE65C6 /* XCRemoteSwiftPackageReference "MarkdownKit" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/bmoliveira/MarkdownKit";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.7.0;
-			};
-		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1255,16 +1315,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 3D5A80C726177A1100EE65C6 /* XCRemoteSwiftPackageReference "Alamofire" */;
 			productName = Alamofire;
-		};
-		3D5A81352617830500EE65C6 /* MarkdownKit */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 3D5A81342617830500EE65C6 /* XCRemoteSwiftPackageReference "MarkdownKit" */;
-			productName = MarkdownKit;
-		};
-		3D5A813B2617830D00EE65C6 /* MarkdownKit */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 3D5A81342617830500EE65C6 /* XCRemoteSwiftPackageReference "MarkdownKit" */;
-			productName = MarkdownKit;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

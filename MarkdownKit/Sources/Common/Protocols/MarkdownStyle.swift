@@ -11,11 +11,10 @@ import Foundation
 public protocol MarkdownStyle {
   var font: MarkdownFont? { get }
   var color: MarkdownColor? { get }
-    var attributes: [NSAttributedString.Key: AnyObject] { get }
+  var attributes: [NSAttributedString.Key: AnyObject] { get }
 }
 
 public extension MarkdownStyle {
-  
     var attributes: [NSAttributedString.Key: AnyObject] {
         var attributes = [NSAttributedString.Key: AnyObject]()
     if let font = font {
@@ -26,5 +25,4 @@ public extension MarkdownStyle {
     }
     return attributes
   }
-  
 }

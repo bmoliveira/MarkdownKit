@@ -17,6 +17,6 @@ open class MarkdownAutomaticLink: MarkdownLink {
                              attributedString: NSMutableAttributedString) {
     let linkURLString = attributedString.attributedSubstring(from: match.range).string
     formatText(attributedString, range: match.range, link: linkURLString)
-    addAttributes(attributedString, range: match.range, link: linkURLString)
+    addAttributes(attributedString, range: match.range)
   }
 }
