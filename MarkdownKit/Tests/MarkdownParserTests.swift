@@ -218,6 +218,18 @@ class Tests: XCTestCase {
         XCTAssertEqual(attributedString.link, "https://" + link.url)
         XCTAssertNil(sut.link.defaultScheme)
     }
+
+    func testParseSimpleList() {
+        let markdown = "* first item\n* second item"
+        let attributedString = sut.parse(markdown)
+        XCTAssertTrue(attributedString.string.contains(sut.list.separator))
+    }
+
+    func testParseListWithLotsOfSpacesAfterIndicator() {
+        let markdown = "*                                 first item\n*   second item"
+        let attributedString = sut.parse(markdown)
+        XCTAssertTrue(attributedString.string.contains(sut.list.separator))
+    }
 }
 
 fileprivate extension MarkdownFont {
