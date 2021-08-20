@@ -94,15 +94,15 @@ open class MarkdownParser {
     self.font = font
     self.color = color
     
-    self.header = MarkdownHeader(font: font)
-    self.list = MarkdownList(font: font)
-    self.quote = MarkdownQuote(font: font)
-    self.link = MarkdownLink(font: font)
-    self.automaticLink = MarkdownAutomaticLink(font: font)
-    self.bold = MarkdownBold(font: font)
-    self.italic = MarkdownItalic(font: font)
-    self.code = MarkdownCode(font: font)
-    self.strikethrough = MarkdownStrikethrough(font: font)
+    self.header = MarkdownHeader()
+    self.list = MarkdownList()
+    self.quote = MarkdownQuote()
+    self.link = MarkdownLink()
+    self.automaticLink = MarkdownAutomaticLink()
+    self.bold = MarkdownBold()
+    self.italic = MarkdownItalic()
+    self.code = MarkdownCode()
+    self.strikethrough = MarkdownStrikethrough()
 
     self.escapingElements = [codeEscaping, escaping]
     self.unescapingElements = [code, unescaping]

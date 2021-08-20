@@ -18,8 +18,8 @@ open class MarkdownItalic: MarkdownCommonElement {
     return MarkdownItalic.regex
   }
   
-  public init(font: MarkdownFont?, color: MarkdownColor? = nil) {
-    self.font = font?.italic()
+  public init(font: MarkdownFont? = nil, color: MarkdownColor? = nil) {
+    self.font = font
     self.color = color
   }
     
@@ -27,7 +27,10 @@ open class MarkdownItalic: MarkdownCommonElement {
     attributedString.deleteCharacters(in: match.range(at: 4))
 
     attributedString.enumerateAttribute(.font, in: match.range(at: 3)) { value, range, stop in
-      if let font = value as? MarkdownFont {
+      guard let font = value as? MarkdownFont else { return }
+      if let customFont = self.font {
+        self.font = font.isBold() ? customFont.bold().italic() : customFont.italic()
+      } else {
         attributedString.addAttribute(
           NSAttributedString.Key.font,
           value: font.italic(),
@@ -35,6 +38,8 @@ open class MarkdownItalic: MarkdownCommonElement {
         )
       }
     }
+
+    addAttributes(attributedString, range: match.range(at: 3))
 
     attributedString.deleteCharacters(in: match.range(at: 2))
   }
