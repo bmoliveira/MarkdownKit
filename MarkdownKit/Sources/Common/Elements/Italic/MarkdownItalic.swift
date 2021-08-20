@@ -9,7 +9,7 @@ import Foundation
 
 open class MarkdownItalic: MarkdownCommonElement {
   
-  fileprivate static let regex = "(\\s|^)(\\*|_)(?![\\*_\\s])(.+?)(?<![\\*_\\s])(\\2)"
+  fileprivate static let regex = "(.?|^)(\\*|_)(?=\\S)(.+?)(?<![\\*_\\s])(\\2)"
 
   open var font: MarkdownFont?
   open var color: MarkdownColor?
@@ -26,20 +26,14 @@ open class MarkdownItalic: MarkdownCommonElement {
   public func match(_ match: NSTextCheckingResult, attributedString: NSMutableAttributedString) {
     attributedString.deleteCharacters(in: match.range(at: 4))
 
-    let currentAttributes = attributedString.attributes(
-      at: match.range(at: 3).location,
-      longestEffectiveRange: nil,
-      in: match.range(at: 3)
-    )
-
-    addAttributes(attributedString, range: match.range(at: 3))
-
-    if let font = currentAttributes[.font] as? MarkdownFont {
-      attributedString.addAttribute(
-        NSAttributedString.Key.font,
-        value: font.italic(),
-        range: match.range(at: 3)
-      )
+    attributedString.enumerateAttribute(.font, in: match.range(at: 3)) { value, range, stop in
+      if let font = value as? MarkdownFont {
+        attributedString.addAttribute(
+          NSAttributedString.Key.font,
+          value: font.italic(),
+          range: range
+        )
+      }
     }
 
     attributedString.deleteCharacters(in: match.range(at: 2))

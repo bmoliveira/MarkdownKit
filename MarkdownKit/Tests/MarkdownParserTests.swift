@@ -16,6 +16,29 @@ class Tests: XCTestCase {
         sut = MarkdownParser()
     }
 
+    func testShouldNotParseWithWhitespace() {
+        let variations = [
+            "__ Bold __",
+            "_ Italic _",
+            "** Bold **",
+            "X * Italic *",
+            "~~ Strikethrough ~~"
+        ]
+
+        variations.forEach {
+            let attributedString = sut.parse($0)
+            let attributes = attributedString.attributes(at: 0, effectiveRange: nil)
+            guard let font = attributes[NSAttributedString.Key.font] as? MarkdownFont else {
+                XCTFail("Font attributes missing")
+                return
+            }
+
+            XCTAssertFalse(font.contains(attribute: .bold))
+            XCTAssertFalse(font.contains(attribute: .italic))
+            XCTAssertNil(attributes[NSAttributedString.Key.strikethroughStyle])
+        }
+    }
+
     func testParseBoldItalicStrikethrough() throws {
         let combinations = [
             "___~~Bold-Italic-Strikethrough~~___",

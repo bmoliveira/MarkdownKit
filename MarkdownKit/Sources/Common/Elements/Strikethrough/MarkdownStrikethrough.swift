@@ -25,15 +25,11 @@ open class MarkdownStrikethrough: MarkdownCommonElement {
   public func match(_ match: NSTextCheckingResult, attributedString: NSMutableAttributedString) {
     attributedString.deleteCharacters(in: match.range(at: 4))
 
-    var attributes = attributedString.attributes(
-      at: match.range(at: 3).location,
-      longestEffectiveRange: nil,
-      in: match.range(at: 3)
+    attributedString.addAttribute(
+      NSAttributedString.Key.strikethroughStyle,
+      value: NSNumber.init(value: NSUnderlineStyle.single.rawValue),
+      range: match.range(at: 3)
     )
-
-    attributes[NSAttributedString.Key.strikethroughStyle] = NSNumber.init(value: NSUnderlineStyle.single.rawValue)
-
-    attributedString.addAttributes(attributes, range: match.range(at: 3))
 
     attributedString.deleteCharacters(in: match.range(at: 2))
   }
