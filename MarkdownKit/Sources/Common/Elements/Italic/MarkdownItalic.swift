@@ -26,20 +26,22 @@ open class MarkdownItalic: MarkdownCommonElement {
   public func match(_ match: NSTextCheckingResult, attributedString: NSMutableAttributedString) {
     attributedString.deleteCharacters(in: match.range(at: 4))
 
-    attributedString.enumerateAttribute(.font, in: match.range(at: 3)) { value, range, stop in
-      guard let font = value as? MarkdownFont else { return }
+    var attributes = self.attributes
+
+    attributedString.enumerateAttribute(.font, in: match.range(at: 3)) { value, range, _ in
+      guard let currentFont = value as? MarkdownFont else { return }
       if let customFont = self.font {
-        self.font = font.isBold() ? customFont.bold().italic() : customFont.italic()
+        attributes[.font] = currentFont.isBold() ? customFont.bold().italic() : customFont.italic()
       } else {
         attributedString.addAttribute(
           NSAttributedString.Key.font,
-          value: font.italic(),
+          value: currentFont.italic(),
           range: range
         )
       }
     }
 
-    addAttributes(attributedString, range: match.range(at: 3))
+    attributedString.addAttributes(attributes, range: match.range(at: 3))
 
     attributedString.deleteCharacters(in: match.range(at: 2))
   }
