@@ -6,6 +6,7 @@
 //
 //
 import Foundation
+import struct CoreGraphics.CGFloat
 
 open class MarkdownList: MarkdownLevelElement {
 
