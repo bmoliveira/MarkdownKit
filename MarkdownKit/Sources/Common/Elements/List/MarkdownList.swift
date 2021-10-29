@@ -6,6 +6,7 @@
 //
 //
 import Foundation
+import struct CoreGraphics.CGFloat
 
 open class MarkdownList: MarkdownLevelElement {
 
@@ -38,15 +39,18 @@ open class MarkdownList: MarkdownLevelElement {
       let offset = levelIndicatorOffsetList[level] else { return }
     let indicator = "\(offset)\(indicatorIcon)"
     attributedString.replaceCharacters(in: range, with: indicator)
-    let updatedRange = NSRange(location: range.location, length: indicator.utf16.count)
-    attributedString.addAttributes([.paragraphStyle : defaultParagraphStyle()], range: updatedRange)
+
+    let calcFont = font ?? MarkdownParser.defaultFont
+    let nonListSectionRange = NSRange(location: 0, length: range.length)
+    attributedString.addAttributes([.paragraphStyle : defaultParagraphStyle(spacing: calcFont.pointSize / 2)], range: nonListSectionRange)
+    attributedString.addAttributes([.paragraphStyle : defaultParagraphStyle(spacing: calcFont.pointSize / 3)], range: range)
   }
 
-  private func defaultParagraphStyle() -> NSMutableParagraphStyle {
+  private func defaultParagraphStyle(spacing: CGFloat) -> NSMutableParagraphStyle {
     let paragraphStyle = NSMutableParagraphStyle()
     paragraphStyle.firstLineHeadIndent = 0
     paragraphStyle.headIndent = 16
-    paragraphStyle.paragraphSpacing = 4
+    paragraphStyle.paragraphSpacing = spacing
     return paragraphStyle
   }
 }
