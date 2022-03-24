@@ -141,8 +141,8 @@ open class MarkdownParser {
     attributedString.addAttribute(.foregroundColor, value: color,
                                   range: NSRange(location: 0, length: attributedString.length))
     var elements: [MarkdownElement] = escapingElements
-    elements.append(contentsOf: defaultElements)
     elements.append(contentsOf: customElements)
+    elements.append(contentsOf: defaultElements)
     elements.append(contentsOf: unescapingElements)
     elements.forEach { element in
       element.parse(attributedString)
