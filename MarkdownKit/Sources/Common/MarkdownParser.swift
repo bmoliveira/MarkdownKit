@@ -82,7 +82,8 @@ open class MarkdownParser {
   @available(*, deprecated, renamed: "init", message: "This constructor will be removed soon, please use the new options constructor")
   public convenience init(automaticLinkDetectionEnabled: Bool,
                           font: MarkdownFont = MarkdownParser.defaultFont,
-                          customElements: [MarkdownElement] = [],textBackgroundColor: MarkdownColor) {
+                          customElements: [MarkdownElement] = [],
+                          textBackgroundColor: MarkdownColor) {
     let enabledElements: EnabledElements = automaticLinkDetectionEnabled ? .all : .disabledAutomaticLink
     self.init(font: font, enabledElements: enabledElements, customElements: customElements, textBackgroundColor: textBackgroundColor)
   }

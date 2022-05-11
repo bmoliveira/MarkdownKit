@@ -24,7 +24,7 @@ class ViewController: UIViewController {
   fileprivate lazy var viewModel: ViewModel = {
     // Example with custom font
     // fileprivate let markdownParser = MarkdownParser(font: UIFont(name: "Product Sans", size: UIFont.systemFontSize)!)
-    let parser = MarkdownParser()
+    let parser = MarkdownParser(textBackgroundColor: .clear)
     parser.addCustomElement(MarkdownSubreddit())
     
     let viewModel = ViewModel(markdownParser: parser)
