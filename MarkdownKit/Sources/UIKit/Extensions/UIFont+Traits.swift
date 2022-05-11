@@ -5,6 +5,9 @@
 //  Created by Ivan Bruel on 19/07/16.
 //
 //
+
+#if canImport(UIKit)
+
 import UIKit
 
 extension UIFont {
@@ -16,11 +19,21 @@ extension UIFont {
     return UIFont(descriptor: descriptor, size: 0)
   }
 
-  func bold() -> UIFont? {
-    return withTraits(.traitBold)
+  func bold() -> UIFont {
+    return withTraits(fontDescriptor.symbolicTraits, .traitBold) ?? self
   }
 
-  func italic() -> UIFont? {
-    return withTraits(.traitItalic)
+  func italic() -> UIFont {
+    return withTraits(fontDescriptor.symbolicTraits, .traitItalic) ?? self
+  }
+
+  func isItalic() -> Bool {
+    return fontDescriptor.symbolicTraits.contains(.traitItalic)
+  }
+
+  func isBold() -> Bool {
+    return fontDescriptor.symbolicTraits.contains(.traitBold)
   }
 }
+
+#endif

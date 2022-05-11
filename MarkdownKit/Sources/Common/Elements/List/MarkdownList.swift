@@ -22,7 +22,7 @@ open class MarkdownList: MarkdownLevelElement {
     return String(format: MarkdownList.regex, level)
   }
 
-  public init(font: MarkdownFont? = nil, maxLevel: Int = 6, indicator: String = "●",
+  public init(font: MarkdownFont? = nil, maxLevel: Int = 6, indicator: String = "•",
               separator: String = "  ", color: MarkdownColor? = nil) {
     self.maxLevel = maxLevel
     self.indicator = indicator
@@ -38,7 +38,8 @@ open class MarkdownList: MarkdownLevelElement {
       let offset = levelIndicatorOffsetList[level] else { return }
     let indicator = "\(offset)\(indicatorIcon)"
     attributedString.replaceCharacters(in: range, with: indicator)
-    attributedString.addAttributes([.paragraphStyle : defaultParagraphStyle()], range: range)
+    let updatedRange = NSRange(location: range.location, length: indicator.utf16.count)
+    attributedString.addAttributes([.paragraphStyle : defaultParagraphStyle()], range: updatedRange)
   }
 
   private func defaultParagraphStyle() -> NSMutableParagraphStyle {

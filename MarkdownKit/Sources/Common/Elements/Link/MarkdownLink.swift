@@ -9,83 +9,105 @@ import Foundation
 
 open class MarkdownLink: MarkdownLinkElement {
 
-  fileprivate static let regex = "\\[[^\\]]+\\]\\(\\S+(?=\\))\\)"
+    fileprivate static let regex = "(\\[[^\\]]+)(\\]\\([^\\s]+)?\\)"
 
-  // This regex is eager if does not count even trailing Parentheses.
-  fileprivate static let onlyLinkRegex = "\\(\\S+(?=\\))\\)"
+    private let schemeRegex = "([a-z]{2,20}):\\/\\/"
 
-  open var font: MarkdownFont?
-  open var color: MarkdownColor?
-  open var textBackgroundColor: MarkdownColor?
+    open var font: MarkdownFont?
+    open var color: MarkdownColor?
+    open var defaultScheme: String?
+    open var textBackgroundColor: MarkdownColor?
 
-  open var regex: String {
-    return MarkdownLink.regex
-  }
-
-  open func regularExpression() throws -> NSRegularExpression {
-    return try NSRegularExpression(pattern: regex, options: .dotMatchesLineSeparators)
-  }
-
-    public init(font: MarkdownFont? = nil, color: MarkdownColor? = MarkdownLink.defaultColor,textBackgroundColor: MarkdownColor? = UIColor.clear ) {
-    self.font = font
-    self.color = color
-    self.textBackgroundColor = textBackgroundColor
-
-  }
-
-
-  open func formatText(_ attributedString: NSMutableAttributedString, range: NSRange,
-                         link: String) {
-    guard let encodedLink = link.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlHostAllowed)
-      else {
-      return
-    }
-    guard let url = URL(string: link) ?? URL(string: encodedLink) else { return }
-
-    attributedString.addAttribute(NSAttributedString.Key.link, value: url, range: range)
-  }
-
-  open func match(_ match: NSTextCheckingResult, attributedString: NSMutableAttributedString) {
-    let nsString = (attributedString.string as NSString)
-    let urlString = nsString.substring(with: match.range)
-
-    guard let onlyLinkRegex = try? NSRegularExpression(pattern: MarkdownLink.onlyLinkRegex, options: .dotMatchesLineSeparators) else {
-      return
+    open var regex: String {
+        return MarkdownLink.regex
     }
 
-    guard let linkMatch = onlyLinkRegex.firstMatch(in: urlString,
-                     options: .withoutAnchoringBounds,
-                     range: NSRange(location: 0, length: urlString.count)) else {
-                      return
+    open func regularExpression() throws -> NSRegularExpression {
+        return try NSRegularExpression(pattern: regex, options: .dotMatchesLineSeparators)
     }
 
-    let urlLinkAbsoluteStart = match.range.location
+    public init(font: MarkdownFont? = nil, color: MarkdownColor? = MarkdownLink.defaultColor, textBackgroundColor: MarkdownColor? = UIColor.clear ) {
+        self.font = font
+        self.color = color
+        self.textBackgroundColor = textBackgroundColor
 
-    let linkURLString = nsString
-      .substring(with: NSRange(location: urlLinkAbsoluteStart + linkMatch.range.location + 1, length: linkMatch.range.length - 2))
+    }
 
-    // deleting trailing markdown
-    // needs to be called before formattingBlock to support modification of length
-    let trailingMarkdownRange = NSRange(location: urlLinkAbsoluteStart + linkMatch.range.location - 1, length: linkMatch.range.length + 1)
-    attributedString.deleteCharacters(in: trailingMarkdownRange)
+    open func formatText(_ attributedString: NSMutableAttributedString, range: NSRange, link: String) {
+        let regex = try? NSRegularExpression(pattern: schemeRegex, options: .caseInsensitive)
+        let hasScheme = regex?.firstMatch(
+            in: link,
+            options: .anchored,
+            range: NSRange(0..<link.count)
+        ) != nil
 
-    // deleting leading markdown
-    // needs to be called before formattingBlock to provide a stable range
-    let leadingMarkdownRange = NSRange(location: match.range.location, length: 1)
-    attributedString.deleteCharacters(in: leadingMarkdownRange)
+        let fullLink = hasScheme ? link : "\(defaultScheme ?? "https://")\(link)"
 
-    let formatRange = NSRange(location: match.range.location,
-                              length: linkMatch.range.location - 2)
+        guard let encodedLink = fullLink.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed) else { return }
+        guard let url = URL(string: fullLink) ?? URL(string: encodedLink) else { return }
+        attributedString.addAttribute(NSAttributedString.Key.link, value: url, range: range)
+    }
 
-    formatText(attributedString, range: formatRange, link: linkURLString)
-    addAttributes(attributedString, range: formatRange, link: linkURLString)
-  }
+    open func match(_ match: NSTextCheckingResult, attributedString: NSMutableAttributedString) {
+        // Remove opening bracket
+        attributedString.deleteCharacters(in: NSRange(location: match.range(at: 1).location, length: 1))
 
-  open func addAttributes(_ attributedString: NSMutableAttributedString, range: NSRange,
-                            link: String) {
-    var codeAttributes = attributes
-     textBackgroundColor.flatMap { codeAttributes[NSAttributedString.Key.backgroundColor] = $0 }
-    attributedString.addAttributes(codeAttributes, range: range)
-  }
+        // Remove closing bracket
+        attributedString.deleteCharacters(in: NSRange(location: match.range(at: 2).location - 1, length: 1))
+
+        let urlStart = match.range(at: 2).location
+
+        let string = NSString(string: attributedString.string)
+        var urlString = String(string.substring(with: NSRange(urlStart..<match.range(at: 2).upperBound - 2 )))
+
+        // Balance opening and closing parantheses inside the url
+        var numberOfOpeningParantheses = 0
+        var numberOfClosingParantheses = 0
+        for (index, character) in urlString.enumerated() {
+            switch character {
+            case "(": numberOfOpeningParantheses += 1
+            case ")": numberOfClosingParantheses += 1
+            default: continue
+            }
+            if numberOfClosingParantheses > numberOfOpeningParantheses {
+                urlString = NSString(string: urlString).substring(with: NSRange(0..<index))
+                break
+            }
+        }
+
+        // Remove opening parantheses
+        attributedString.deleteCharacters(in: NSRange(location: match.range(at: 2).location, length: 1))
+
+        // Remove closing parantheses
+        let trailingMarkdownRange = NSRange(location: match.range(at: 2).location - 1, length: urlString.count + 1)
+        attributedString.deleteCharacters(in: trailingMarkdownRange)
+
+        let formatRange = NSRange(match.range(at: 1).location..<match.range(at: 2).location - 1)
+
+        // Add attributes while preserving current attributes
+
+        let currentAttributes = attributedString.attributes(
+            at: formatRange.location,
+            longestEffectiveRange: nil,
+            in: formatRange
+        )
+
+        addAttributes(attributedString, range: formatRange)
+        formatText(attributedString, range: formatRange, link: urlString)
+
+        if let font = currentAttributes[.font] as? MarkdownFont {
+            attributedString.addAttribute(
+                NSAttributedString.Key.font,
+                value: font,
+                range: formatRange
+            )
+        }
+    }
+
+    open func addAttributes(_ attributedString: NSMutableAttributedString, range: NSRange) {
+        var codeAttributes = attributes
+        textBackgroundColor.flatMap { codeAttributes[NSAttributedString.Key.backgroundColor] = $0 }
+        attributedString.addAttributes(codeAttributes, range: range)
+    }
 }
 

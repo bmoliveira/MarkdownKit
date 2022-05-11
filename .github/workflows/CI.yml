@@ -1,0 +1,29 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    types: [opened, reopened, edited, synchronize]
+    branches:
+      - master
+
+jobs:
+  check:
+    runs-on: macOS-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Lint
+        run: pod lib lint
+      - name: Build & test macOS
+        run: |
+         swift build
+         swift test
+      - name: Build & test iOS
+        run: |
+         swift package generate-xcodeproj --output temp && cd temp
+         xcodebuild build -sdk iphoneos -scheme 'MarkdownKit-Package'
+         xcodebuild test -destination 'name=iPhone 12' -scheme 'MarkdownKit-Package'
+         cd .. && rm -r temp

@@ -10,7 +10,7 @@ import Foundation
 import MarkdownKit
 import Alamofire
 
-class MarkdownKitViewModel {
+class ViewModel {
   
   let markdownParser: MarkdownParser
   
@@ -25,7 +25,7 @@ class MarkdownKitViewModel {
   }
 }
 
-extension MarkdownKitViewModel {
+extension ViewModel {
   func parseString(markdownString: String) {
     markdownAttributedStringChanged?(markdownParser.parse(markdownString), nil)
   }
