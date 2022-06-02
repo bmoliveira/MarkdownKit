@@ -10,52 +10,52 @@ import Cocoa
 import MarkdownKit
 
 class ViewController: NSViewController {
-  @IBOutlet var label: NSTextView!
-  
-  fileprivate lazy var viewModel: ViewModel = {
-    // Example with custom font
-    // fileprivate let markdownParser = MarkdownParser(font: UIFont(name: "Product Sans", size: UIFont.systemFontSize)!)
-    let parser = MarkdownParser()
-    //parser.addCustomElement(MarkdownSubreddit())
+    @IBOutlet var label: NSTextView!
     
-    let viewModel = ViewModel(markdownParser: parser)
-    viewModel.markdownAttributedStringChanged = { [weak self](attributtedString, error) in
-      if let error = error {
-        NSLog("Error requesting -> \(error)")
-        return
-      }
-      
-      guard let attributedText = attributtedString else {
-        NSLog("No error nor string found")
-        return
-      }
-      
-      
-      let storageSize = self?.label.textStorage?.length ?? 0
-      
-      self?.label.textStorage?.replaceCharacters(in: NSRange(location: 0, length: storageSize), with: attributedText)
+    fileprivate lazy var viewModel: ViewModel = {
+        // Example with custom font
+        // fileprivate let markdownParser = MarkdownParser(font: UIFont(name: "Product Sans", size: UIFont.systemFontSize)!)
+        let parser = MarkdownParser()
+        //parser.addCustomElement(MarkdownSubreddit())
+        
+        let viewModel = ViewModel(markdownParser: parser)
+        viewModel.markdownAttributedStringChanged = { [weak self](attributtedString, error) in
+            if let error = error {
+                NSLog("Error requesting -> \(error)")
+                return
+            }
+            
+            guard let attributedText = attributtedString else {
+                NSLog("No error nor string found")
+                return
+            }
+            
+            
+            let storageSize = self?.label.textStorage?.length ?? 0
+            
+            self?.label.textStorage?.replaceCharacters(in: NSRange(location: 0, length: storageSize), with: attributedText)
+        }
+        
+        return viewModel
+    }()
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        // Do any additional setup after loading the view.
     }
     
-    return viewModel
-  }()
-  
-  override func viewDidLoad() {
-    super.viewDidLoad()
-
-    // Do any additional setup after loading the view.
-  }
-  
-  override func viewDidAppear() {
-    super.viewDidAppear()
-    viewModel.requestTestPage()
-  }
-
-  override var representedObject: Any? {
-    didSet {
-    // Update the view, if already loaded.
+    override func viewDidAppear() {
+        super.viewDidAppear()
+        viewModel.requestTestPage()
     }
-  }
-
-
+    
+    override var representedObject: Any? {
+        didSet {
+            // Update the view, if already loaded.
+        }
+    }
+    
+    
 }
 

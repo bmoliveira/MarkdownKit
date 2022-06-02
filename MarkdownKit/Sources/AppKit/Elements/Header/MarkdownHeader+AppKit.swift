@@ -10,7 +10,7 @@
 import AppKit
 
 public extension MarkdownHeader {
-  static let defaultFont = NSFont.boldSystemFont(ofSize: NSFont.systemFontSize)
+    static let defaultFont = NSFont.boldSystemFont(ofSize: NSFont.systemFontSize)
 }
 
 #endif

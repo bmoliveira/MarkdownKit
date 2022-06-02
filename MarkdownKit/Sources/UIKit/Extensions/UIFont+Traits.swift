@@ -11,29 +11,29 @@
 import UIKit
 
 extension UIFont {
-
-  func withTraits(_ traits: UIFontDescriptor.SymbolicTraits...) -> UIFont? {
-    guard let descriptor = fontDescriptor.withSymbolicTraits(UIFontDescriptor.SymbolicTraits(traits)) else {
-        return nil
+    
+    func withTraits(_ traits: UIFontDescriptor.SymbolicTraits...) -> UIFont? {
+        guard let descriptor = fontDescriptor.withSymbolicTraits(UIFontDescriptor.SymbolicTraits(traits)) else {
+            return nil
+        }
+        return UIFont(descriptor: descriptor, size: 0)
     }
-    return UIFont(descriptor: descriptor, size: 0)
-  }
-
-  func bold() -> UIFont {
-    return withTraits(fontDescriptor.symbolicTraits, .traitBold) ?? self
-  }
-
-  func italic() -> UIFont {
-    return withTraits(fontDescriptor.symbolicTraits, .traitItalic) ?? self
-  }
-
-  func isItalic() -> Bool {
-    return fontDescriptor.symbolicTraits.contains(.traitItalic)
-  }
-
-  func isBold() -> Bool {
-    return fontDescriptor.symbolicTraits.contains(.traitBold)
-  }
+    
+    func bold() -> UIFont {
+        return withTraits(fontDescriptor.symbolicTraits, .traitBold) ?? self
+    }
+    
+    func italic() -> UIFont {
+        return withTraits(fontDescriptor.symbolicTraits, .traitItalic) ?? self
+    }
+    
+    func isItalic() -> Bool {
+        return fontDescriptor.symbolicTraits.contains(.traitItalic)
+    }
+    
+    func isBold() -> Bool {
+        return fontDescriptor.symbolicTraits.contains(.traitBold)
+    }
 }
 
 #endif
