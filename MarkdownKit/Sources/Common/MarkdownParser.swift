@@ -95,7 +95,7 @@ open class MarkdownParser {
     self.color = color
     
     self.header = MarkdownHeader()
-    self.list = MarkdownList()
+    self.list = MarkdownList(font: font)
     self.quote = MarkdownQuote()
     self.link = MarkdownLink()
     self.automaticLink = MarkdownAutomaticLink()

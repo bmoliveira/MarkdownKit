@@ -39,17 +39,18 @@ open class MarkdownList: MarkdownLevelElement {
       let offset = levelIndicatorOffsetList[level] else { return }
     let indicator = "\(offset)\(indicatorIcon)"
     attributedString.replaceCharacters(in: range, with: indicator)
+    let updatedRange = NSRange(location: range.location, length: indicator.utf16.count)
 
     let calcFont = font ?? MarkdownParser.defaultFont
-    let nonListSectionRange = NSRange(location: 0, length: range.length)
-    attributedString.addAttributes([.paragraphStyle : defaultParagraphStyle(spacing: calcFont.pointSize / 2)], range: nonListSectionRange)
-    attributedString.addAttributes([.paragraphStyle : defaultParagraphStyle(spacing: calcFont.pointSize / 3)], range: range)
+
+    let headIndent = (indicator as NSString).size(withAttributes: [.font: calcFont]).width
+    attributedString.addAttributes([.paragraphStyle : paragraphStyle(spacing: calcFont.pointSize / 3, headIndent: headIndent)], range: updatedRange)
   }
 
-  private func defaultParagraphStyle(spacing: CGFloat) -> NSMutableParagraphStyle {
+  private func paragraphStyle(spacing: CGFloat, headIndent: CGFloat) -> NSMutableParagraphStyle {
     let paragraphStyle = NSMutableParagraphStyle()
     paragraphStyle.firstLineHeadIndent = 0
-    paragraphStyle.headIndent = 16
+    paragraphStyle.headIndent = headIndent
     paragraphStyle.paragraphSpacing = spacing
     return paragraphStyle
   }
