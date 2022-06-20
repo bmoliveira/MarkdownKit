@@ -41,10 +41,8 @@ open class MarkdownList: MarkdownLevelElement {
     attributedString.replaceCharacters(in: range, with: indicator)
 
     let calcFont = font ?? MarkdownParser.defaultFont
-    let nonListSectionRange = NSRange(location: 0, length: range.length)
 
     let headIndent = (indicator as NSString).size(withAttributes: [.font: calcFont]).width
-    attributedString.addAttributes([.paragraphStyle : paragraphStyle(spacing: calcFont.pointSize / 2, headIndent: headIndent)], range: nonListSectionRange)
     attributedString.addAttributes([.paragraphStyle : paragraphStyle(spacing: calcFont.pointSize / 3, headIndent: headIndent)], range: range)
   }
 
