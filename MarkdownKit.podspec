@@ -26,4 +26,5 @@ all the Markdown elements.
   s.osx.source_files      = "MarkdownKit/Sources/AppKit/**/*"
   s.osx.framework         = 'AppKit'
 
+  s.pod_target_xcconfig = { 'BUILD_LIBRARY_FOR_DISTRIBUTION' => 'YES' }
 end
