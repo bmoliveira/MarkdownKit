@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name                  = "MarkdownKit"
-  s.version               = "1.7.1"
+  s.version               = "1.7.2"
   s.summary               = "MarkdownKit is a customizable and extensible Markdown parser for iOS and macOS."
   s.description           = <<-DESC
 MarkdownKit is a customizable and extensible Markdown parser for iOS and macOS.
