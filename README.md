@@ -67,7 +67,7 @@ MarkdownKit is available through [Swift Package Manager](https://swift.org/packa
 To add MarkdownKit as a dependency of your Swift package, simply add the following line to your `Package.swift` file:
 
 ```swift
-.package(url: "https://github.com/bmoliveira/MarkdownKit.git", from: "1.7.0")
+.package(url: "https://github.com/bmoliveira/MarkdownKit.git", from: "1.7.2")
 ```
 
 ## Supported Elements

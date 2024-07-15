@@ -1195,7 +1195,7 @@
 					"@loader_path/Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
-				MARKETING_VERSION = 1.7.1;
+				MARKETING_VERSION = 1.7.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.md.MarkdownKit.macOS;
 				PRODUCT_NAME = "$(PROJECT_NAME)";
 				SDKROOT = macosx;
