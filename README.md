@@ -154,7 +154,7 @@ To run the example project, clone the repo, and run `pod install` from the Examp
 
 This library is heavily inspired in [TSMarkdownParser](https://github.com/laptobbe/TSMarkdownParser) and also [SwiftyMarkdown](https://github.com/SimonFairbairn/SwiftyMarkdown).
 
-Special thanks to [Michael Brown](https://github.com/mluisbrown) for helping out with the [UTF-16 Escaping/Unescaping](https://github.com/ivanbruel/MarkdownKit/blob/master/MarkdownKit/Classes/Extensions/String%2BUTF16.swift).
+Special thanks to [Michael Brown](https://github.com/mluisbrown) for helping out with the [UTF-16 Escaping/Unescaping](https://github.com/bmoliveira/MarkdownKit/blob/master/MarkdownKit/Sources/Common/Extensions/String%2BUTF16.swift).
 
 ## License
 
