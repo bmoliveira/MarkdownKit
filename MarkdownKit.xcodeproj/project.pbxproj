@@ -21,6 +21,8 @@
 		5FB3400F2E0BE3A500D623E3 /* MarkdownUnderline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F8B49252E0B269E001B12E8 /* MarkdownUnderline.swift */; };
 		5FB340112E0BE5FA00D623E3 /* MarkdownLineBreak.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FB340102E0BE5FA00D623E3 /* MarkdownLineBreak.swift */; };
 		5FB340122E0BE5FA00D623E3 /* MarkdownLineBreak.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FB340102E0BE5FA00D623E3 /* MarkdownLineBreak.swift */; };
+		5FB3401B2E0BEEAC00D623E3 /* MarkdownKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B62C1BFF21EF7EED00308C8C /* MarkdownKit.framework */; };
+		5FB340212E0BEECC00D623E3 /* MarkdownParserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D3A84BA2632058A00E69F9F /* MarkdownParserTests.swift */; };
 		B62C1BEB21EF7D8D00308C8C /* String+HTMLDecode.swift in Sources */ = {isa = PBXBuildFile; fileRef = B62C1BE221EF7D8C00308C8C /* String+HTMLDecode.swift */; };
 		B62C1BEC21EF7D8D00308C8C /* MarkdownSubreddit.swift in Sources */ = {isa = PBXBuildFile; fileRef = B62C1BE321EF7D8C00308C8C /* MarkdownSubreddit.swift */; };
 		B62C1BEE21EF7D8D00308C8C /* Product Sans Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B62C1BE521EF7D8C00308C8C /* Product Sans Regular.ttf */; };
@@ -101,6 +103,13 @@
 			remoteGlobalIDString = B64AF6132203402F0048439D;
 			remoteInfo = "MarkdownKit macOS";
 		};
+		5FB3401C2E0BEEAC00D623E3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B62C1BA521EF7C8000308C8C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B62C1BFE21EF7EED00308C8C;
+			remoteInfo = "MarkdownKit iOS";
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -134,6 +143,7 @@
 		3EB3627C23154D90005D48C8 /* MarkdownStrikethrough.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkdownStrikethrough.swift; sourceTree = "<group>"; };
 		5F8B49252E0B269E001B12E8 /* MarkdownUnderline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkdownUnderline.swift; sourceTree = "<group>"; };
 		5FB340102E0BE5FA00D623E3 /* MarkdownLineBreak.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkdownLineBreak.swift; sourceTree = "<group>"; };
+		5FB340172E0BEEAC00D623E3 /* MarkdownKit-test.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "MarkdownKit-test.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B62C1BAD21EF7C8000308C8C /* Example iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Example iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B62C1BE221EF7D8C00308C8C /* String+HTMLDecode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+HTMLDecode.swift"; sourceTree = "<group>"; };
 		B62C1BE321EF7D8C00308C8C /* MarkdownSubreddit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarkdownSubreddit.swift; sourceTree = "<group>"; };
@@ -191,6 +201,14 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		5FB340142E0BEEAC00D623E3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5FB3401B2E0BEEAC00D623E3 /* MarkdownKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		B62C1BAA21EF7C8000308C8C /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -291,6 +309,7 @@
 				B62C1BFF21EF7EED00308C8C /* MarkdownKit.framework */,
 				B64AF6142203402F0048439D /* MarkdownKit.framework */,
 				B64AF646220349900048439D /* Example macOS.app */,
+				5FB340172E0BEEAC00D623E3 /* MarkdownKit-test.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -633,6 +652,26 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		5FB340162E0BEEAC00D623E3 /* MarkdownKit-test */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5FB3401E2E0BEEAC00D623E3 /* Build configuration list for PBXNativeTarget "MarkdownKit-test" */;
+			buildPhases = (
+				5FB340132E0BEEAC00D623E3 /* Sources */,
+				5FB340142E0BEEAC00D623E3 /* Frameworks */,
+				5FB340152E0BEEAC00D623E3 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				5FB3401D2E0BEEAC00D623E3 /* PBXTargetDependency */,
+			);
+			name = "MarkdownKit-test";
+			packageProductDependencies = (
+			);
+			productName = "MarkdownKit-test";
+			productReference = 5FB340172E0BEEAC00D623E3 /* MarkdownKit-test.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		B62C1BAC21EF7C8000308C8C /* Example iOS */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = B62C1BCA21EF7C8100308C8C /* Build configuration list for PBXNativeTarget "Example iOS" */;
@@ -720,10 +759,13 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
-				LastSwiftUpdateCheck = 1240;
+				LastSwiftUpdateCheck = 1640;
 				LastUpgradeCheck = 1640;
 				ORGANIZATIONNAME = "Ivan Bruel";
 				TargetAttributes = {
+					5FB340162E0BEEAC00D623E3 = {
+						CreatedOnToolsVersion = 16.4;
+					};
 					B62C1BAC21EF7C8000308C8C = {
 						CreatedOnToolsVersion = 10.1;
 						LastSwiftMigration = 1010;
@@ -765,11 +807,19 @@
 				B64AF645220349900048439D /* Example macOS */,
 				B62C1BFE21EF7EED00308C8C /* MarkdownKit iOS */,
 				B64AF6132203402F0048439D /* MarkdownKit macOS */,
+				5FB340162E0BEEAC00D623E3 /* MarkdownKit-test */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		5FB340152E0BEEAC00D623E3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		B62C1BAB21EF7C8000308C8C /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -808,6 +858,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		5FB340132E0BEEAC00D623E3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5FB340212E0BEECC00D623E3 /* MarkdownParserTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		B62C1BA921EF7C8000308C8C /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -911,6 +969,11 @@
 			target = B64AF6132203402F0048439D /* MarkdownKit macOS */;
 			targetProxy = 3DBA81282631737A009CEB6B /* PBXContainerItemProxy */;
 		};
+		5FB3401D2E0BEEAC00D623E3 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B62C1BFE21EF7EED00308C8C /* MarkdownKit iOS */;
+			targetProxy = 5FB3401C2E0BEEAC00D623E3 /* PBXContainerItemProxy */;
+		};
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
@@ -941,6 +1004,51 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		5FB3401F2E0BEEAC00D623E3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.5;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.markdownkit.MarkdownKit-test";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		5FB340202E0BEEAC00D623E3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.5;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.markdownkit.MarkdownKit-test";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		B62C1BC821EF7C8100308C8C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1290,6 +1398,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		5FB3401E2E0BEEAC00D623E3 /* Build configuration list for PBXNativeTarget "MarkdownKit-test" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5FB3401F2E0BEEAC00D623E3 /* Debug */,
+				5FB340202E0BEEAC00D623E3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		B62C1BA821EF7C8000308C8C /* Build configuration list for PBXProject "MarkdownKit" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
