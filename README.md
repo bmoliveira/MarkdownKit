@@ -1,25 +1,25 @@
-![Logo](https://raw.githubusercontent.com/ivanbruel/MarkdownKit/master/Resources/MarkdownKitLogo.png)
+![Logo](https://raw.githubusercontent.com/bmoliveira/MarkdownKit/master/Resources/MarkdownKitLogo.png)
 
 MarkdownKit
 =========
 
-[![Version](https://img.shields.io/cocoapods/v/MarkdownKit.svg?style=flat)](http://cocoapods.org/pods/MarkdownKit)
+[![Version](https://img.shields.io/cocoapods/v/MarkdownKit.svg?style=flat)](https://cocoapods.org/pods/MarkdownKit)
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
-[![License](https://img.shields.io/cocoapods/l/MarkdownKit.svg?style=flat)](http://cocoapods.org/pods/MarkdownKit)
-[![Platform](https://img.shields.io/cocoapods/p/MarkdownKit.svg?style=flat)](http://cocoapods.org/pods/MarkdownKit)
+[![License](https://img.shields.io/cocoapods/l/MarkdownKit.svg?style=flat)](https://cocoapods.org/pods/MarkdownKit)
+[![Platform](https://img.shields.io/cocoapods/p/MarkdownKit.svg?style=flat)](https://cocoapods.org/pods/MarkdownKit)
 [![CI](https://github.com/bmoliveira/MarkdownKit/actions/workflows/CI.yml/badge.svg)](https://github.com/bmoliveira/MarkdownKit/actions/workflows/CI.yml)
 
 MarkdownKit is a customizable and extensible Markdown parser for iOS and macOS. It supports many of the standard Markdown elements through the use of Regular Expressions. It also allows customization of font and color attributes for all the Markdown elements.
 
 ## Screenshot
 
-![Example](https://raw.githubusercontent.com/ivanbruel/MarkdownKit/master/Resources/MarkdownKitExample.png)
+![Example](https://raw.githubusercontent.com/bmoliveira/MarkdownKit/master/Resources/MarkdownKitExample.png)
 
 ## Installation
 
 ### Installation via CocoaPods
 
-MarkdownKit is available through [CocoaPods](http://cocoapods.org). CocoaPods is a dependency manager that automates and simplifies the process of using 3rd-party libraries like MarkdownKit in your projects. You can install CocoaPods with the following command:
+MarkdownKit is available through [CocoaPods](https://cocoapods.org). CocoaPods is a dependency manager that automates and simplifies the process of using 3rd-party libraries like MarkdownKit in your projects. You can install CocoaPods with the following command:
 
 ```ruby
 gem install cocoapods
@@ -41,7 +41,7 @@ pod install
 
 MarkdownKit is available through [Carthage](https://github.com/Carthage/Carthage). Carthage is a decentralized dependency manager that builds your dependencies and provides you with binary frameworks.
 
-You can install Carthage via [Homebrew](http://brew.sh) with the following command:
+You can install Carthage via [Homebrew](https://brew.sh) with the following command:
 
 ```ruby
 brew update
@@ -51,7 +51,7 @@ brew install carthage
 To integrate MarkdownKit into your Xcode project using Carthage, simply add the following line to your Cartfile:
 
 ```ruby
-github "ivanbruel/MarkdownKit"
+github "bmoliveira/MarkdownKit"
 ```
 
 Afterwards, run the following command:
@@ -91,7 +91,7 @@ To add MarkdownKit as a dependency of your Swift package, simply add the followi
 + List
 
 `code` or ```code```
-[Links](http://github.com/ivanbruel/MarkdownKit/)
+[Links](https://github.com/bmoliveira/MarkdownKit/)
 ```
 
 ## Usage
