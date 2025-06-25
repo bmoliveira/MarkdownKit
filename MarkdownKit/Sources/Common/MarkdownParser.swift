@@ -8,7 +8,7 @@
 import Foundation
 
 open class MarkdownParser {
-  public struct EnabledElements: OptionSet {
+  public struct EnabledElements: OptionSet, Sendable {
     public let rawValue: Int
 
     public init(rawValue: Int) {

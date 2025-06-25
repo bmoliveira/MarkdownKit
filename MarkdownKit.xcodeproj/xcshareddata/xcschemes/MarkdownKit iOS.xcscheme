@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "1240"
+   LastUpgradeVersion = "1640"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -41,9 +41,9 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "B62C1C0621EF7EED00308C8C"
-               BuildableName = "MarkdownKitTests.xctest"
-               BlueprintName = "MarkdownKitTests"
+               BlueprintIdentifier = "5FB340162E0BEEAC00D623E3"
+               BuildableName = "MarkdownKit-test.xctest"
+               BlueprintName = "MarkdownKit-test"
                ReferencedContainer = "container:MarkdownKit.xcodeproj">
             </BuildableReference>
          </TestableReference>

@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name                  = "MarkdownKit"
-  s.version               = "1.7.2"
+  s.version               = "1.7.3"
   s.summary               = "MarkdownKit is a customizable and extensible Markdown parser for iOS and macOS."
   s.description           = <<-DESC
 MarkdownKit is a customizable and extensible Markdown parser for iOS and macOS.
@@ -18,11 +18,11 @@ all the Markdown elements.
 
   s.source_files          = "MarkdownKit/Sources/Common/**/*"
 
-  s.ios.deployment_target = "9.0"
+  s.ios.deployment_target = "15.6"
   s.ios.source_files      = "MarkdownKit/Sources/UIKit/**/*"
   s.ios.frameworks        = "UIKit"
 
-  s.osx.deployment_target = '10.10'
+  s.osx.deployment_target = '12.4'
   s.osx.source_files      = "MarkdownKit/Sources/AppKit/**/*"
   s.osx.framework         = 'AppKit'
 

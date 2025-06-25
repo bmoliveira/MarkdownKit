@@ -35,7 +35,7 @@ open class MarkdownLink: MarkdownLinkElement {
     let hasScheme = regex?.firstMatch(
         in: link,
         options: .anchored,
-        range: NSRange(0..<link.count)
+        range: NSRange(0..<link.utf16.count)
     ) != nil
 
     let fullLink = hasScheme ? link : "\(defaultScheme ?? "https://")\(link)"
