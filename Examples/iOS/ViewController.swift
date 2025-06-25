@@ -23,9 +23,11 @@ class ViewController: UIViewController {
   
   fileprivate lazy var viewModel: ViewModel = {
     // Example with custom font
-    // fileprivate let markdownParser = MarkdownParser(font: UIFont(name: "Product Sans", size: UIFont.systemFontSize)!)
+    // let parser = MarkdownParser(font: UIFont(name: "Product Sans", size: UIFont.systemFontSize)!)
     let parser = MarkdownParser()
     parser.addCustomElement(MarkdownSubreddit())
+    parser.addCustomElement(MarkdownUnderline())
+    parser.addCustomElement(MarkdownLineBreak())
     
     let viewModel = ViewModel(markdownParser: parser)
     viewModel.markdownAttributedStringChanged = { [weak self](attributtedString, error) in

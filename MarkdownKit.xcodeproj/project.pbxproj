@@ -17,6 +17,10 @@
 		3DBA81262631737A009CEB6B /* MarkdownKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B64AF6142203402F0048439D /* MarkdownKit.framework */; };
 		3DBA81272631737A009CEB6B /* MarkdownKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B64AF6142203402F0048439D /* MarkdownKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		3EB3627D23154D90005D48C8 /* MarkdownStrikethrough.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EB3627C23154D90005D48C8 /* MarkdownStrikethrough.swift */; };
+		5FB3400E2E0BE3A500D623E3 /* MarkdownUnderline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F8B49252E0B269E001B12E8 /* MarkdownUnderline.swift */; };
+		5FB3400F2E0BE3A500D623E3 /* MarkdownUnderline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F8B49252E0B269E001B12E8 /* MarkdownUnderline.swift */; };
+		5FB340112E0BE5FA00D623E3 /* MarkdownLineBreak.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FB340102E0BE5FA00D623E3 /* MarkdownLineBreak.swift */; };
+		5FB340122E0BE5FA00D623E3 /* MarkdownLineBreak.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FB340102E0BE5FA00D623E3 /* MarkdownLineBreak.swift */; };
 		B62C1BEB21EF7D8D00308C8C /* String+HTMLDecode.swift in Sources */ = {isa = PBXBuildFile; fileRef = B62C1BE221EF7D8C00308C8C /* String+HTMLDecode.swift */; };
 		B62C1BEC21EF7D8D00308C8C /* MarkdownSubreddit.swift in Sources */ = {isa = PBXBuildFile; fileRef = B62C1BE321EF7D8C00308C8C /* MarkdownSubreddit.swift */; };
 		B62C1BEE21EF7D8D00308C8C /* Product Sans Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B62C1BE521EF7D8C00308C8C /* Product Sans Regular.ttf */; };
@@ -128,6 +132,8 @@
 		3D3A84BA2632058A00E69F9F /* MarkdownParserTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkdownParserTests.swift; sourceTree = "<group>"; };
 		3D6C279B25E80DD8008ED858 /* Typealias.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Typealias.swift; sourceTree = "<group>"; };
 		3EB3627C23154D90005D48C8 /* MarkdownStrikethrough.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkdownStrikethrough.swift; sourceTree = "<group>"; };
+		5F8B49252E0B269E001B12E8 /* MarkdownUnderline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkdownUnderline.swift; sourceTree = "<group>"; };
+		5FB340102E0BE5FA00D623E3 /* MarkdownLineBreak.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkdownLineBreak.swift; sourceTree = "<group>"; };
 		B62C1BAD21EF7C8000308C8C /* Example iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Example iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B62C1BE221EF7D8C00308C8C /* String+HTMLDecode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+HTMLDecode.swift"; sourceTree = "<group>"; };
 		B62C1BE321EF7D8C00308C8C /* MarkdownSubreddit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarkdownSubreddit.swift; sourceTree = "<group>"; };
@@ -254,6 +260,13 @@
 			path = Strikethrough;
 			sourceTree = "<group>";
 		};
+		5F8B49242E0B2696001B12E8 /* Underline */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Underline;
+			sourceTree = "<group>";
+		};
 		9CEAFB3D64DC33AB394392A3 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -287,6 +300,8 @@
 			children = (
 				B62C1BE621EF7D8D00308C8C /* AppDelegate.swift */,
 				B62C1BE321EF7D8C00308C8C /* MarkdownSubreddit.swift */,
+				5FB340102E0BE5FA00D623E3 /* MarkdownLineBreak.swift */,
+				5F8B49252E0B269E001B12E8 /* MarkdownUnderline.swift */,
 				B62C1BE821EF7D8D00308C8C /* ViewController.swift */,
 				B688EF9F21EF8519003FF4AC /* Extensions */,
 				B688EF9E21EF850B003FF4AC /* Fonts */,
@@ -532,6 +547,7 @@
 		B672000721EF8A96008649E1 /* Elements */ = {
 			isa = PBXGroup;
 			children = (
+				5F8B49242E0B2696001B12E8 /* Underline */,
 				B64AF60E22033EAA0048439D /* Quote */,
 				B64AF60D22033E120048439D /* List */,
 				B64AF60C22031ABD0048439D /* Bold */,
@@ -796,9 +812,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				B62C1BEF21EF7D8D00308C8C /* AppDelegate.swift in Sources */,
+				5FB3400E2E0BE3A500D623E3 /* MarkdownUnderline.swift in Sources */,
 				B62C1BEB21EF7D8D00308C8C /* String+HTMLDecode.swift in Sources */,
 				B695DA0E21F5E60300FC6FCD /* ViewModel.swift in Sources */,
 				B62C1BF121EF7D8D00308C8C /* ViewController.swift in Sources */,
+				5FB340112E0BE5FA00D623E3 /* MarkdownLineBreak.swift in Sources */,
 				B62C1BEC21EF7D8D00308C8C /* MarkdownSubreddit.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -874,6 +892,8 @@
 				B64AF667220355120048439D /* ViewModel.swift in Sources */,
 				B64AF64B220349900048439D /* ViewController.swift in Sources */,
 				B64AF649220349900048439D /* AppDelegate.swift in Sources */,
+				5FB3400F2E0BE3A500D623E3 /* MarkdownUnderline.swift in Sources */,
+				5FB340122E0BE5FA00D623E3 /* MarkdownLineBreak.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1047,7 +1067,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = Examples/iOS/Resources/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1067,7 +1087,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = Examples/iOS/Resources/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1094,7 +1114,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = MarkdownKit/Resources/iOS/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1127,7 +1147,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = MarkdownKit/Resources/iOS/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1163,7 +1183,7 @@
 					"@executable_path/../Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MACOSX_DEPLOYMENT_TARGET = 11.5;
 				MARKETING_VERSION = 1.7.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.md.MarkdownKit.macOS;
 				PRODUCT_NAME = "$(PROJECT_NAME)";
@@ -1194,7 +1214,7 @@
 					"@executable_path/../Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MACOSX_DEPLOYMENT_TARGET = 11.5;
 				MARKETING_VERSION = 1.7.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.md.MarkdownKit.macOS;
 				PRODUCT_NAME = "$(PROJECT_NAME)";
@@ -1219,7 +1239,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MACOSX_DEPLOYMENT_TARGET = 11.5;
 				PRODUCT_BUNDLE_IDENTIFIER = com.md.MarkdownKit.example.macOS;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
@@ -1240,7 +1260,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MACOSX_DEPLOYMENT_TARGET = 11.5;
 				PRODUCT_BUNDLE_IDENTIFIER = com.md.MarkdownKit.example.macOS;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
